@@ -2,15 +2,14 @@ import Image from "next/image";
 import Dummy from "../public/images/dummy.jpg";
 
 const styles = {
-  featuredArticle: "py-2 relative px-2 md:px-4",
+  featuredArticle: "py-2 relative px-2 md:px-4 md:py-4",
   featuredArticleImage: "absolute inset-0",
   featuredArticleTextWrapper:
-    "absolute bottom-6 text-white px-2 md:px-4 flex flex-col sm:flex-row sm:justify-between sm:items-end space-x-4 w-full",
-  articleTextLeft: "max-w-[70%]",
+    "absolute text-white top-1/2 -translate-y-1/2 md:top-auto md:translate-y-0 md:bottom-6 px-2 md:px-4 flex flex-col items-center justify-center md:flex-row md:justify-between md:items-end max-w-[95%]",
+  articleTextLeft: "max-w-[90%] md:max-w-[65%] lg:max-w-[70%] mb-6 md:mb-0",
   title:
-    "uppercase text-2xl md:text-3xl xl:text-5xl leading-[1.875rem] font-bold cursor-pointer",
-  articleLink:
-    "border border-white rounded-full px-4 py-2 absolute bottom-0 right-2 uppercase font-bold",
+    "uppercase text-3xl md:text-3xl xl:text-4xl leading-[1.875rem] font-bold cursor-pointer",
+  linkWrapper: "md:mb-3",
 };
 
 const FeaturedArticle = () => {
@@ -27,8 +26,8 @@ const FeaturedArticle = () => {
           <span>Men's Soccer | 10.21.2022</span>
           <h3 className={styles.title}>Boys Take Down Kickapoo In Overtime</h3>
         </div>
-        <div>
-          <a href="#" className={styles.articleLink}>
+        <div className={styles.linkWrapper}>
+          <a href="#" className="btn-rounded">
             Read Article
           </a>
         </div>

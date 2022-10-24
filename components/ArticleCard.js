@@ -6,9 +6,8 @@ const styles = {
     "flex odd:flex-row-reverse space-x-4 items-center py-4 border-t border-grey-400 px-2 md:px-4",
   imageWrapper: "hidden lg:inline-block",
   content: "flex flex-col items-start",
-  blurb: "text-primary-700",
+  blurb: "text-primary-500",
   title: "uppercase text-2xl font-bold cursor-pointer py-2",
-  link: "border border-black rounded-full px-4 py-2 uppercase font-bold",
 };
 
 const ArticleCard = () => {
@@ -24,7 +23,7 @@ const ArticleCard = () => {
             THORNTON, FRANKLIN DAZZLE FOR DRAKE IN 2-0 WIN OVER BRADLEY
           </a>
         </h2>
-        <a href="#" className={styles.link}>
+        <a href="#" className="btn-rounded">
           Read Article
         </a>
       </div>

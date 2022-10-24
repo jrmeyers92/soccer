@@ -1,5 +1,6 @@
 import FeaturedArticle from "./FeaturedArticle";
 import ArticleCard from "./ArticleCard";
+import Link from "next/link";
 
 const styles = {
   container: "w-full md:w-2/3 my-2",
@@ -21,6 +22,11 @@ const NewsWidget = () => {
         <ArticleCard />
         <ArticleCard />
       </div>
+      <Link href="/news">
+        <div className="text-center w-full py-2 bg-gray-300 hover:text-white hover:bg-primary-500 duration-200 cursor-pointer">
+          <a className="uppercase font-bold">View more headlines</a>
+        </div>
+      </Link>
     </section>
   );
 };

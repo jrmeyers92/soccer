@@ -3,10 +3,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 const styles = {
-  list: `flex justify-between items-center bg-gray-200`,
+  list: `flex justify-between items-center bg-primary-500 px-4 py-2`,
   lgNav: `hidden md:flex`,
   logo: `cursor-pointer`,
-  link: `py-2 px-4 text-xl;`,
+  link: `py-2 px-4 text-xl uppercase text-white`,
   active: `font-bold`,
 };
 
