@@ -12,7 +12,7 @@ const styles = {
   linkWrapper: "md:mb-3",
 };
 
-const FeaturedArticle = () => {
+const FeaturedArticle = ({ title, date, type }) => {
   return (
     <article className={styles.featuredArticle}>
       <Image
@@ -23,8 +23,10 @@ const FeaturedArticle = () => {
       />
       <div className={styles.featuredArticleTextWrapper}>
         <div className={styles.articleTextLeft}>
-          <span>Men's Soccer | 10.21.2022</span>
-          <h3 className={styles.title}>Boys Take Down Kickapoo In Overtime</h3>
+          <span>
+            {type} | {date}
+          </span>
+          <h3 className={styles.title}>{title}</h3>
         </div>
         <div className={styles.linkWrapper}>
           <a href="#" className="btn-rounded">

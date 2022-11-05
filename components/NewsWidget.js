@@ -9,24 +9,45 @@ const styles = {
   articlesWrapper: `bg-white`,
 };
 
-const NewsWidget = () => {
+const NewsWidget = ({ articles }) => {
+  const formatDate = (value, locale = "en-GB") => {
+    return new Date(value).toLocaleDateString(locale).replaceAll("/", ".");
+  };
+
+  const listItems = articles.data.map((article, index) =>
+    index == 0 ? (
+      <FeaturedArticle
+        key={index}
+        title={article.attributes.title}
+        date={formatDate(article.attributes.date)}
+        type={article.attributes.type}
+        id={article.id}
+      />
+    ) : (
+      <ArticleCard
+        key={index}
+        title={article.attributes.title}
+        date={formatDate(article.attributes.date)}
+        type={article.attributes.type}
+        id={article.id}
+      />
+    )
+  );
+
   return (
     <section className={styles.container}>
       <div className={styles.headingWrapper}>
         <h2 className={styles.heading}>Latest News</h2>
       </div>
-      <div className={styles.articlesWrapper}>
-        <FeaturedArticle />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-      </div>
-      <Link href="/news">
-        <div className="text-center w-full py-2 bg-gray-300 hover:text-white hover:bg-primary-500 duration-200 cursor-pointer">
+      <div className={styles.articlesWrapper}>{/* <FeaturedArticle /> */}</div>
+
+      {listItems}
+
+      <div className="text-center w-full py-2 bg-gray-300 hover:text-white hover:bg-primary-500 duration-200 cursor-pointer">
+        <Link href="/news">
           <a className="uppercase font-bold">View more headlines</a>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </section>
   );
 };

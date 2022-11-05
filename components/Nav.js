@@ -19,7 +19,7 @@ export default function Nav() {
     <nav className={styles.nav}>
       <ul className={styles.list}>
         <li>
-          <Link href="/">
+          {/* <Link href="/">
             <Image
               src="/images/Logo.png"
               height={80}
@@ -27,7 +27,7 @@ export default function Nav() {
               alt="Glendale Logo"
               className={styles.logo}
             />
-          </Link>
+          </Link> */}
         </li>
 
         <div className={styles.lgNav}>
