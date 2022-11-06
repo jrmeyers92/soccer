@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Logo from "../public/images/Logo.png";
 
 const styles = {
   list: `flex justify-between items-center bg-primary-500 px-4 py-2`,
@@ -19,15 +20,17 @@ export default function Nav() {
     <nav className={styles.nav}>
       <ul className={styles.list}>
         <li>
-          {/* <Link href="/">
-            <Image
-              src="/images/Logo.png"
-              height={80}
-              width={80}
-              alt="Glendale Logo"
-              className={styles.logo}
-            />
-          </Link> */}
+          <Link href="/" passHref>
+            <a>
+              <Image
+                src="/images/Logo.png"
+                height={80}
+                width={80}
+                alt="Glendale Logo"
+                className={styles.logo}
+              />
+            </a>
+          </Link>
         </li>
 
         <div className={styles.lgNav}>

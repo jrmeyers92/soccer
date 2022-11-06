@@ -1,17 +1,8 @@
-import React from "react";
+import { fetcher } from "../../lib/api";
 
-// const article = () => {
-//   return <div>article</div>;
-// };
+const article = ({ article }) => {
+  console.log(article);
+  return <div>article</div>;
+};
 
-// export default article;
-
-// export async function getServerSideProps() {
-//   const articles = await fetcher(`http://localhost:1337/api/articles/`);
-
-//   return {
-//     props: {
-//       articles: articles,
-//     },
-//   };
-// }
+export default article;

@@ -1,6 +1,7 @@
 import FeaturedArticle from "./FeaturedArticle";
 import ArticleCard from "./ArticleCard";
 import Link from "next/link";
+import { formatDateDots } from "../lib/dateFormatter";
 
 const styles = {
   container: "w-full md:w-2/3 my-2",
@@ -10,16 +11,12 @@ const styles = {
 };
 
 const NewsWidget = ({ articles }) => {
-  const formatDate = (value, locale = "en-GB") => {
-    return new Date(value).toLocaleDateString(locale).replaceAll("/", ".");
-  };
-
   const listItems = articles.data.map((article, index) =>
     index == 0 ? (
       <FeaturedArticle
         key={index}
         title={article.attributes.title}
-        date={formatDate(article.attributes.date)}
+        date={article.attributes.date}
         type={article.attributes.type}
         id={article.id}
       />
@@ -27,7 +24,7 @@ const NewsWidget = ({ articles }) => {
       <ArticleCard
         key={index}
         title={article.attributes.title}
-        date={formatDate(article.attributes.date)}
+        date={article.attributes.date}
         type={article.attributes.type}
         id={article.id}
       />

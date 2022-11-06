@@ -16,7 +16,9 @@ export default function Home({ articles }) {
 }
 
 export async function getStaticProps() {
-  const articles = await fetcher(`http://localhost:1337/api/articles`);
+  const articles = await fetcher(
+    `http://localhost:1337/api/articles?sort[0]=date%3ADesc`
+  );
 
   return {
     props: {
