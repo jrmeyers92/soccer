@@ -2,7 +2,7 @@ import Head from "next/head";
 import Nav from "./Nav.js";
 
 const styles = {
-  container: "px-2 md:px-4 py-4 bg-slate-100 min-h-screen",
+  container: "px-2 md:px-4 lg:px-8 xl:px-12 py-4 bg-primary-600 min-h-screen",
 };
 
 const Layout = ({ children }) => (

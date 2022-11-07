@@ -7,7 +7,7 @@ export default function Home({ articles }) {
   console.log(articles);
   return (
     <Layout>
-      <div className="flex flex-col md:flex-row gap-x-4">
+      <div className="flex flex-col md:flex-row items-start gap-x-4">
         <NewsWidget articles={articles} />
         <ScheduleWidget />
       </div>

@@ -1,12 +1,11 @@
 import FeaturedArticle from "./FeaturedArticle";
 import ArticleCard from "./ArticleCard";
 import Link from "next/link";
-import { formatDateDots } from "../lib/dateFormatter";
+import SectionHeading from "./SectionHeading";
+import WidgetFooterLink from "./WidgetFooterLink";
 
 const styles = {
-  container: "w-full md:w-2/3 my-2",
-  headingWrapper: `bg-primary`,
-  heading: `font-bold uppercase text-white text-lg px-4`,
+  container: "w-full md:w-2/3 my-2 bg-white",
   articlesWrapper: `bg-white`,
 };
 
@@ -33,18 +32,11 @@ const NewsWidget = ({ articles }) => {
 
   return (
     <section className={styles.container}>
-      <div className={styles.headingWrapper}>
-        <h2 className={styles.heading}>Latest News</h2>
-      </div>
-      <div className={styles.articlesWrapper}>{/* <FeaturedArticle /> */}</div>
+      <SectionHeading title="Latest News" />
 
       {listItems}
 
-      <div className="text-center w-full py-2 bg-gray-300 hover:text-white hover:bg-primary-500 duration-200 cursor-pointer">
-        <Link href="/news">
-          <a className="uppercase font-bold">View more headlines</a>
-        </Link>
-      </div>
+      <WidgetFooterLink text="View more headlines" theLink="/news" />
     </section>
   );
 };

@@ -1,22 +1,47 @@
 import React from "react";
-
-const styles = {
-  container: "w-full md:w-1/3 my-2",
-  heading: `font-bold uppercase text-white text-lg px-4`,
-  headingWrapper: `bg-primary`,
-  buttonsWrapper: "flex items-center justify-evenly bg-white",
-};
+import SectionHeading from "./SectionHeading";
+import styles from "../styles/ScheduleWidget.module.scss";
+import ScheduleResultListItem from "./scheduleResultListItem";
+import WidgetFooterLink from "./WidgetFooterLink";
 
 const ScheduleWidget = () => {
   return (
     <section className={styles.container}>
-      <div className={styles.headingWrapper}>
-        <h2 className={styles.heading}>Schedule</h2>
-        <div className={styles.buttonsWrapper}>
-          <button>Events</button>
-          <button>Results</button>
+      <SectionHeading title="Schedule" />
+      <fieldset>
+        <div>
+          <input
+            type="radio"
+            name="scheduleWidget"
+            id="events"
+            checked
+            className={styles.radioInput}
+          />
+          <label htmlFor="events" className={styles.radioLabel}>
+            Upcoming
+          </label>
         </div>
-      </div>
+        <div className={styles.inputWrapper}>
+          <input
+            type="radio"
+            name="scheduleWidget"
+            id="results"
+            className={styles.radioInput}
+          />
+          <label htmlFor="results" className={styles.radioLabel}>
+            Results
+          </label>
+        </div>
+      </fieldset>
+
+      <ul className="border border-gray-300 border-b-0">
+        <ScheduleResultListItem />
+        <ScheduleResultListItem />
+        <ScheduleResultListItem />
+        <ScheduleResultListItem />
+        <ScheduleResultListItem />
+      </ul>
+      <WidgetFooterLink text="Composite Calendar" theLink="/schedule" />
     </section>
   );
 };
