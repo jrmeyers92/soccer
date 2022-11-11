@@ -3,6 +3,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Logo from "../public/images/Logo.png";
 import OptionsSelect from "./OptionsSelect";
+import { useContext } from "react";
+import { TeamContext } from "../context/TeamContext";
+import { GenderContext } from "../context/GenderContext";
 
 const styles = {
   nav: "flex justify-between items-center bg-primary-500 py-2",
@@ -13,6 +16,8 @@ const styles = {
 };
 
 export default function Nav() {
+  const [team, setTeam] = useContext(TeamContext);
+  const [gender, setGender] = useContext(GenderContext);
   const router = useRouter();
 
   return (
@@ -31,13 +36,15 @@ export default function Nav() {
         </Link>
         <OptionsSelect
           name="genderSelect"
-          options={["Boy's Soccer", "Girl's Soccer"]}
+          options={["Boys", "Girls"]}
           defaultSelectOption="Boys or Girls"
+          onSelect={setGender}
         />
         <OptionsSelect
           name="teamSelect"
           options={["JV", "Varsity"]}
           defaultSelectOption="JV or Varsity"
+          onSelect={setTeam}
         />
       </div>
       <ul className={styles.list}>

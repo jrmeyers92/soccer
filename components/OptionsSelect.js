@@ -3,13 +3,14 @@ import styles from "../styles/OptionsSelect.module.css";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { BsCheck } from "react-icons/bs";
 
-const OptionsSelect = ({ name, options, defaultSelectOption }) => {
+const OptionsSelect = ({ name, options, defaultSelectOption, onSelect }) => {
   const [currentValue, setCurrentValue] = useState("");
   const [optionsOpen, setOptionsOpen] = useState(false);
 
   const optionClicked = (e) => {
     setCurrentValue(e.target.innerHTML);
     setOptionsOpen(false);
+    onSelect(e.target.innerHTML);
   };
 
   const listItems = options.map((option) => (
