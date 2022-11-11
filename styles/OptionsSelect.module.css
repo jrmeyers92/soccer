@@ -1,5 +1,5 @@
 .optionSelect {
-  @apply relative mx-2;
+  @apply relative;
 }
 
 .label {
@@ -11,11 +11,11 @@
 }
 
 .list {
-  @apply top-full absolute mt-1 w-56 rounded-lg bg-white ring-1 ring-slate-900/5 text-sm leading-6 font-semibold text-slate-700 border border-slate-900/25 shadow-md text-left;
+  @apply top-full absolute mt-1 w-32 rounded-lg bg-white ring-1 ring-slate-900/5 text-sm leading-6 font-semibold text-slate-700 border border-slate-900/25 shadow-md text-left z-10;
 }
 
 .list li {
-  @apply px-3 py-1;
+  @apply px-3 py-1 hover:bg-gray-200 duration-150;
 }
 
 /* ------ Shimmer Effect ----- */

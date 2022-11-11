@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 export const TeamContext = createContext();
 
 export const TeamProvider = (props) => {
-  const [team, setTeam] = useState("JV");
+  const [team, setTeam] = useState("Boy's JV");
   return (
     <TeamContext.Provider value={[team, setTeam]}>
       {props.children}

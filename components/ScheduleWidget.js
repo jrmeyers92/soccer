@@ -6,32 +6,34 @@ import WidgetFooterLink from "./WidgetFooterLink";
 import useSWR from "swr";
 import { fetcher } from "../lib/api";
 import { TeamContext } from "../context/TeamContext";
-import { GenderContext } from "../context/GenderContext";
 
 const ScheduleWidget = ({}) => {
   const [team, setTeam] = useContext(TeamContext);
-  const [gender, setGender] = useContext(GenderContext);
-  const { data, error } = useSWR(
-    `http://localhost:1337/api/schedules?populate=*&sort[0]=year%3Adesc&filters[gender][$eq]=${gender}&filters[team][$eq]=${team}`,
-    fetcher
-  );
+  let teamSplit = team.split(" ");
+  console.log(teamSplit);
+  let boys = teamSplit[0].replace("'", "");
+  console.log(boys);
+  // const { data, error } = useSWR(
+  //   `http://localhost:1337/api/schedules?populate=*&sort[0]=year%3Adesc&filters[gender][$eq]=${gender}&filters[team][$eq]=${team}`,
+  //   fetcher
+  // );
 
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
-  let listItems;
-  if (data) {
-    listItems = data.data[0].attributes.game.map((game, index) => (
-      <ScheduleResultListItem
-        key={index}
-        opponentSchool={game.opponent.data.attributes.school_name}
-        opponentMascot={game.opponent.data.attributes.mascot}
-        ourScore={game.ourScore}
-        opponentScore={game.opponentScore}
-      />
-    ));
-  } else {
-    listItems = <p>Error</p>;
-  }
+  // if (error) return <div>failed to load</div>;
+  // if (!data) return <div>loading...</div>;
+  // let listItems;
+  // if (data) {
+  //   listItems = data.data[0].attributes.game.map((game, index) => (
+  //     <ScheduleResultListItem
+  //       key={index}
+  //       opponentSchool={game.opponent.data.attributes.school_name}
+  //       opponentMascot={game.opponent.data.attributes.mascot}
+  //       ourScore={game.ourScore}
+  //       opponentScore={game.opponentScore}
+  //     />
+  //   ));
+  // } else {
+  //   listItems = <p>Error</p>;
+  // }
 
   return (
     <section className={styles.container}>
@@ -61,7 +63,7 @@ const ScheduleWidget = ({}) => {
         </div>
       </fieldset>
 
-      <ul className="border border-gray-300 border-b-0">{listItems}</ul>
+      {/* <ul className="border border-gray-300 border-b-0">{listItems}</ul> */}
       <WidgetFooterLink text="Composite Calendar" theLink="/schedule" />
     </section>
   );
