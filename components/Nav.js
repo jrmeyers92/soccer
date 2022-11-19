@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Logo from "../public/images/Logo.png";
 import OptionsSelect from "./OptionsSelect";
 import { useContext } from "react";
-import { TeamContext } from "../context/TeamContext";
+import { SiteStateContext } from "../context/SiteStateContext";
 
 const styles = {
   nav: "flex flex-col items-center bg-primary-500",
@@ -16,8 +16,8 @@ const styles = {
 };
 
 export default function Nav() {
-  const [team, setTeam] = useContext(TeamContext);
   const router = useRouter();
+  const [siteState, setSiteState] = useContext(SiteStateContext);
 
   return (
     <nav className={styles.nav}>

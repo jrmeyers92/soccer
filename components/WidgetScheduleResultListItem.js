@@ -2,7 +2,7 @@ import Logo from "../public/images/Logo.png";
 import OponentLogo from "../public/images/kickapooLogo.png";
 import Image from "next/image";
 
-const ScheduleResultListItem = ({
+const WidgetScheduleResultListItem = ({
   opponentSchool,
   opponentMascot,
   ourScore,
@@ -28,4 +28,4 @@ const ScheduleResultListItem = ({
   );
 };
 
-export default ScheduleResultListItem;
+export default WidgetScheduleResultListItem;

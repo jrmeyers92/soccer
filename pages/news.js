@@ -1,6 +1,8 @@
 import Link from "next/link.js";
 import Layout from "../components/Layout.js";
+import { useRouter } from "next/router.js";
 import { fetcher } from "../lib/api.js";
+import { SiteStateProvider } from "../context/SiteStateContext.js";
 
 const styles = {
   pageHeader: "text-2xl mb-4",
@@ -15,6 +17,8 @@ const styles = {
 };
 
 export default function news({ articles }) {
+  const { query } = useRouter();
+
   const listItems = articles.data.map((article, index) => (
     <tr key={index} className={`${styles.tableRow} ${styles.tableBodyRow}`}>
       <td className={`${styles.tableData} ${styles.tableDate}`}>
@@ -50,7 +54,7 @@ export default function news({ articles }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const articles = await fetcher(
     `http://localhost:1337/api/articles?sort[0]=date%3ADesc`
   );

@@ -2,18 +2,15 @@ import Layout from "../components/Layout.js";
 import NewsWidget from "../components/NewsWidget.js";
 import ScheduleWidget from "../components/ScheduleWidget.js";
 import { fetcher } from "../lib/api.js";
-import { TeamProvider } from "../context/TeamContext.js";
 
 export default function Home({ articles, games }) {
   return (
-    <TeamProvider>
-      <Layout>
-        <div className="flex flex-col md:flex-row items-start gap-x-4">
-          <NewsWidget articles={articles} />
-          <ScheduleWidget games={games} />
-        </div>
-      </Layout>
-    </TeamProvider>
+    <Layout>
+      <div className="flex flex-col md:flex-row items-start gap-x-4">
+        <NewsWidget articles={articles} />
+        <ScheduleWidget games={games} />
+      </div>
+    </Layout>
   );
 }
 
