@@ -14,28 +14,26 @@ export default function schedule() {
 
   if (data) {
     console.log(data.data);
-  } else {
-    console.log(error);
   }
 
-  // if (error) return <div>failed to load</div>;
-  // if (!data) return <div>loading...</div>;
-  // let listItems;
-  // if (data.data[0]) {
-  //   listItems = data.data[0].attributes.game.map((game, index) => (
-  //     <div
-  //       key={index}
-  //       opponentSchool={game.opponent.data.attributes.school_name}
-  //       opponentMascot={game.opponent.data.attributes.mascot}
-  //       ourScore={game.ourScore}
-  //       opponentScore={game.opponentScore}
-  //     >
-  //       {game.ourScore}
-  //     </div>
-  //   ));
-  // } else {
-  //   listItems = <p className="p-2">No Schedule available</p>;
-  // }
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+  let listItems;
+  if (data.data[0]) {
+    listItems = data.data[0].attributes.game.map((game, index) => (
+      <div
+        key={index}
+        opponentSchool={game.opponent.data.attributes.school_name}
+        opponentMascot={game.opponent.data.attributes.mascot}
+        ourScore={game.ourScore}
+        opponentScore={game.opponentScore}
+      >
+        {game.ourScore}
+      </div>
+    ));
+  } else {
+    listItems = <p className="p-2">No Schedule available</p>;
+  }
 
   return <Layout></Layout>;
 }

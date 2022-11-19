@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import styles from "../styles/OptionsSelect.module.css";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { BsCheck } from "react-icons/bs";
@@ -9,6 +9,15 @@ const OptionsSelect = ({ name, options, defaultSelectOption, onSelect }) => {
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [siteState, setSiteState] = useContext(SiteStateContext);
 
+  useEffect(() => {
+    if (localStorage.getItem("team") && localStorage.getItem("gender")) {
+      setSiteState({
+        team: localStorage.getItem("team"),
+        gender: localStorage.getItem("gender"),
+      });
+    }
+  }, []);
+
   const optionClicked = (e) => {
     setCurrentValue(e.target.innerHTML);
     setOptionsOpen(false);
@@ -17,7 +26,9 @@ const OptionsSelect = ({ name, options, defaultSelectOption, onSelect }) => {
     let gender = contextArray[0].replace("'", "");
     let team = contextArray[1];
 
-    
+    localStorage.setItem("team", team);
+    localStorage.setItem("gender", gender);
+
     setSiteState({
       team: team,
       gender: gender,
