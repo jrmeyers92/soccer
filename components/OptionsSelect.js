@@ -10,15 +10,8 @@ const OptionsSelect = ({ name, options, defaultSelectOption, onSelect }) => {
   const [siteState, setSiteState] = useContext(SiteStateContext);
 
   useEffect(() => {
-    if (localStorage.getItem("team") && localStorage.getItem("gender")) {
-      setSiteState({
-        team: localStorage.getItem("team"),
-        gender: localStorage.getItem("gender"),
-      });
-
-      setCurrentValue(
-        `${localStorage.getItem("gender")} ${localStorage.getItem("team")}`
-      );
+    if (siteState) {
+      setCurrentValue(`${siteState.gender} ${siteState.team}`);
     }
   }, []);
 

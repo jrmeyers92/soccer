@@ -18,7 +18,6 @@ const styles = {
 export default function Nav() {
   const router = useRouter();
   const [siteState, setSiteState] = useContext(SiteStateContext);
-  let defaultOption;
 
   return (
     <nav className={styles.nav}>
@@ -39,6 +38,7 @@ export default function Nav() {
         <OptionsSelect
           name="teamSelect"
           options={["Girls JV", "Girls Varsity", "Boy's JV", "Boy's Varsity"]}
+          defaultSelectOption="Choose a Team"
         />
         <ul className={styles.list}>
           <li>
