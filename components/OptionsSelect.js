@@ -15,6 +15,10 @@ const OptionsSelect = ({ name, options, defaultSelectOption, onSelect }) => {
         team: localStorage.getItem("team"),
         gender: localStorage.getItem("gender"),
       });
+
+      setCurrentValue(
+        `${localStorage.getItem("gender")} ${localStorage.getItem("team")}`
+      );
     }
   }, []);
 

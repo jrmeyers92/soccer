@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Logo from "../public/images/Logo.png";
 import OptionsSelect from "./OptionsSelect";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { SiteStateContext } from "../context/SiteStateContext";
 
 const styles = {
@@ -18,6 +18,7 @@ const styles = {
 export default function Nav() {
   const router = useRouter();
   const [siteState, setSiteState] = useContext(SiteStateContext);
+  let defaultOption;
 
   return (
     <nav className={styles.nav}>
@@ -38,7 +39,6 @@ export default function Nav() {
         <OptionsSelect
           name="teamSelect"
           options={["Girls JV", "Girls Varsity", "Boy's JV", "Boy's Varsity"]}
-          defaultSelectOption="Choose a Team"
         />
         <ul className={styles.list}>
           <li>
