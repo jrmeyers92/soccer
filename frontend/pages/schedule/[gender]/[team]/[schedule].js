@@ -3,7 +3,7 @@ import React from "react";
 import { fetcher } from "../../../../lib/api";
 
 const schedule = ({ schedule }) => {
-  console.log(schedule);
+  // console.log(schedule);
   return <div>schedule</div>;
 };
 

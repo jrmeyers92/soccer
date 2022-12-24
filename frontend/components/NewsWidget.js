@@ -10,7 +10,6 @@ const styles = {
 };
 
 const NewsWidget = ({ articles }) => {
-  console.log(articles[0]);
   const listItems = articles.map((article, index) =>
     index == 0 ? (
       <FeaturedArticle
