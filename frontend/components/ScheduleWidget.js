@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { SiteStateContext } from "../context/SiteStateContext";
 import { fetcher } from "../lib/api";
+import SectionHeading from "./SectionHeading";
 
 const ScheduleWidget = () => {
   const [siteState, setSiteState] = useContext(SiteStateContext);
@@ -16,9 +17,14 @@ const ScheduleWidget = () => {
 
   useEffect(() => {
     getSchedule();
+    console.log(schedule);
   }, [siteState]);
 
-  let scheduleItemsl;
+  return (
+    <div>
+      <SectionHeading title="schedule" />
+    </div>
+  );
 };
 
 export default ScheduleWidget;

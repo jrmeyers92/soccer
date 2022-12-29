@@ -1,5 +1,5 @@
 const styles = {
-  headingWrapper: "bg-primary",
+  headingWrapper: "bg-primary w-full",
   heading: "font-bold uppercase text-white text-xl px-4 py-4",
 };
 
