@@ -13,11 +13,8 @@ const ScheduleWidgetResultListItem = ({
   location,
   scheduleType,
 }) => {
-  let newDate = formateDateTest(date);
-  console.log(newDate);
-
   return (
-    <li className="border-b border-gray-300 last:mb-0 last:border-b-0 p-4">
+    <li className="border-b border-gray-300 last:mb-0 last:border-b-0 p-4 border-l border-r">
       <div className="uppercase font-extralight mb-2">
         {date} {scheduleType === "results" ? "• Final" : ""}
       </div>

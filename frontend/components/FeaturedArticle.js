@@ -3,7 +3,7 @@ import Dummy from "../public/images/dummy.jpg";
 
 const styles = {
   featuredArticle: "py-2 relative px-2 md:px-4 md:py-4",
-  featuredArticleImage: "absolute inset-0",
+  featuredArticleImage: "absolute inset-0 w-full",
   featuredArticleTextWrapper:
     "absolute text-white top-1/2 -translate-y-1/2 md:top-auto md:translate-y-0 md:bottom-6 px-2 md:px-4 flex flex-col items-center justify-center md:flex-row md:justify-between md:items-end max-w-[95%]",
   articleTextLeft: "max-w-[90%] md:max-w-[65%] lg:max-w-[70%] mb-6 md:mb-0",

@@ -22,7 +22,6 @@ const ScheduleWidget = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.data);
         let date = new Date();
         date = date.toISOString();
 
@@ -41,8 +40,6 @@ const ScheduleWidget = () => {
           shownSchedule = sortByDateDesc(shownSchedule);
         }
 
-        console.log(shownSchedule);
-
         setSchedule(shownSchedule);
         setYear(data.data[0].attributes.year);
       });
@@ -52,7 +49,6 @@ const ScheduleWidget = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.data);
         let date = new Date();
         date = date.toISOString();
         let shownSchedule;
@@ -76,7 +72,7 @@ const ScheduleWidget = () => {
 
   if (!schedule || schedule == "") {
     return (
-      <div className="w-full md:w-1/3 my-2 bg-white">
+      <div className="w-full md:w-1/3 my-2 bg-white shadow-md">
         <SectionHeading
           title={`${year} ${siteState.gender} ${siteState.team} schedule`}
         />
@@ -85,7 +81,9 @@ const ScheduleWidget = () => {
           clicked={changeScheduleType}
           scheduleType={scheduleType}
         />
-        <div className="p-2">no schedule at this time</div>
+        <div className="p-2 border-r border-l border-b border-gray-300">
+          no schedule at this time
+        </div>
       </div>
     );
   }

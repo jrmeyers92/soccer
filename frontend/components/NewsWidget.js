@@ -5,7 +5,7 @@ import SectionHeading from "./SectionHeading";
 import WidgetFooterLink from "./WidgetFooterLink";
 
 const styles = {
-  container: "w-full md:w-2/3 my-2 bg-white",
+  container: "w-full md:w-2/3 my-2 bg-white shadow-md",
   articlesWrapper: `bg-white`,
 };
 
