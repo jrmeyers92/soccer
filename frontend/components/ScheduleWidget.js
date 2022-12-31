@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { SiteStateContext } from "../context/SiteStateContext";
+import ScheduleWidgetScheduleTypes from "./ScheduleWidgetScheduleTypes";
 import SectionHeading from "./SectionHeading";
-import WidgetScheduleResultListItem from "./WidgetScheduleResultListItem";
+import WidgetFooterLink from "./WidgetFooterLink";
+import ScheduleWidgetResultListItem from "./ScheduleWidgetResultListItem";
 
 const ScheduleWidget = () => {
   const [siteState, setSiteState] = useContext(SiteStateContext);
   const [schedule, setSchedule] = useState();
   const [year, setYear] = useState();
+  const [schedulType, setScheduleType] = useState("Events");
 
   let url = `http://localhost:1337/api/schedules?populate=*&filters[team][$eq]=${siteState.team}&filters[gender][$eq]=${siteState.gender}&sort[0]=year%3Adesc&pagination[pageSize]=1`;
 
@@ -28,28 +31,34 @@ const ScheduleWidget = () => {
       });
   }, [siteState]);
 
-  console.log(schedule);
-
+  console.log(schedulType);
   if (!schedule) {
     return <div>no schedule at this time</div>;
   }
 
   return (
-    <div className="w-1/3 my-2">
+    <div className="w-1/3 my-2 bg-white">
       <SectionHeading
         title={`${year} ${siteState.gender} ${siteState.team} schedule`}
       />
+
+      <ScheduleWidgetScheduleTypes />
+
       <ul>
         {schedule.map((game) => (
-          <WidgetScheduleResultListItem
+          <ScheduleWidgetResultListItem
             key={game.id}
             opponentSchool={game.opponent.data.attributes.school_name}
             opponentMascot={game.opponent.data.attributes.mascot}
             opponentScore={game.opponentScore}
             ourScore={game.ourScore}
+            date={game.date}
+            time={game.time}
+            location={game.location}
           />
         ))}
       </ul>
+      <WidgetFooterLink text="view full schedule" theLink="/schedule" />
     </div>
   );
 };

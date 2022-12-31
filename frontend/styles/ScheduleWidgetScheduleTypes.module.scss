@@ -1,0 +1,13 @@
+.ScheduleWidgetScheduleTypes {
+  input:checked + label {
+    @apply text-primary-500;
+  }
+
+  div:has(> input:checked) {
+    @apply border-b-primary-500 border-b-4;
+  }
+
+  div:has(> input) {
+    transition: all 0.2s 0.2s;
+  }
+}
