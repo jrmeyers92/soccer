@@ -9,7 +9,11 @@ const ScheduleWidget = () => {
   const [siteState, setSiteState] = useContext(SiteStateContext);
   const [schedule, setSchedule] = useState();
   const [year, setYear] = useState();
-  const [schedulType, setScheduleType] = useState("Events");
+  const [scheduleType, setScheduleType] = useState("events");
+
+  const changeScheduleType = (value) => {
+    setScheduleType(value);
+  };
 
   let url = `http://localhost:1337/api/schedules?populate=*&filters[team][$eq]=${siteState.team}&filters[gender][$eq]=${siteState.gender}&sort[0]=year%3Adesc&pagination[pageSize]=1`;
 
@@ -31,7 +35,6 @@ const ScheduleWidget = () => {
       });
   }, [siteState]);
 
-  console.log(schedulType);
   if (!schedule) {
     return <div>no schedule at this time</div>;
   }
@@ -42,7 +45,10 @@ const ScheduleWidget = () => {
         title={`${year} ${siteState.gender} ${siteState.team} schedule`}
       />
 
-      <ScheduleWidgetScheduleTypes />
+      <ScheduleWidgetScheduleTypes
+        clicked={changeScheduleType}
+        scheduleType={scheduleType}
+      />
 
       <ul>
         {schedule.map((game) => (

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styles from "../styles/ScheduleWidgetScheduleTypes.module.scss";
 
-const ScheduleWidgetScheduleTypes = () => {
-  const [scheduleType, setScheduleType] = useState("Events");
-
-  const handleChange = (e) => {};
+const ScheduleWidgetScheduleTypes = ({ clicked, scheduleType }) => {
+  const handleChange = (e) => {
+    clicked(e.target.value);
+  };
 
   return (
     <div className={`${styles.ScheduleWidgetScheduleTypes} flex uppercase`}>
@@ -13,9 +13,10 @@ const ScheduleWidgetScheduleTypes = () => {
           type="radio"
           name="scheduleView"
           id="events"
+          checked={scheduleType === "events" ? true : false}
           className="hidden "
           value="events"
-          checked
+          onChange={handleChange}
         />
         <label
           className="cursor-pointer h-full w-full text-center font-bold"
@@ -31,6 +32,8 @@ const ScheduleWidgetScheduleTypes = () => {
           id="results"
           className="hidden"
           value="results"
+          checked={scheduleType === "events" ? false : true}
+          onChange={handleChange}
         />
         <label
           className="cursor-pointer h-full w-full text-center font-bold"
