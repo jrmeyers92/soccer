@@ -4,12 +4,13 @@ import ScheduleWidgetScheduleTypes from "./ScheduleWidgetScheduleTypes";
 import SectionHeading from "./SectionHeading";
 import WidgetFooterLink from "./WidgetFooterLink";
 import ScheduleWidgetResultListItem from "./ScheduleWidgetResultListItem";
+import { sortByDateAsc, sortByDateDesc } from "../lib/sortArrayByDate";
 
 const ScheduleWidget = () => {
   const [siteState, setSiteState] = useContext(SiteStateContext);
   const [schedule, setSchedule] = useState();
   const [year, setYear] = useState();
-  const [scheduleType, setScheduleType] = useState("events");
+  const [scheduleType, setScheduleType] = useState("upcoming");
 
   const changeScheduleType = (value) => {
     setScheduleType(value);
@@ -21,29 +22,29 @@ const ScheduleWidget = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        if (data.data != "") {
-          let date = new Date();
-          date = date.toISOString();
+        console.log(data.data);
+        let date = new Date();
+        date = date.toISOString();
 
-          let shownSchedule;
+        let shownSchedule;
 
-          if (scheduleType === "events") {
-            console.log("events ran");
-            shownSchedule = data.data[0].attributes.game.filter((item) => {
-              item.date > date;
-            });
-          } else if (scheduleType === "results") {
-            console.log("results ran");
-            shownSchedule = data.data[0].attributes.game.filter((item) => {
-              item.date < date;
-            });
-          }
+        if (scheduleType === "upcoming") {
+          shownSchedule = data.data[0].attributes.game.filter((item) => {
+            item.date > date;
+          });
 
-          console.log(shownSchedule);
-
-          setSchedule(shownSchedule);
-          setYear(data.data[0].attributes.year);
+          shownSchedule = sortByDateAsc(shownSchedule);
+        } else if (scheduleType === "results") {
+          shownSchedule = data.data[0].attributes.game.filter((item) => {
+            item.date < date;
+          });
+          shownSchedule = sortByDateDesc(shownSchedule);
         }
+
+        console.log(shownSchedule);
+
+        setSchedule(shownSchedule);
+        setYear(data.data[0].attributes.year);
       });
   }, []);
 
@@ -51,25 +52,25 @@ const ScheduleWidget = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        if (data.data !== "") {
-          console.log(data.data);
-          let date = new Date();
-          date = date.toISOString();
-          let shownSchedule;
+        console.log(data.data);
+        let date = new Date();
+        date = date.toISOString();
+        let shownSchedule;
 
-          if (scheduleType === "events") {
-            shownSchedule = data.data[0].attributes.game.filter(
-              (item) => item.date > date
-            );
-          } else if (scheduleType === "results") {
-            shownSchedule = data.data[0].attributes.game.filter(
-              (item) => item.date < date
-            );
-          }
-
-          setSchedule(shownSchedule);
-          setYear(data.data[0].attributes.year);
+        if (scheduleType === "upcoming") {
+          shownSchedule = data.data[0].attributes.game.filter(
+            (item) => item.date > date
+          );
+          shownSchedule = sortByDateAsc(shownSchedule);
+        } else if (scheduleType === "results") {
+          shownSchedule = data.data[0].attributes.game.filter(
+            (item) => item.date < date
+          );
+          shownSchedule = sortByDateDesc(shownSchedule);
         }
+
+        setSchedule(shownSchedule);
+        setYear(data.data[0].attributes.year);
       });
   }, [siteState, scheduleType]);
 
@@ -111,6 +112,7 @@ const ScheduleWidget = () => {
             date={game.date}
             time={game.time}
             location={game.location}
+            scheduleType={scheduleType}
           />
         ))}
       </ul>

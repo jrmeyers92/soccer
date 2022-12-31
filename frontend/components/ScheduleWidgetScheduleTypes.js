@@ -12,17 +12,17 @@ const ScheduleWidgetScheduleTypes = ({ clicked, scheduleType }) => {
         <input
           type="radio"
           name="scheduleView"
-          id="events"
-          checked={scheduleType === "events" ? true : false}
+          id="upcoming"
+          checked={scheduleType === "upcoming" ? true : false}
           className="hidden "
-          value="events"
+          value="upcoming"
           onChange={handleChange}
         />
         <label
           className="cursor-pointer h-full w-full text-center font-bold"
-          htmlFor="events"
+          htmlFor="upcoming"
         >
-          Events
+          upcoming
         </label>
       </div>
       <div className="w-1/2 flex items-center justify-center border-gray-300 border py-2">
@@ -32,7 +32,7 @@ const ScheduleWidgetScheduleTypes = ({ clicked, scheduleType }) => {
           id="results"
           className="hidden"
           value="results"
-          checked={scheduleType === "events" ? false : true}
+          checked={scheduleType === "upcoming" ? false : true}
           onChange={handleChange}
         />
         <label

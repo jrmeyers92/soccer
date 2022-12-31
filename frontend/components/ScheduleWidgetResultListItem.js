@@ -1,6 +1,7 @@
 import Logo from "../public/images/Logo.png";
 import OponentLogo from "../public/images/kickapooLogo.png";
 import Image from "next/image";
+import { formateDateTest } from "../lib/dateFormatter";
 
 const ScheduleWidgetResultListItem = ({
   opponentSchool,
@@ -10,10 +11,16 @@ const ScheduleWidgetResultListItem = ({
   date,
   time,
   location,
+  scheduleType,
 }) => {
+  let newDate = formateDateTest(date);
+  console.log(newDate);
+
   return (
     <li className="border-b border-gray-300 last:mb-0 last:border-b-0 p-4">
-      <div className="uppercase font-extralight mb-2">{date}• Final</div>
+      <div className="uppercase font-extralight mb-2">
+        {date} {scheduleType === "results" ? "• Final" : ""}
+      </div>
       <div className="flex items-center">
         <Image src={Logo} height={35} width={35} alt="Glendale Logo" />
         <span className="ml-2 font-extralight">Glendale</span>
