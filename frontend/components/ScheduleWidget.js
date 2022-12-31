@@ -21,8 +21,29 @@ const ScheduleWidget = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setSchedule(data.data[0].attributes.game);
-        setYear(data.data[0].attributes.year);
+        if (data.data != "") {
+          let date = new Date();
+          date = date.toISOString();
+
+          let shownSchedule;
+
+          if (scheduleType === "events") {
+            console.log("events ran");
+            shownSchedule = data.data[0].attributes.game.filter((item) => {
+              item.date > date;
+            });
+          } else if (scheduleType === "results") {
+            console.log("results ran");
+            shownSchedule = data.data[0].attributes.game.filter((item) => {
+              item.date < date;
+            });
+          }
+
+          console.log(shownSchedule);
+
+          setSchedule(shownSchedule);
+          setYear(data.data[0].attributes.year);
+        }
       });
   }, []);
 
@@ -30,17 +51,46 @@ const ScheduleWidget = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setSchedule(data.data[0].attributes.game);
-        setYear(data.data[0].attributes.year);
-      });
-  }, [siteState]);
+        if (data.data !== "") {
+          console.log(data.data);
+          let date = new Date();
+          date = date.toISOString();
+          let shownSchedule;
 
-  if (!schedule) {
-    return <div>no schedule at this time</div>;
+          if (scheduleType === "events") {
+            shownSchedule = data.data[0].attributes.game.filter(
+              (item) => item.date > date
+            );
+          } else if (scheduleType === "results") {
+            shownSchedule = data.data[0].attributes.game.filter(
+              (item) => item.date < date
+            );
+          }
+
+          setSchedule(shownSchedule);
+          setYear(data.data[0].attributes.year);
+        }
+      });
+  }, [siteState, scheduleType]);
+
+  if (!schedule || schedule == "") {
+    return (
+      <div className="w-full md:w-1/3 my-2 bg-white">
+        <SectionHeading
+          title={`${year} ${siteState.gender} ${siteState.team} schedule`}
+        />
+
+        <ScheduleWidgetScheduleTypes
+          clicked={changeScheduleType}
+          scheduleType={scheduleType}
+        />
+        <div className="p-2">no schedule at this time</div>
+      </div>
+    );
   }
 
   return (
-    <div className="w-1/3 my-2 bg-white">
+    <div className="w-full md:w-1/3 my-2 bg-white">
       <SectionHeading
         title={`${year} ${siteState.gender} ${siteState.team} schedule`}
       />
