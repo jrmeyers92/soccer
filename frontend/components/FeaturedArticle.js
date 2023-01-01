@@ -12,7 +12,7 @@ const styles = {
   linkWrapper: "md:mb-3",
 };
 
-const FeaturedArticle = ({ title, date, type, imageURL }) => {
+const FeaturedArticle = ({ title, date, type, imageURL, id }) => {
   return (
     <article className={styles.featuredArticle}>
       <Image
@@ -29,7 +29,7 @@ const FeaturedArticle = ({ title, date, type, imageURL }) => {
           <h3 className={styles.title}>{title}</h3>
         </div>
         <div className={styles.linkWrapper}>
-          <a href="#" className="btn-rounded">
+          <a href={`/article/${id}`} className="btn-rounded">
             Read Article
           </a>
         </div>

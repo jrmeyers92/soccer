@@ -6,11 +6,16 @@ export function formatDateSlashes(value, locale = "en-US") {
   return new Date(value).toLocaleDateString(locale);
 }
 
-export function formateDateTest(value) {
-  new Date().toLocaleDateString("en-us", {
-    weekday: "long",
+const localeInfo = {
+  name: "en-US",
+  options: {
     year: "numeric",
-    month: "short",
+    month: "long",
     day: "numeric",
-  });
+  },
+};
+export function formatDate(date, localeInfo) {
+  var locale = localeInfo.name;
+  var options = localeInfo.options;
+  return date.toLocaleDateString(locale, options);
 }
