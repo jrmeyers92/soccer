@@ -18,7 +18,7 @@ const NewsWidget = ({ articles }) => {
         date={article.attributes.date}
         type={article.attributes.type}
         id={article.id}
-        imageURL={`http://localhost:1337${article.attributes.mainPhoto.data.attributes.url}`}
+        imageURL={`${process.env.NEXT_PUBLIC_HOST}${article.attributes.mainPhoto.data.attributes.url}`}
       />
     ) : (
       <ArticleCard
@@ -27,7 +27,7 @@ const NewsWidget = ({ articles }) => {
         date={article.attributes.date}
         type={article.attributes.type}
         id={article.id}
-        imageURL={`http://localhost:1337${article.attributes.mainPhoto.data.attributes.url}`}
+        imageURL={`${process.env.NEXT_PUBLIC_HOST}${article.attributes.mainPhoto.data.attributes.url}`}
       />
     )
   );

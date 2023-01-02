@@ -16,7 +16,7 @@ const ScheduleWidget = () => {
     setScheduleType(value);
   };
 
-  let url = `http://localhost:1337/api/schedules?populate=*&filters[team][$eq]=${siteState.team}&filters[gender][$eq]=${siteState.gender}&sort[0]=year%3Adesc&pagination[pageSize]=1`;
+  let url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/schedules?populate=*&filters[team][$eq]=${siteState.team}&filters[gender][$eq]=${siteState.gender}&sort[0]=year%3Adesc&pagination[pageSize]=1`;
 
   useEffect(() => {
     fetch(url)

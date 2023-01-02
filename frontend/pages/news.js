@@ -56,7 +56,7 @@ export default function news({ articles }) {
 
 export async function getStaticProps() {
   const articles = await fetcher(
-    `http://localhost:1337/api/articles?sort[0]=date%3ADesc`
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/articles?sort[0]=date%3ADesc`
   );
 
   return {

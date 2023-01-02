@@ -4,7 +4,7 @@ import Layout from "../../components/Layout.js";
 import { formateDateTest } from "../../lib/dateFormatter.js";
 
 const article = ({ article }) => {
-  const imageURL = `http://localhost:1337${article.data.attributes.mainPhoto.data.attributes.url}`;
+  const imageURL = `${process.env.NEXT_PUBLIC_HOST}${article.data.attributes.mainPhoto.data.attributes.url}`;
 
   const date = new Date(article.data.attributes.date)
     .toDateString("en-us", {
@@ -40,7 +40,7 @@ export default article;
 
 export async function getServerSideProps(context) {
   const article = await fetcher(
-    `http://localhost:1337/api/articles/${context.query.id}?populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/articles/${context.query.id}?populate=*`
   );
 
   return {
