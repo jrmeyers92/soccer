@@ -1,8 +1,7 @@
 import Logo from "../public/images/Logo.png";
 import OponentLogo from "../public/images/kickapooLogo.png";
 import Image from "next/image";
-import { formateDateTest } from "../lib/dateFormatter";
-
+import { formatTime } from "../lib/dateFormatter.js";
 const ScheduleWidgetResultListItem = ({
   opponentSchool,
   opponentMascot,
@@ -13,10 +12,20 @@ const ScheduleWidgetResultListItem = ({
   location,
   scheduleType,
 }) => {
+  const formattedDate = new Date(date)
+    .toDateString("en-us", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+    .replace(/(\S+)\s+(\S+\s+\S+)/, "$1, $2,");
+
   return (
     <li className="border-b border-gray-300 last:mb-0 last:border-b-0 p-4 border-l border-r">
       <div className="uppercase font-extralight mb-2">
-        {date} {scheduleType === "results" ? "• Final" : ""}
+        {formattedDate}{" "}
+        {scheduleType === "results" ? "• Final" : "• " + formatTime(time)}
       </div>
       <div className="flex items-center">
         <Image src={Logo} height={35} width={35} alt="Glendale Logo" />

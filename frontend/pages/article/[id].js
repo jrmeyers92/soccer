@@ -1,7 +1,6 @@
 import { fetcher } from "../../lib/api.js";
 import Image from "next/image.js";
 import Layout from "../../components/Layout.js";
-import { formateDateTest } from "../../lib/dateFormatter.js";
 
 const article = ({ article }) => {
   const imageURL = `${process.env.NEXT_PUBLIC_HOST}${article.data.attributes.mainPhoto.data.attributes.url}`;
@@ -14,8 +13,6 @@ const article = ({ article }) => {
       day: "numeric",
     })
     .replace(/(\S+)\s+(\S+\s+\S+)/, "$1, $2,");
-
-  // console.log(article)
 
   return (
     <Layout>

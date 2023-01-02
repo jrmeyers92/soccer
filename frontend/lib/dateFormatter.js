@@ -19,3 +19,18 @@ export function formatDate(date, localeInfo) {
   var options = localeInfo.options;
   return date.toLocaleDateString(locale, options);
 }
+
+export function formatTime(time) {
+  let timeArr = time.split(".");
+  timeArr.pop();
+  let timeStr = timeArr.toString();
+  let newTimeArr = timeStr.split(":");
+  let AmPm = newTimeArr[0] > 11 ? "PM" : "AM";
+  if (newTimeArr[0] > 12) {
+    newTimeArr[0] = newTimeArr[0] - 12;
+  }
+
+  let finalTime = `${newTimeArr[0]}:${newTimeArr[1]} ${AmPm}`;
+
+  return finalTime;
+}
