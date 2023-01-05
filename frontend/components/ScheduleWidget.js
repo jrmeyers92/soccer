@@ -11,6 +11,7 @@ const ScheduleWidget = () => {
   const [schedule, setSchedule] = useState();
   const [year, setYear] = useState();
   const [scheduleType, setScheduleType] = useState("upcoming");
+  const [logos, setLogos] = useState(null);
 
   const changeScheduleType = (value) => {
     setScheduleType(value);
@@ -69,6 +70,30 @@ const ScheduleWidget = () => {
         setYear(data.data[0].attributes.year);
       });
   }, [siteState, scheduleType]);
+
+  useEffect(() => {
+    if (schedule && schedule.length > 0) {
+      setLogos(null);
+      let currentLogos = [];
+      schedule.forEach((game) => {
+        fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/opponents/${game.opponent.data.id}?populate=*`
+        )
+          .then((res) => res.json())
+          .then(
+            (data) => {
+              currentLogos.push(data.data.attributes.logo.data.attributes.url);
+            }
+            // setLogos([...data.data.attributes.logo.data.attributes.url]);
+          );
+      });
+
+      setLogos(currentLogos);
+      console.log(logos);
+    }
+
+    // fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/schedules?populate=*&filters[team][$eq]=${siteState.team}&filters[gender][$eq]=${siteState.gender}&sort[0]=year%3Adesc&pagination[pageSize]=1`)
+  }, [schedule]);
 
   if (!schedule || schedule == "") {
     return (
