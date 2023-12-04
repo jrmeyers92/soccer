@@ -1,0 +1,196 @@
+title: Game
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              validate:
+                - required
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              replicator_preview: true
+              input_type: text
+              antlers: false
+              hide_display: false
+          -
+            handle: year
+            field:
+              type: integer
+              display: Year
+              icon: integer
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: location
+            field:
+              options:
+                home: Home
+                away: Away
+              inline: false
+              cast_booleans: false
+              type: radio
+              display: Location
+              icon: radio
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              width: 50
+          -
+            handle: time
+            field:
+              seconds_enabled: false
+              type: time
+              display: Time
+              icon: time
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: game_date
+            field:
+              mode: single
+              inline: false
+              full_width: false
+              columns: 1
+              rows: 1
+              time_enabled: false
+              time_seconds_enabled: false
+              type: date
+              display: Date
+              icon: date
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: team
+            field:
+              options:
+                boys_jv: 'Boys JV'
+                boys_varsity: 'Boys Varsity'
+                girls_jv: 'Girls JV'
+                girls_varsity: 'Girls Varsity'
+              inline: false
+              cast_booleans: false
+              type: radio
+              display: Team
+              icon: radio
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: opponent
+            field:
+              max_items: 1
+              mode: default
+              create: true
+              collections:
+                - opponents
+              type: entries
+              display: Opponent
+              icon: entries
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: our_score
+            field:
+              type: integer
+              display: 'Our Score'
+              icon: integer
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: opponent_score
+            field:
+              type: integer
+              display: 'Opponent Score'
+              icon: integer
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: cover_photo
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Cover Photo'
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: additional_photos
+            field:
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Additional Photos'
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: game_recap
+            field:
+              antlers: false
+              type: textarea
+              display: 'Game Recap'
+              icon: textarea
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true

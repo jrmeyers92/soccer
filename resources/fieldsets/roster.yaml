@@ -1,0 +1,29 @@
+title: Roster
+fields:
+  -
+    handle: players
+    field:
+      collapse: false
+      previews: true
+      fullscreen: true
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          instructions: null
+          icon: null
+          sets:
+            new_set:
+              display: 'New Set'
+              instructions: null
+              icon: null
+              fields:
+                -
+                  import: player
+      type: replicator
+      display: Players
+      icon: replicator
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

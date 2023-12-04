@@ -1,0 +1,152 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: school_name
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'School Name'
+              icon: text
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              width: 50
+          -
+            handle: mascot
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Mascot
+              icon: text
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              width: 50
+          -
+            handle: logo
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: Logo
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: phone_number
+            field:
+              type: integer
+              display: 'Phone Number'
+              icon: integer
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: email
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Email
+              icon: text
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: street_address
+            field:
+              antlers: false
+              type: textarea
+              display: 'Street Address'
+              icon: textarea
+              width: 25
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: school_city
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'School City'
+              icon: text
+              width: 25
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: school_state
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'School State'
+              icon: text
+              width: 25
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: zip_code
+            field:
+              type: integer
+              display: 'Zip Code'
+              icon: integer
+              width: 25
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  footer:
+    display: Footer
+    sections:
+      -
+        display: 'New Section'
+        fields:
+          -
+            handle: footer_logos
+            field:
+              mode: default
+              create: true
+              collections:
+                - sponsers
+              type: entries
+              display: 'Footer Logos'
+              icon: entries
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false

@@ -1,0 +1,22 @@
+<div class="font-light border-b border-slate-300 px-2 py-4 last:border-b-0 scheduleWidgetGame odd:bg-gray-100">
+    <p class="uppercase">{{game_date format="F jS" }} • {{time | format('g:ia')}}</p>
+    <div class="flex items-center">
+        <img src="{{site_data:logo}}" alt="" class="w-[30px] mr-2">
+        <div class="flex justify-between w-full pr-4 {{if opponent_score < our_score}} font-bold {{/if}}">
+            <p>{{site_data:school_name}}</p>
+            <p>{{our_score}}</p>
+        </div>
+        
+    </div>
+    <div class="flex items-center">
+
+        {{opponent}}
+            <img src="{{logo[0]}}" alt="" class="w-[30px] mr-2">
+
+            <div class="flex justify-between w-full pr-4 {{if opponent_score > our_score}} font-bold {{/if}}">
+                <p>{{if location == "home"}} vs. {{elseif location =="away" }} at {{/if}}{{school_name}}</p>
+                <p>{{opponent_score}}</p>
+            </div>
+        {{/opponent}}
+    </div>
+</div>

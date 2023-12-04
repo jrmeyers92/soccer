@@ -1,0 +1,53 @@
+{{slugArray = url | explode('/')}}
+{{theTeam = slugArray[1] | explode("-")}}
+{{gender = theTeam[0]}}
+{{jvOrVarsity = theTeam[1]}}
+{{finalTeam = gender + "_" + jvOrVarsity | camelize}}
+{{scheduleType = slugArray[2]}}
+
+{{scheduleTeamTitle = ""}}
+{{if jvOrVarsity == "jv"}}
+    {{scheduleTeamTitle = "JV"}}
+{{else if jvOrVarsity == "varsity"}}
+    {{scheduleTeamTitle = "Varsity"}}
+{{/if}}
+
+<section class="mx-auto flex flex-col w-full bg-white self-baseline mt-4">
+    {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
+        {{team}}
+        {{if team == "jv"}}
+            {{partial:section_heading title="{year} {gender | ucfirst} {team | upper} Stats"}}
+        {{else}}
+            {{partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Roster"}}
+        {{/if}}
+            {{ if players | is_empty }}
+                <p>Sorry no roster available at this time.</p>
+            {{else}}
+                <div class="p-2 text-sm">
+                    <div class="grid grid-cols-5 py-2 font-semibold">
+                        <span>Name</span>
+                        <span>Goals</span>
+                        <span>Assists</span>
+                        <span>Shutouts</span>
+                        <span>Points</span>
+
+
+                    </div>
+                    {{players}}
+                        {{if goals != 0 || assists != 0 || shutouts != 0}}
+                        <div class="grid grid-cols-5">
+                            <span class=" mr-2">{{first_name}} {{last_name}}</span>
+                            <span>{{goals}} </span>
+                            <span>{{assists}}</span>
+                            <span>{{shutouts}}</span>
+                            <span>{{goals*2 + assists}}</span>
+                        </div>
+                        {{/if}}
+                    {{/players}}
+                </div>
+            {{/if}}
+          
+
+        {{/team}}
+    {{/collection:teams}}
+</section>

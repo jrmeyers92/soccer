@@ -1,0 +1,161 @@
+title: Player
+fields:
+  -
+    handle: first_name
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: 'First Name'
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: last_name
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: 'Last Name'
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: grade
+    field:
+      options:
+        freshman: Freshman
+        sophmore: Sophmore
+        junior: Junior
+        senior: Senior
+      inline: false
+      cast_booleans: false
+      type: radio
+      display: Grade
+      icon: radio
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: position
+    field:
+      options:
+        goalie: Goalie
+        defense: Defense
+        midfield: Midfield
+        forward: Forward
+      inline: false
+      type: checkboxes
+      display: Position
+      icon: checkboxes
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: captain
+    field:
+      options:
+        captain: Captain
+      inline: false
+      type: checkboxes
+      display: Captain
+      icon: checkboxes
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      instructions: 'Check the checkbox if this player is a captain.'
+  -
+    handle: number
+    field:
+      type: integer
+      display: Number
+      icon: integer
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: bio
+    field:
+      antlers: false
+      type: textarea
+      display: Bio
+      icon: textarea
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: image
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: Image
+      icon: assets
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      max_files: 1
+  -
+    handle: goals
+    field:
+      type: integer
+      display: Goals
+      icon: integer
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: assists
+    field:
+      type: integer
+      display: Assists
+      icon: integer
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: shutouts
+    field:
+      type: integer
+      display: Shutouts
+      icon: integer
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

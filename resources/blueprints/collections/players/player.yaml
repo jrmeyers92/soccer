@@ -1,0 +1,91 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: 'Full Name'
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              replicator_preview: true
+              input_type: text
+              antlers: false
+              hide_display: false
+          -
+            handle: number
+            field:
+              type: integer
+              display: Number
+              icon: integer
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: grade
+            field:
+              options:
+                freshman: Freshman
+                sophmore: Sophmore
+                junior: Junior
+                senior: Senior
+              inline: false
+              cast_booleans: false
+              type: radio
+              display: Grade
+              icon: radio
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: image
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: Image
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: bio
+            field:
+              antlers: false
+              type: textarea
+              display: Bio
+              icon: textarea
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+title: Player

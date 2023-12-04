@@ -1,0 +1,36 @@
+{{slugArray = url | explode('/')}}
+{{theTeam = slugArray[1] | explode("-")}}
+{{gender = theTeam[0]}}
+{{jvOrVarsity = theTeam[1]}}
+{{finalTeam = gender + "_" + jvOrVarsity | camelize}}
+{{scheduleType = slugArray[2]}}
+
+{{scheduleTeamTitle = ""}}
+{{if jvOrVarsity == "jv"}}
+    {{scheduleTeamTitle = "JV"}}
+{{else if jvOrVarsity == "varsity"}}
+    {{scheduleTeamTitle = "Varsity"}}
+{{/if}}
+
+{{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
+    {{if team}}
+        {{team}}
+            <section class="p-4 bg-white m-4">
+
+                {{if team == "jv"}}
+                    <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Schedule </h1>
+                {{else}}
+                    {{partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Schedule"}}
+                {{/if}}
+
+                {{if games| is_empty}}
+                    <p class="p-2">There are no upcoming games at this time.</p>
+                {{else}}
+                    {{games | sort="game_date:desc"}}
+                        {{partial:schedule_page_game}}
+                    {{/games}}
+                {{/if}}
+            </section>
+        {{/team}}
+    {{/if}}     
+{{/collection:teams}}

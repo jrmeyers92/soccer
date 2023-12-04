@@ -1,0 +1,48 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This is all you. */
+.scheduleWidgetGame:nth-child(7),
+.scheduleWidgetGame:nth-child(8),
+.scheduleWidgetGame:nth-child(9),
+.scheduleWidgetGame:nth-child(10),
+.scheduleWidgetGame:nth-child(11),
+.scheduleWidgetGame:nth-child(12),
+.scheduleWidgetGame:nth-child(13),
+.scheduleWidgetGame:nth-child(14),
+.scheduleWidgetGame:nth-child(15),
+.scheduleWidgetGame:nth-child(16),
+.scheduleWidgetGame:nth-child(17),
+.scheduleWidgetGame:nth-child(18),
+.scheduleWidgetGame:nth-child(19),
+.scheduleWidgetGame:nth-child(20),
+.scheduleWidgetGame:nth-child(21),
+.scheduleWidgetGame:nth-child(22),
+.scheduleWidgetGame:nth-child(23),
+.scheduleWidgetGame:nth-child(24),
+.scheduleWidgetGame:nth-child(25),
+.scheduleWidgetGame:nth-child(26),
+.scheduleWidgetGame:nth-child(27),
+.scheduleWidgetGame:nth-child(28),
+.scheduleWidgetGame:nth-child(29),
+.scheduleWidgetGame:nth-child(30),
+.scheduleWidgetGame:nth-child(31),
+.scheduleWidgetGame:nth-child(32),
+.scheduleWidgetGame:nth-child(33),
+.scheduleWidgetGame:nth-child(34),
+.scheduleWidgetGame:nth-child(35),
+.scheduleWidgetGame:nth-child(36),
+.scheduleWidgetGame:nth-child(37),
+.scheduleWidgetGame:nth-child(38),
+.scheduleWidgetGame:nth-child(39),
+.scheduleWidgetGame:nth-child(40),
+.scheduleWidgetGame:nth-child(41),
+.scheduleWidgetGame:nth-child(42),
+.scheduleWidgetGame:nth-child(43),
+.scheduleWidgetGame:nth-child(44),
+.scheduleWidgetGame:nth-child(45),
+.scheduleWidgetGame:nth-child(46),
+.scheduleWidgetGame:nth-child(47) {
+    @apply hidden;
+}

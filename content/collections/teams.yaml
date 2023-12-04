@@ -1,0 +1,14 @@
+title: Teams
+template: teams/show
+layout: layout
+revisions: false
+title_format: '{year} {gender} {team} {sport}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

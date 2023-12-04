@@ -1,0 +1,110 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              validate:
+                - required
+          -
+            handle: school_name
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'School Name'
+              icon: text
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: mascot
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Mascot
+              icon: text
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: logo
+            field:
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: Logo
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: opponent_school_city
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Opponent School City'
+              icon: text
+              instructions: 'The city in which the opponent is located.'
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: opponent_school_state
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Opponent School State'
+              icon: text
+              instructions: 'The state in which the school is located'
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: directions
+            field:
+              antlers: false
+              type: textarea
+              display: Directions
+              icon: textarea
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+title: Opponent

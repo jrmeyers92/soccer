@@ -1,0 +1,57 @@
+{{slugArray = url | explode('/')}}
+{{theTeam = slugArray[1] | explode("-")}}
+{{gender = theTeam[0]}}
+{{jvOrVarsity = theTeam[1]}}
+{{finalTeam = gender + "_" + jvOrVarsity | camelize}}
+{{scheduleType = slugArray[2]}}
+
+{{scheduleTeamTitle = ""}}
+{{if jvOrVarsity == "jv"}}
+    {{scheduleTeamTitle = "JV"}}
+{{else if jvOrVarsity == "varsity"}}
+    {{scheduleTeamTitle = "Varsity"}}
+{{/if}}
+
+{{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
+    {{if team}}
+        {{team}}
+            <section class="mx-auto flex flex-col w-full  bg-white self-baseline">
+
+                {{if team == "jv"}}
+                    {{partial:section_heading title="{year} {gender | ucfirst} {team | upper} Schedule"}}
+                {{else}}
+                    {{partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Schedule"}}
+                {{/if}}
+
+                <div class="flex border-b border-slate-300">
+                    <button class="w-full py-2 px-4 scheduleSelectorBtn border-r border-slate-300 {{if scheduleType == "u"}} border-b-2 border-b-primary-500 font-bold {{/if}} " id="upcoming">Upcoming</button>
+                    <button class="w-full py-2 px-4 scheduleSelectorBtn {{if scheduleType == "r"}} border-b-2 border-b-primary-500 font-bold {{/if}} " id="results" >Results</button>
+                </div>
+
+                {{if scheduleType == "u"}}
+                    {{if games| is_empty}}
+                        <p class="p-2">There are no upcoming games at this time.</p>
+                    {{else}}
+                        {{games | sort="game_date:desc"}}
+                            {{if game_date | is_future || game_date | is_today}}
+                                {{partial:scheduleWidgetGame}}
+                            {{/if}}
+                        {{/games}}
+                    {{/if}}
+                {{ else if scheduleType == "r"}}
+                    {{if games | is_empty}}
+                        <p class="p-2">Sorry, no results at this time.</p>
+                    {{else}}
+                        {{games | sort="game_date:asc"}}
+                            {{if game_date | is_past && game_date | is_today == false}}
+                                {{partial:scheduleWidgetGame}}
+                            {{/if}}
+                        {{/games}}
+                    {{/if}}
+                {{/if}}
+                <a href="/{{gender}}-{{jvOrVarsity}}/schedule" class="p-2 bg-primary-500 text-white font-bold hover:bg-primary-600 duration-150">View Full Schedule</a>
+
+            </section>
+        {{/team}}
+    {{/if}}     
+{{/collection:teams}}

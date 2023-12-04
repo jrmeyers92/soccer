@@ -1,0 +1,19 @@
+<div class="my-4">
+    <p>Coached:</p>
+    <ul class="list-disc ml-12">
+    {{collection:teams}}
+        {{if head_coach:id == coachID}}
+            <li>{{year}} {{gender | ucfirst}}   {{if team == "jv"}} {{team | upper}} {{else}} {{team | ucfirst}} {{/if}}</li>
+        {{/if}}
+    {{/collection:teams}}
+
+
+    {{collection:teams}}
+        {{assistant_coaches}}
+            {{ if id == coachID}}
+                <li>{{year}} {{gender | ucfirst}}   {{if team == "jv"}} {{team | upper}} {{else}} {{team | ucfirst}} {{/if}}</li>
+            {{ /if }}
+        {{/assistant_coaches}}
+    {{/collection:teams}}
+    </ul>
+</div>

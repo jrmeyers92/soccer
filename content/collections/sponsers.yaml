@@ -1,0 +1,6 @@
+title: Sponsers
+template: sponsers/show
+revisions: false
+date_behavior:
+  past: public
+  future: private

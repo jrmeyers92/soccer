@@ -1,0 +1,20 @@
+<section
+    class="md:flex items-center w-full {{if index % 2 == 0}}flex-row {{else}}flex-row-reverse{{/if}}"
+>
+    {{if cover_photo}}
+    <img
+        src="{{cover_photo}}"
+        alt="cover photo"
+        class="h-[180px] object-cover rounded-md hidden md:block {{if index % 2 == 0}}md:mr-3 {{else}}md:ml-3 {{/if}}"
+    />
+    {{/if}}
+    <div class="flex flex-col">
+        <span class="text-bg-primary font-light">{{publish_date}}</span>
+        <h2 class="text-2xl font -bold">{{title}}</h2>
+        <a
+            href="/news/{{slug}}"
+            class="bg-primary-500 px-4 py-2 text-lg rounded-md hover:bg-primary-600 duration-150 text-center mt-3 self-start text-white"
+            >Read Article</a
+        >
+    </div>
+</section>

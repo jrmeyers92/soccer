@@ -1,0 +1,152 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              validate:
+                - required
+          -
+            handle: gender
+            field:
+              options:
+                boys: Boys
+                girls: Girls
+              inline: false
+              cast_booleans: false
+              type: radio
+              display: Gender
+              icon: radio
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              width: 50
+          -
+            handle: year
+            field:
+              type: integer
+              display: Year
+              icon: integer
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              width: 50
+          -
+            handle: sport
+            field:
+              options:
+                soccer: Soccer
+                basketball: Basketball
+                football: Football
+                track: Track
+                baseball: Baseball
+              inline: false
+              cast_booleans: false
+              type: radio
+              display: Sport
+              icon: radio
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              width: 50
+          -
+            handle: team
+            field:
+              options:
+                freshman: Freshman
+                jv: JV
+                varsity: Varsity
+              inline: false
+              cast_booleans: false
+              type: radio
+              display: Team
+              icon: radio
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              width: 50
+          -
+            handle: sponsers
+            field:
+              mode: default
+              create: true
+              collections:
+                - sponsers
+              type: entries
+              display: Sponsers
+              icon: entries
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: head_coach
+            field:
+              max_items: 1
+              mode: default
+              create: true
+              collections:
+                - coaches
+              type: entries
+              display: 'Head Coach'
+              icon: entries
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: assistant_coaches
+            field:
+              mode: default
+              create: true
+              collections:
+                - coaches
+              type: entries
+              display: 'Assistant Coaches'
+              icon: entries
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+  schedule:
+    display: Schedule
+    sections:
+      -
+        display: 'New Section'
+        fields:
+          -
+            import: schedule
+  roster:
+    display: Roster
+    sections:
+      -
+        display: 'New Section'
+        fields:
+          -
+            import: roster
+title: Team
