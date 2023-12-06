@@ -13,7 +13,7 @@
 
 
     // re-reoute of of "/" to value saved in localstorage or default to boys-jv
-    if (window.location.href == "http://soccer.test/") {
+    if (window.location.href == "https://sticky-ocean-axgkzko5bv.ploi.ing/") {
         if (localStorage.getItem("team")) {
             document.getElementById('teamSelector').value = localStorage.getItem('team')
 
@@ -21,13 +21,13 @@
                 let scheduleWidgetValue = localStorage.getItem('scheduleWidgetValue');
                 let schedulePath = scheduleWidgetValue= "upcoming" ? "u" : "r";
 
-                window.location.href=`http://soccer.test/${localStorage.getItem("team")}/${schedulePath}`;
+                window.location.href=`https://sticky-ocean-axgkzko5bv.ploi.ing/${localStorage.getItem("team")}/${schedulePath}`;
 
             } else {
-                window.location.href=`http://soccer.test/${localStorage.getItem("team")}/u`;
+                window.location.href=`https://sticky-ocean-axgkzko5bv.ploi.ing/${localStorage.getItem("team")}/u`;
             }
         } else {
-            window.location.href = "http://soccer.test/boys-jv/u";
+            window.location.href = "https://sticky-ocean-axgkzko5bv.ploi.ing/boys-jv/u";
         }
     }
 
@@ -50,7 +50,7 @@
         } else {
             pathArray[1] = e.target.value;
             let finishedPath = pathArray.join('/');
-            window.location.href = `http://soccer.test${finishedPath}`
+            window.location.href = `https://sticky-ocean-axgkzko5bv.ploi.ing${finishedPath}`
         }
     })
 
@@ -65,7 +65,7 @@
             localStorage.setItem('scheduleWidgetValue', value);
             let pathArray = window.location.pathname.split('/')
             let team = pathArray[1]
-            window.location.href=`http://soccer.test/${team}/${schedulePath}`
+            window.location.href=`https://sticky-ocean-axgkzko5bv.ploi.ing/${team}/${schedulePath}`
         })
     })
 
