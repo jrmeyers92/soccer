@@ -10,7 +10,7 @@ export default defineConfig(({ command, mode }) => {
                 input: [
                     'resources/css/site.css',
                     'resources/js/site.js',
-                    'resouces/js/routing.js',
+                    'resources/js/routing.js',
                     'resources/js/news_filtering.js'
                 ]
             })
