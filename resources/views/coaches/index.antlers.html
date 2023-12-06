@@ -2,8 +2,8 @@
     <div class="max-w-7xl">
         <h1 class="text-3xl mb-8 text-center">Coaches</h1>
         {{collection:coaches active:is="true" head_coach:is="true"}}
-            <article class="flex gap-8 w-full items-center justify-center my-12">
-                <div class="self-start relative">
+            <article class="flex flex-col lg:flex-row gap-4 lg:gap-8 w-full items-center justify-center my-12">
+                <div class="lg:self-start relative">
                     <img src="{{ glide:image width="500" }}"" alt="{{title}}" class="rounded-md shadow-sm brightness-50"/>
                     <h2 class="text-2xl mb-2 absolute bottom-2 left-1/2 -translate-x-1/2 text-white">{{title}}</h2>
                 </div>
@@ -15,8 +15,8 @@
             </article>
             {{/collection:coaches}}
             {{collection:coaches active:is="true" head_coach:isnt="true"}}
-            <article class="flex gap-8 w-full items-center justify-center my-12 odd:flex-row-reverse">
-                <div class="self-start relative">
+            <article class="flex flex-col lg:flex-row gap-4 lg:gap-8 w-full items-center justify-center my-12 lg:odd:flex-row-reverse">
+                <div class="lg:self-start relative">
                     <img src="{{ glide:image width="500" }}"" alt="{{title}}" class="rounded-md shadow-sm brightness-50"/>
                     <h2 class="text-2xl mb-2 absolute bottom-2 left-1/2 -translate-x-1/2 text-white">{{title}}</h2>
                 </div>
