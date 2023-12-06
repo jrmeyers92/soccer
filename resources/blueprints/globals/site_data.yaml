@@ -129,6 +129,22 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
+          -
+            handle: home_page_news_widget_sponser
+            field:
+              max_items: 1
+              mode: default
+              create: true
+              collections:
+                - sponsers
+              type: entries
+              display: 'Home Page News Widget Sponser'
+              icon: entries
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
   footer:
     display: Footer
     sections:

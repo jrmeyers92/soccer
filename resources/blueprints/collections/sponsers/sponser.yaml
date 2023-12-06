@@ -8,6 +8,7 @@ tabs:
             handle: title
             field:
               type: text
+              required: true
               validate:
                 - required
               display: 'Company Name'
@@ -47,6 +48,18 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
+          -
+            handle: blurb
+            field:
+              antlers: false
+              type: textarea
+              display: Blurb
+              icon: textarea
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
   sidebar:
     display: Sidebar
     sections:
@@ -57,4 +70,5 @@ tabs:
             field:
               type: slug
               localizable: true
+              validate: 'max:200'
 title: Sponser

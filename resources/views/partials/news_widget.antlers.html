@@ -5,7 +5,7 @@
         {{collection:news sort="publish_date:desc" as="articles" limit='7'}}
             {{articles}}
                 <div class="p-4 bg-white border-b border-slate-200 last:pb-6">
-                    {{ if index == 0 }} {{ partial:featured_news_card}} {{ else }}
+                    {{ if index == 0 }} {{ partial:featured_news_card}} {{partial:news_widget_sponser}} {{ else }}
                     {{partial:news_card}} {{ /if }}
                 </div>
             {{/articles}}
