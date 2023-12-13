@@ -1,7 +1,8 @@
 {{slugArray = url | explode('/')}} {{teamArray = ["boys-jv", "boys-varsity",
 "girls-jv", "girls-varsity"]}} {{ scheduleTypeArray = ["u", "r"]}} {{team = ""}}
 {{slugArray}} {{if teamArray | contains({value})}} {{team = value}} {{/if}}
-{{/slugArray}} {{baseUrl = "http://soccer.test"}} {{ config:APP_URL }}
+{{/slugArray}} {{baseUrl = "https://sticky-ocean-axgkzko5bv.ploi.ing"}} {{
+config:APP_URL }}
 
 <nav class="flex flex-col leading-4 sticky top-0 z-10">
     <div
