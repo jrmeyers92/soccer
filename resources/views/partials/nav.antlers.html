@@ -9,6 +9,7 @@
     >
         <a href="/" class="py-2 min-w-[50px]">
             <img src="{{glide:site_data:logo width="75" height="75"}}"
+            alt="{{alt}}">
         </a>
         <div class="flex flex-col w-full ml-2 sm:ml-4 md:ml-6">
             <p
@@ -20,17 +21,17 @@
                 class="ml-auto font-bold self-stretch flex items-center justify-center text-lg md:text-xl"
             >
                 <li
-                    class="px-4 py-4 hover:bg-white hover:text-primary-500 h-full flex items-center duration-150"
+                    class="px-2 md:px-4 py-4 hover:bg-white hover:text-primary-500 h-full flex items-center duration-150"
                 >
                     <a class="" href="{{baseUrl}}/news">News</a>
                 </li>
                 <li
-                    class="px-4 py-4 hover:bg-white hover:text-primary-500 h-full flex items-center duration-150"
+                    class="px-2 md:px-4 py-4 hover:bg-white hover:text-primary-500 h-full flex items-center duration-150"
                 >
                     <a class="" href="{{baseUrl}}/coaches">Coaches</a>
                 </li>
                 <li
-                    class="px-4 py-4 hover:bg-white hover:text-primary-500 h-full flex items-center duration-150"
+                    class="px-2 md:px-4 py-4 hover:bg-white hover:text-primary-500 h-full flex items-center duration-150"
                 >
                     <a class="" href="{{baseUrl}}/sponsers">Sponsers</a>
                 </li>
@@ -41,27 +42,14 @@
     <div class="flex items-center w-full p-4 font-bold bg-white">
         <div class="relative">
             <button
-                class="text-xs leading-5 font-semibold bg-slate-400/10 rounded-full py-1 px-3 flex items-center space-x-2 hover:bg-slate-400/20"
+                class="text-sm leading-5 font-semibold bg-slate-500/20 rounded-full py-1 px-3 flex items-center space-x-2 hover:bg-slate-400/20"
                 type="button"
                 aria-haspopup="true"
                 aria-expanded="false"
                 id="pill"
             >
                 Boy's JV
-                <svg
-                    width="6"
-                    height="3"
-                    class="ml-2 overflow-visible"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M0 0L3 3L6 0"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                    ></path>
-                </svg>
+                <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div
                 class="absolute top-full mt-1 py-2 w-40 rounded-lg bg-white shadow ring-1 ring-slate-900/5 text-sm leading-6 font-semibold text-slate-700 hidden"
@@ -79,6 +67,7 @@
                     data-team="boys-varsity"
                 >
                     Boys Varsity
+
                     <div class="hidden"><i class="fa-solid fa-check"></i></div>
                 </div>
                 <div

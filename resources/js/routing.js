@@ -18,11 +18,22 @@
         }
 
         let pillText = teamTextArray.join(" ");
-        console.log(pillText);
-        pill.innerText = pillText;
+        pill.innerHTML = `<span class="mr-2">${pillText} <i class="fa-solid fa-chevron-down"></i>`;
     };
 
-    // set dropdown selector to match pathname
+    const setPillSelectItem = (team) => {
+        let teamOptions = document.querySelectorAll(".teamSelectItem");
+        teamOptions.forEach((option) => {
+            option.style.color = "black";
+            option.querySelector("div").classList.add("hidden");
+        });
+
+        let selectedItem = teamSelect.querySelector(`.${team}`);
+        selectedItem.style.color = "#00A3F7";
+        selectedDiv.querySelector("div").classList.remove("hidden");
+    };
+
+    // set dropdown item/option to match pathname
     if (teams.includes(window.location.pathname.split("/")[1])) {
         let selectedDiv = teamSelect.querySelector(
             `.${window.location.pathname.split("/")[1]}`
@@ -31,6 +42,13 @@
         selectedDiv.querySelector("div").classList.remove("hidden");
 
         setPill(window.location.pathname.split("/")[1]);
+    } else if (window.localStorage.getItem("team")) {
+        let selectedDiv = teamSelect.querySelector(
+            `.${window.localStorage.getItem("team")}`
+        );
+        selectedDiv.style.color = "#00A3F7";
+        selectedDiv.querySelector("div").classList.remove("hidden");
+        setPill(window.localStorage.getItem("team"));
     }
 
     // show and hide selectors when pill pressed
@@ -42,6 +60,7 @@
         }
     });
 
+    // reroute page if land on homepage with no team path
     if (window.location.href == "http://soccer.test/") {
         let schedulePath;
         if (window.localStorage.getItem("team")) {
@@ -65,26 +84,31 @@
         }
     }
 
-    // set selector for pages that are team independent
-    if (
-        pagesNotTeamDependent.includes(window.location.pathname.split("/")[1])
-    ) {
-        if (localStorage.getItem("team")) {
-            setPill(window.localStorage.getItem("team"));
-        }
-    }
-
     // routing for pill selector change
     teamSelect.addEventListener("click", (e) => {
         window.localStorage.setItem("team", e.target.dataset.team);
         let pathArray = window.location.pathname.split("/");
 
         if (!pagesNotTeamDependent.includes(pathArray[1])) {
-            console.log(pathArray);
             pathArray[1] = e.target.dataset.team;
             let finishedPath = pathArray.join("/");
-            console.log(finishedPath);
             window.location.href = `http://soccer.test${finishedPath}`;
+        } else {
+            setPill(e.target.dataset.team);
+            console.log(e.target.dataset.team);
+            teamSelect.classList.add("hidden");
+            let selectedTeamDiv = teamSelect.querySelector(
+                `.${e.target.dataset.team}`
+            );
+
+            let teamOptions = document.querySelectorAll(".teamSelectItem");
+            teamOptions.forEach((item) => {
+                item.style.color = "black";
+                item.querySelector("div").classList.add("hidden");
+            });
+
+            selectedTeamDiv.style.color = "#00A3F7";
+            selectedTeamDiv.querySelector("div").classList.remove("hidden");
         }
     });
 
@@ -92,7 +116,6 @@
     let scheduleSelectorBtns = document.querySelectorAll(
         ".scheduleSelectorBtn"
     );
-    console.log(scheduleSelectorBtns);
     scheduleSelectorBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
             let value = btn.id;

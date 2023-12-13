@@ -1,16 +1,18 @@
 <article
     class="mainNewsArticle relative w-full h-[300px] sm:h-[350px] md:h-[500px] lg:h-[600px] bg-no-repeat bg-cover text-white"
 >
-    <div class="absolute bottom-4 flex justify-between items-end w-full px-2">
-        <div class="flex flex-col gap-2">
-            <span class="font-bold text-lg md:text-xl">{{publish_date}}</span>
-            <h2 class="text-3xl md:text-4xl">
+    <div
+        class="absolute bottom-4 flex flex-col items-center justify-center sm:flex-row sm:justify-between sm:items-end w-full px-2"
+    >
+        <div class="flex flex-col gap-2 mb-4 sm:mb-0">
+            <span class="font-light text-sm sm:text-xl">{{publish_date}}</span>
+            <h2 class="text-xl sm:text-3xl md:text-4xl">
                 <a href="{{url}}" class="hover:underline">{{title}}</a>
             </h2>
         </div>
         <a
             href="/news/{{slug}}"
-            class="bg-primary-500 px-4 py-2 text-xl rounded-md hover:bg-primary-600 duration-150 whitespace-nowrap"
+            class="bg-primary-500 px-4 py-2 md:text-xl rounded-md hover:bg-primary-600 duration-150 whitespace-nowrap"
             >Read Article</a
         >
     </div>
