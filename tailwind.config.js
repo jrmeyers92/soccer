@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 export default {
     content: [
         "./resources/**/*.antlers.html",
@@ -10,18 +12,18 @@ export default {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: '#0088CE',
-                    50: '#87D6FF',
-                    100: '#72CFFF',
-                    200: '#49C1FF',
-                    300: '#21B3FF',
-                    400: '#00A3F7',
-                    500: '#0088CE',
-                    600: '#006396',
-                    700: '#003E5E',
-                    800: '#001926',
-                    900: '#000000',
-                    950: '#000000'
+                    DEFAULT: "#0088CE",
+                    50: "#87D6FF",
+                    100: "#72CFFF",
+                    200: "#49C1FF",
+                    300: "#21B3FF",
+                    400: "#00A3F7",
+                    500: "#0088CE",
+                    600: "#006396",
+                    700: "#003E5E",
+                    800: "#001926",
+                    900: "#000000",
+                    950: "#000000",
                 },
                 secondary: {
                     DEFAULT: "#FE2301",
@@ -39,6 +41,10 @@ export default {
                 },
                 "bg-primary": "#02A0EE",
             },
+        },
+        screens: {
+            xs: "475px",
+            ...defaultTheme.screens,
         },
     },
 
