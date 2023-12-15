@@ -12,11 +12,10 @@
     {{scheduleTeamTitle = "Varsity"}}
 {{/if}}
 
-{{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
-    {{if team}}
-        {{team}}
-            <section class="p-4 bg-white m-4">
-
+{{partial:team_page_section}}
+    {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
+        {{if team}}
+            {{team}}
                 {{if team == "jv"}}
                     <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Schedule </h1>
                 {{else}}
@@ -30,7 +29,7 @@
                         {{partial:schedule_page_game}}
                     {{/games}}
                 {{/if}}
-            </section>
-        {{/team}}
-    {{/if}}     
-{{/collection:teams}}
+            {{/team}}
+        {{/if}}     
+    {{/collection:teams}}
+{{/partial:team_page_section}}

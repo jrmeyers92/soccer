@@ -1,5 +1,3 @@
-
-
 {{slugArray = url | explode('/')}}
 {{theTeam = slugArray[1] | explode("-")}}
 {{gender = theTeam[0]}}
@@ -14,7 +12,7 @@
     {{scheduleTeamTitle = "Varsity"}}
 {{/if}}
 
-<section class="p-4 bg-white ">
+{{partial:team_page_section}}
     {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
         {{team}}
             <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} {{if jvOrVarsity == "jv"}}JV{{/if}} {{if jvOrVarsity == "varsity"}}Varsity{{/if}} Roster</h1>
@@ -53,4 +51,4 @@
             {{/if}}
         {{/team}}
     {{/collection:teams}}
-</section>
+{{/partial:team_page_section}}
