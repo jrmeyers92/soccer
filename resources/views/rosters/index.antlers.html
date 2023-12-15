@@ -15,8 +15,11 @@
 {{partial:team_page_section}}
     {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
         {{team}}
-            <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} {{if jvOrVarsity == "jv"}}JV{{/if}} {{if jvOrVarsity == "varsity"}}Varsity{{/if}} Roster</h1>
-
+        {{if team == "jv"}}
+            <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} JV Roster </h1>
+        {{else}}
+            <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Roster</h1>
+        {{/if}}
             {{ if players | is_empty }}
                 <p>Sorry no roster available at this time.</p>
             {{else}}

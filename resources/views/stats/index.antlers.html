@@ -17,11 +17,11 @@
     {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
         {{if team}}
             {{team}}
-                {{if team == "jv"}}
-                    <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Stats </h1>
-                {{else}}
-                    {{partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Schedule"}}
-                {{/if}}
+            {{if team == "jv"}}
+                <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} JV Stats </h1>
+            {{else}}
+                <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Stats </h1>
+            {{/if}}
 
                 {{if games| is_empty}}
                     <p class="p-2">There are no upcoming games at this time.</p>
