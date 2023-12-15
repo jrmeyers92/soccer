@@ -1,0 +1,26 @@
+<div class="px-2 py-4 flex items-center justify-between md:justify-normal border-b last:border-b-0 border-slate-300 odd:bg-gray-100">
+    <div class="flex items-center md:w-1/2">
+        {{ if image}}
+            <img src="{{ glide src="{image}" w="100" h="120" }}" alt="{alt}" class="hidden sm:block">
+        {{/if}}
+        <div class="flex flex-col ml-4">
+            <div class="text-sm font-bold py-1 mb-2 md:mb-4">
+                {{position}}
+                    {{if position | length != 1}}
+                        {{if !last}}
+                            {{value | ucfirst}} /
+                        {{else}}
+                            {{value | ucfirst}}
+                        {{/if}}
+                    {{else}}
+                        {{value | ucfirst}}
+                    {{/if}}
+                {{/position}}
+            </div>
+            <div class="flex items-center justify-center">
+                <span class="bg-primary-500 px-2 py-1 text-white italic font-bold">{{number}}</span> <span class="text-xl text-gray-700 font-bold ml-2">{{first_name}} {{last_name}} {{if captain}} (c) {{/if}} </span>
+            </div>
+        </div>
+    </div>
+    <p class="md:w-1/2 font-light">{{grade | ucfirst}}</p>
+</div>

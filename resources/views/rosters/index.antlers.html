@@ -24,32 +24,7 @@
                 <p>Sorry no roster available at this time.</p>
             {{else}}
                 {{players}}
-                    <div class="flex items-center justify-between md:justify-normal odd:bg-gray-100 p-2 border-t border-gray-300">
-                        <div class="flex items-center md:w-1/2">
-                            {{ if image}}
-                                <img src="{{ glide src="{image}" w="100" h="120" }}" alt="{alt}" class="hidden sm:block">
-                            {{/if}}
-                            <div class="flex flex-col ml-4">
-                                <div class="text-sm font-bold py-1 mb-2 md:mb-4">
-                                    {{position}}
-                                        {{if position | length != 1}}
-                                            {{if !last}}
-                                                {{value | ucfirst}} /
-                                            {{else}}
-                                                {{value | ucfirst}}
-                                            {{/if}}
-                                        {{else}}
-                                            {{value | ucfirst}}
-                                        {{/if}}
-                                    {{/position}}
-                                </div>
-                                <div class="flex items-center justify-center">
-                                    <span class="bg-primary-600 py-1 px-2 text-white text-sm md:text-md">{{number}}</span> <span class="ml-2 text-lg md:text-2xl text-gray-500">{{first_name}} {{last_name}} {{if captain}} (c) {{/if}} </span>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="md:w-1/2 md:text-lg italic">{{grade | ucfirst}}</p>
-                    </div>
+                    {{partial:roster_page_player}}
                 {{/players}}
             {{/if}}
         {{/team}}

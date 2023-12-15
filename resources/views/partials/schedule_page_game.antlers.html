@@ -1,32 +1,30 @@
-<div class="font-light border-b border-slate-300 px-2 py-4 last:border-b-0 scheduleWidgetGame odd:bg-gray-100">
-    <div class="sm:grid sm:grid-cols-3 md:items-center flex flex-col">
-        {{opponent}}
-            <div class="flex items-center justify-center justify-self-start">
-                <img src="{{logo[0]}}" alt="{{alt}}" class="mr-2 w-12 md:w-20">
-                <div class="flex flex-col">
-                    <p class="text-sm mb-2 font-semibold">{{game_date format="M d (D)" }} •<span class="font-light"> {{time | format('g:ia')}}</span></p>
-                    <p>{{if location == "home"}} <span class="bg-primary-500 px-2 py-1 text-white italic font-bold">vs</span> {{elseif location =="away" }} <span class="bg-gray-500 px-2 py-1 text-white italic font-bold">at </span>{{/if}}<span class="text-xl text-gray-700 font-bold ml-2">{{school_name}} {{mascot}}</span></p>
-                </div>
+<div class="px-2 py-4 scheduleWidgetGame border-b last:border-b-0 border-slate-300 odd:bg-gray-100 sm:grid sm:grid-cols-3 md:items-center flex flex-col">
+    {{opponent}}
+        <div class="flex items-center justify-center justify-self-start">
+            <img src="{{logo[0]}}" alt="{{alt}}" class="mr-2 w-12 md:w-20">
+            <div class="flex flex-col">
+                <p class="text-sm font-bold py-1 mb-2 md:mb-4">{{game_date format="M d (D)" }} •<span class="font-light"> {{time | format('g:ia')}}</span></p>
+                <p>{{if location == "home"}} <span class="bg-primary-500 px-2 py-1 text-white italic font-bold">vs</span> {{elseif location =="away" }} <span class="bg-gray-500 px-2 py-1 text-white italic font-bold">at </span>{{/if}}<span class="text-xl text-gray-700 font-bold ml-2">{{school_name}} {{mascot}}</span></p>
             </div>
+        </div>
 
-            <div>
-                {{if location == "home"}}
-                    <p class="text-center sm:text-left my-4 sm:my-0">{{site_data:school_city}}, {{site_data:school_state}}</p>
-                {{else }}
-                    <p class="text-center sm:text-left my-4 sm:my-0">{{opponent_school_city}}, {{opponent_school_state}}</p>
-                {{/if}}
-            </div>
-
-        {{/opponent}}
-
-        <div class="text-center sm:text-left">
-            {{if our_score > opponent_score}}
-                <span class="text-xl text-gray-700 font-medium italic">W, {{our_score}}-{{opponent_score}}</span>
-            {{elseif opponent_score > our_score}}
-                <span class="text-xl text-gray-700 font-medium italic">L, {{our_score}}-{{opponent_score}}</span>
-            {{elseif opponent_score > 0 || our_score > 0}}
-                <span class="text-xl text-gray-700 font-medium italic">T, {{our_score}}-{{opponent_score}}</span>
+        <div class="font-light">
+            {{if location == "home"}}
+                <p class="text-center sm:text-left my-4 sm:my-0">{{site_data:school_city}}, {{site_data:school_state}}</p>
+            {{else }}
+                <p class="text-center sm:text-left my-4 sm:my-0">{{opponent_school_city}}, {{opponent_school_state}}</p>
             {{/if}}
         </div>
+
+    {{/opponent}}
+
+    <div class="text-center sm:text-left">
+        {{if our_score > opponent_score}}
+            <span class="text-xl text-gray-700 font-medium italic">W, {{our_score}}-{{opponent_score}}</span>
+        {{elseif opponent_score > our_score}}
+            <span class="text-xl text-gray-700 font-medium italic">L, {{our_score}}-{{opponent_score}}</span>
+        {{elseif opponent_score > 0 || our_score > 0}}
+            <span class="text-xl text-gray-700 font-medium italic">T, {{our_score}}-{{opponent_score}}</span>
+        {{/if}}
     </div>
 </div>
