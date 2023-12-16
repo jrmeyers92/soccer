@@ -7,45 +7,10 @@
         </div>
       <img src="{{ glide src="{{cover_photo}}" width="800" height="300" }}" alt="{{alt}}" alt="{{alt}}"> 
 
-        {{if games}}
-            <div class="bg-gray-100 p-4">
-                {{games}}
-                    <div class="py-3 border-b border-gray-300 last:border-b-0">
-                        <h3 class="capitalize text-3xl mb-1">{{team | explode("_") | join(" ")}}</h3>
-                        <div class="flex items-center mb-2">
-                            <img class="w-[45px]" src="{{site_data:logo}}" alt="Logo"/>
-                            {{if our_score}}
-                                <div class="text-2xl bg-white w-[50px] h-[50px] flex items-center justify-center ml-4">{{our_score}}</div>
-                            {{/if}}
-                            <span class="text-2xl ml-4">{{site_data:school_name}}</span>
-                            {{if !our_score}}
-                                <p class="ml-2">Pending Score</p>
-                            {{/if}}
-                        </div>
-
-                        {{opponent}}
-                            <div class="flex items-center">
-                                <img class="w-[45px]" src="{{logo}}" alt="Logo"/>
-                                {{if opponent_score}}
-                                    <div class="text-2xl bg-white  w-[50px] h-[50px] flex items-center justify-center ml-4">{{opponent_score}}</div>
-                                {{/if}}
-                                    <span class="text-2xl ml-4">{{school_name}}</span>
-                                    {{if !opponent_score}}
-                                    <p class="ml-2">Pending Score</p>
-                                {{/if}}
-                            </div>
-                        {{/opponent}}
-                        
-                    </div>
-                {{/games}}
-            </div>
-        {{/if}}
-
-        <div class="max-w-2xl mt-4 md:text-xl">{{content}}</div>
+        <div class="max-w-2xl mt-4 md:text-xl"> {{content}}</div>
 
 
     </div>
-
 
     
     
