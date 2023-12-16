@@ -13,12 +13,12 @@
 {{/if}}
 
 {{partial:team_page_section}}
-    {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
+    {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" paginate="1"}}
         {{team}}
         {{if team == "jv"}}
-            <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} JV Roster </h1>
+            <h1 class="text-3xl pb-4 border-b border-slate-300">{{year}} {{gender | ucfirst}} JV Roster </h1>
         {{else}}
-            <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Roster</h1>
+            <h1 class="text-3xl pb-4 border-b border-slate-300">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Roster</h1>
         {{/if}}
             {{ if players | is_empty }}
                 <p>Sorry no roster available at this time.</p>
@@ -27,6 +27,62 @@
                     {{partial:roster_page_player}}
                 {{/players}}
             {{/if}}
+
+            {{ paginate }}
+            <ul class="pagination flex items-center gap-4 my-2 justify-center">
+                {{ if prev_page }}
+                    <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ prev_page }}">&laquo;</a></li>
+                {{ else }}
+                    <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full invisible"><span>&laquo;</span></li>
+                {{ /if }}
+
+         
+                {{ links:segments }}
+
+          
+
+                    {{ first }}
+                        {{ if page == current_page }}
+                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-primary-900 rounded-full border"><span>{{ page }}</span></li>
+                        {{ else }}
+                            <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
+                        {{ /if }}
+                    {{ /first }}
+
+                    {{ if slider }}
+                        <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full"><span>...</span></li>
+                    {{ /if }}
+
+                    {{ slider }}
+                        {{ if page == current_page }}
+                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
+                        {{ else }}
+                            <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
+                        {{ /if }}
+                    {{ /slider }}
+
+                    {{ if slider || (!slider && last) }}
+                        <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full"><span>...</span></li>
+                    {{ /if }}
+        
+                    {{ last }}
+                        {{ if page == current_page }}
+                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
+                        {{ else }}
+                            <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
+                        {{ /if }}
+                    {{ /last }}
+
+                {{ /links:segments }}
+
+                {{ if next_page }}
+                    <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ next_page }}">&raquo;</a></li>
+                {{ else }}
+                    <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full invisible"><span>&raquo;</span></li>
+                {{ /if }}
+            </ul>
+        {{ /paginate }}
+
         {{/team}}
     {{/collection:teams}}
 {{/partial:team_page_section}}

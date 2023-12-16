@@ -18,9 +18,9 @@
         {{if team}}
             {{team}}
             {{if team == "jv"}}
-                <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} JV Stats </h1>
+                <h1 class="text-3xl pb-4 border-b border-slate-300">{{year}} {{gender | ucfirst}} JV Stats </h1>
             {{else}}
-                <h1 class="text-3xl mb-4">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Stats </h1>
+                <h1 class="text-3xl pb-4 border-b border-slate-300">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Stats </h1>
             {{/if}}
 
                 {{if games| is_empty}}

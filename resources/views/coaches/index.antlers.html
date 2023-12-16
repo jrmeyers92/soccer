@@ -12,21 +12,21 @@
             </tr>
 
             {{collection:coaches active:is="true" head_coach:is="true"}}
-            <tr class="border-b border-gray-300">
-                <td class="px-3 border-r border-gray-300 text-blue-600 underline"><a href="/coaches/{{slug}}">{{title}}</a></td>
-                <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300">{{position}}</td>
-                <td class="px-3  py-1 capitalize border-r border-gray-300 text-blue-600 underline"><a href="mailto:{{email}}">{{email}}</a></td>
-                <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300">{{phone_number}}</td>
-            </tr>
+                <tr class="border-b border-gray-300 hover:bg-gray-100 duration-150">
+                    <td class="px-3 border-r border-gray-300 text-blue-600 underline"><a href="/coaches/{{slug}}">{{title}}</a></td>
+                    <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300 font-extralight">{{position}}</td>
+                    <td class="px-3  py-1 capitalize border-r border-gray-300 text-blue-600 underline font-extralight"><a href="mailto:{{email}}">{{email}}</a></td>
+                    <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300 font-extralight">{{phone_number}}</td>
+                </tr>
             {{/collection:coaches}}
 
             {{collection:coaches active:is="true" head_coach:isnt="true"}}
-            <tr class="border-b border-gray-300">
-                <td class="px-3 border-r border-gray-300 text-blue-600 underline"><a href="/coaches/{{slug}}">{{title}}</a></td>
-                <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300">{{position}}</td>
-                <td class="px-3  py-1 capitalize border-r border-gray-300 text-blue-600 underline"><a href="mailto:{{email}}">{{email}}</a></td>
-                <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300">{{phone_number}}</td>
-            </tr>
+                <tr class="border-b border-gray-300 hover:bg-gray-100 duration-150">
+                    <td class="px-3 border-r border-gray-300 text-blue-600 underline"><a href="/coaches/{{slug}}">{{title}}</a></td>
+                    <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300 font-extralight">{{position}}</td>
+                    <td class="px-3  py-1 capitalize border-r border-gray-300 text-blue-600 underline font-extralight"><a href="mailto:{{email}}">{{email}}</a></td>
+                    <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300 font-extralight">{{phone_number}}</td>
+                </tr>
             {{/collection:coaches}}
 
 
