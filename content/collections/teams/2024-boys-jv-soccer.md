@@ -50,6 +50,8 @@ players:
     image: playerimage.jpeg
     type: new_set
     enabled: true
+    goals: 4
+    assists: 2
   -
     id: lq8k3l3z
     first_name: Stevie
@@ -61,6 +63,8 @@ players:
     image: playerimage.jpeg
     type: new_set
     enabled: true
+    goals: 1
+    assists: 5
 updated_by: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42
-updated_at: 1702761338
+updated_at: 1702764335
 ---

@@ -6,9 +6,10 @@ about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, quis ni
 image: soccercoach4.webp
 active: true
 updated_by: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42
-updated_at: 1702685129
+updated_at: 1702766209
 head_coach: true
 position: 'Head Coach'
 phone_number: 417-838-3980
 email: CoachRogers@glendale.com
+background_image: coachbackground.jpg
 ---

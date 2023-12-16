@@ -1,36 +1,135 @@
-{{slugArray = url | explode('/')}}
+{{slugArray = url | explode('/')}} 
 {{theTeam = slugArray[1] | explode("-")}}
-{{gender = theTeam[0]}}
-{{jvOrVarsity = theTeam[1]}}
-{{finalTeam = gender + "_" + jvOrVarsity | camelize}}
-{{scheduleType = slugArray[2]}}
+{{gender = theTeam[0]}} 
+{{jvOrVarsity = theTeam[1]}} 
+{{finalTeam = gender + "_" + jvOrVarsity | camelize}} 
+{{scheduleType = slugArray[2]}} {{scheduleTeamTitle = ""}} 
 
-{{scheduleTeamTitle = ""}}
-{{if jvOrVarsity == "jv"}}
-    {{scheduleTeamTitle = "JV"}}
-{{else if jvOrVarsity == "varsity"}}
-    {{scheduleTeamTitle = "Varsity"}}
+{{if jvOrVarsity == "jv"}} 
+    {{scheduleTeamTitle = "JV"}} 
+{{else if jvOrVarsity == "varsity"}} 
+    {{scheduleTeamTitle = "Varsity"}} 
 {{/if}}
 
 
+
 {{partial:team_page_section}}
-    {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
-        {{if team}}
-            {{team}}
+    {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" paginate="1"}} 
+        {{team}} 
             {{if team == "jv"}}
                 <h1 class="text-3xl pb-4 border-b border-slate-300">{{year}} {{gender | ucfirst}} JV Stats </h1>
             {{else}}
                 <h1 class="text-3xl pb-4 border-b border-slate-300">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Stats </h1>
             {{/if}}
+            
+            {{ if players | is_empty }}
+                <p>Sorry no stats available at this time.</p>
+            {{else}}
+            
 
-                {{if games| is_empty}}
-                    <p class="p-2">There are no upcoming games at this time.</p>
-                {{else}}
-                    {{games | sort="game_date:desc"}}
-                        {{partial:schedule_page_game}}
-                    {{/games}}
-                {{/if}}
-            {{/team}}
-        {{/if}}     
+                <div class="flex items-center w-full justify-center my-4">
+                    <table class="border border-gray-300 w-full max-w-5xl">
+                        <tr class="border-b border-gray-300 bg-primary-500 text-white font-bold text-xl text-left">
+                            <th class="px-2 py-1 border-r border-white">Number</th>
+                            <th class="px-2 py-1 border-r border-white">Name</th>
+                            <th class="px-2 py-1 border-r border-white">Position</th>
+                            <th class="px-2 py-1 border-r border-white">Goals</th>
+                            <th class="px-2 py-1 border-r border-white">Assists</th>
+                            <th class="px-2 py-1 border-r border-white">Shutouts</th>
+                            <th class="px-2 py-1 border-r border-white">Total</th>
+                        </tr>
+                        {{playerCount = 0}}
+                        {{players}}
+                            {{if goals != 0 || assists != 0 || shutouts != 0}}
+                            {{playerCount = playerCount + 1}}
+                                <tr class="border-b">
+                                    <td class="border-r px-2">{{number}} </td>
+                                    <td class="border-r px-2">{{first_name}} {{last_name}}</td>
+                                    <td class="border-r px-2">
+                                        {{position}}
+                                            {{if position | length != 1}}
+                                                {{if !last}}
+                                                    {{value | ucfirst}} /
+                                                {{else}}
+                                                    {{value | ucfirst}}
+                                                {{/if}}
+                                            {{else}}
+                                                {{value | ucfirst}}
+                                            {{/if}}
+                                        {{/position}}
+                                    </td>
+                                    <td class="border-r px-2">{{goals}} </td>
+                                    <td class="border-r px-2">{{assists}}</td>
+                                    <td class="border-r px-2">{{shutouts}}</td>
+                                    <td>{{goals*2 + assists}}</td>
+                                </tr>
+                            {{/if}}
+
+                            {{if playerCount == 0}}
+                                {{if count == 1}}
+                                    <tr><td colspan="7" class="text-center py-4">Sorry, no stats at this time</td></tr>
+                                {{/if}}
+                            {{/if}}
+
+                        {{/players}}
+                    </table>
+                </div>
+            {{/if}} 
+
+            {{ paginate }}
+            <ul class="pagination flex items-center gap-4 my-2 justify-center">
+                {{ if prev_page }}
+                    <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ prev_page }}">&laquo;</a></li>
+                {{ else }}
+                    <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full invisible"><span>&laquo;</span></li>
+                {{ /if }}
+
+         
+                {{ links:segments }}
+
+          
+
+                    {{ first }}
+                        {{ if page == current_page }}
+                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-primary-900 rounded-full border"><span>{{ page }}</span></li>
+                        {{ else }}
+                            <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
+                        {{ /if }}
+                    {{ /first }}
+
+                    {{ if slider }}
+                        <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full"><span>...</span></li>
+                    {{ /if }}
+
+                    {{ slider }}
+                        {{ if page == current_page }}
+                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
+                        {{ else }}
+                            <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
+                        {{ /if }}
+                    {{ /slider }}
+
+                    {{ if slider || (!slider && last) }}
+                        <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full"><span>...</span></li>
+                    {{ /if }}
+        
+                    {{ last }}
+                        {{ if page == current_page }}
+                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
+                        {{ else }}
+                            <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
+                        {{ /if }}
+                    {{ /last }}
+
+                {{ /links:segments }}
+
+                {{ if next_page }}
+                    <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ next_page }}">&raquo;</a></li>
+                {{ else }}
+                    <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full invisible"><span>&raquo;</span></li>
+                {{ /if }}
+            </ul>
+        {{ /paginate }}
+        {{/team}} 
     {{/collection:teams}}
 {{/partial:team_page_section}}
