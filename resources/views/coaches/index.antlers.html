@@ -1,7 +1,44 @@
 <section class="p-4 bg-white w-full flex items-center justify-center">
     <div class="max-w-7xl">
         <h1 class="text-3xl mb-8 text-center">Coaches</h1>
-        {{collection:coaches active:is="true" head_coach:is="true"}}
+
+        <table class="border border-gray-300 w-full max-w-5xl">
+            <tr class="border-b border-gray-300 bg-primary-500 text-white font-bold text-xl">
+                <th class="border-r border-gray-300 text-left pl-2 py-2">Name</th>
+                <th class="text-left pl-2">Title</th>
+                <th>Email Address</th>
+                <th>Phone</th>
+
+            </tr>
+
+            {{collection:coaches active:is="true" head_coach:is="true"}}
+            <tr class="border-b border-gray-300">
+                <td class="px-3 border-r border-gray-300 text-blue-600 underline"><a href="/coaches/{{slug}}">{{title}}</a></td>
+                <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300">{{position}}</td>
+                <td class="px-3  py-1 capitalize border-r border-gray-300 text-blue-600 underline"><a href="mailto:{{email}}">{{email}}</a></td>
+                <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300">{{phone_number}}</td>
+            </tr>
+            {{/collection:coaches}}
+
+            {{collection:coaches active:is="true" head_coach:isnt="true"}}
+            <tr class="border-b border-gray-300">
+                <td class="px-3 border-r border-gray-300 text-blue-600 underline"><a href="/coaches/{{slug}}">{{title}}</a></td>
+                <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300">{{position}}</td>
+                <td class="px-3  py-1 capitalize border-r border-gray-300 text-blue-600 underline"><a href="mailto:{{email}}">{{email}}</a></td>
+                <td class="px-3 text-primary-900 py-1 capitalize border-r border-gray-300">{{phone_number}}</td>
+            </tr>
+            {{/collection:coaches}}
+
+
+           
+
+
+
+           
+        </table>
+
+
+        {{# {{collection:coaches active:is="true" head_coach:is="true"}}
             <article class="flex flex-col lg:flex-row gap-4 lg:gap-8 w-full items-center justify-center my-12">
                 <div class="lg:self-start relative">
                     <img src="{{ glide:image width="500" }}"" alt="{{title}}" class="rounded-md shadow-sm brightness-50"/>
@@ -26,7 +63,7 @@
                 </div>
         
             </article>
-        {{/collection:coaches}}
+        {{/collection:coaches}} #}}
     </div>
 </section>
 
