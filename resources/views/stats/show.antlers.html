@@ -27,7 +27,7 @@
             {{else}}
             
 
-                <div class="flex items-center w-full justify-center my-4">
+                <div class="flex md:items-center w-full md:justify-center my-4 overflow-x-auto">
                     <table class="border border-gray-300 w-full max-w-5xl">
                         <tr class="border-b border-gray-300 bg-primary-500 text-white font-bold text-xl text-left">
                             <th class="px-2 py-1 border-r border-white">Number</th>
@@ -91,31 +91,31 @@
 
                     {{ first }}
                         {{ if page == current_page }}
-                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-primary-900 rounded-full border"><span>{{ page }}</span></li>
+                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-primary-900 rounded-full border">{{ page }}</li>
                         {{ else }}
                             <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
                         {{ /if }}
                     {{ /first }}
 
                     {{ if slider }}
-                        <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full"><span>...</span></li>
+                        <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full">...</li>
                     {{ /if }}
 
                     {{ slider }}
                         {{ if page == current_page }}
-                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
+                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border">{{ page }}</li>
                         {{ else }}
                             <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
                         {{ /if }}
                     {{ /slider }}
 
                     {{ if slider || (!slider && last) }}
-                        <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full"><span>...</span></li>
+                        <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full">...</li>
                     {{ /if }}
         
                     {{ last }}
                         {{ if page == current_page }}
-                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
+                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border">{{ page }}</li>
                         {{ else }}
                             <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
                         {{ /if }}
@@ -126,7 +126,7 @@
                 {{ if next_page }}
                     <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ next_page }}">&raquo;</a></li>
                 {{ else }}
-                    <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full invisible"><span>&raquo;</span></li>
+                    <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full invisible">&raquo;</li>
                 {{ /if }}
             </ul>
         {{ /paginate }}

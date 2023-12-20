@@ -35,6 +35,10 @@
                         {{games | sort="game_date:desc"}}
                             {{if game_date | is_future || game_date | is_today}}
                                 {{partial:scheduleWidgetGame}}
+                            {{else}}
+                                {{if count == 1}}
+                                    <p class="p-2">There are no upcoming games at this time.</p>
+                                {{/if}}
                             {{/if}}
                         {{/games}}
                     {{/if}}
@@ -45,6 +49,10 @@
                         {{games | sort="game_date:asc"}}
                             {{if game_date | is_past && game_date | is_today == false}}
                                 {{partial:scheduleWidgetGame}}
+                            {{else}}
+                                {{if count == 1}}
+                                    <p class="p-2">Sorry, no results at this time.</p>
+                                {{/if}}
                             {{/if}}
                         {{/games}}
                     {{/if}}
