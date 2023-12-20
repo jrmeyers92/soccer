@@ -23,7 +23,7 @@
             {{/if}}
 
             {{if games| is_empty}}
-                <p class="p-2">There are no upcoming games at this time.</p>
+                <p class="p-2">Sorry, there are no upcoming games at this time.</p>
             {{else}}
                 {{games | sort="game_date:desc"}}
                     {{partial:schedule_page_game}}
@@ -40,9 +40,6 @@
 
          
                 {{ links:segments }}
-
-          
-
                     {{ first }}
                         {{ if page == current_page }}
                             <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-primary-900 rounded-full border"><span>{{ page }}</span></li>
