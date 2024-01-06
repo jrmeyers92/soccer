@@ -31,17 +31,17 @@
                 <li
                     class="px-2 md:px-4 py-4 hover:bg-white hover:text-primary-500 h-full flex items-center duration-150"
                 >
-                    <a class="" href="{{config:app:url}}news">News</a>
+                    <a class="" href="{{config:app:url}}/news">News</a>
                 </li>
                 <li
                     class="px-2 md:px-4 py-4 hover:bg-white hover:text-primary-500 h-full flex items-center duration-150"
                 >
-                    <a class="" href="{{config:app:url}}coaches">Coaches</a>
+                    <a class="" href="{{config:app:url}}/coaches">Coaches</a>
                 </li>
                 <li
                     class="px-2 md:px-4 py-4 hover:bg-white hover:text-primary-500 h-full flex items-center duration-150"
                 >
-                    <a class="" href="{{config:app:url}}sponsers">Sponsers</a>
+                    <a class="" href="{{config:app:url}}/sponsers">Sponsers</a>
                 </li>
             </ul>
         </div>
@@ -101,21 +101,21 @@
             <li class="p-2">
                 <a
                     class="hover:underline pb-2 {{if slugArray[2] == "schedule"}} underline font-semibold cursor-default {{/if}}"
-                    href="{{config:app:url}}{{if team}}{{team}}{{else}}boys-jv{{/if}}/schedule"
+                    href="{{config:app:url}}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/schedule"
                     >Schedule</a
                 >
             </li>
             <li class="p-2">
                 <a
                     class="hover:underline pb-2 {{if slugArray[2] == "roster"}} underline font-semibold cursor-default {{/if}}"
-                    href="{{config:app:url}}{{if team}}{{team}}{{else}}boys-jv{{/if}}/roster"
+                    href="{{config:app:url}}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/roster"
                     >Roster</a
                 >
             </li>
             <li class="p-2">
                 <a
                     class="hover:underline pb-2 {{if slugArray[2] == "stats"}} underline font-semibold cursor-default {{/if}}"
-                    href="{{config:app:url}}{{if team}}{{team}}{{else}}boys-jv{{/if}}/stats"
+                    href="{{config:app:url}}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/stats"
                     >Stats</a
                 >
             </li>
