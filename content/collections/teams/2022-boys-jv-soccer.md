@@ -6,12 +6,12 @@ gender: boys
 year: 2022
 sport: soccer
 team: jv
-updated_by: dcb3e717-ab7c-4904-ad16-fd20b558ff69
-updated_at: 1701489523
+updated_by: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42
+updated_at: 1705542645
 games:
   -
     id: lpifrk64
-    game_date: '2023-09-06'
+    game_date: '2023-09-05'
     time: '18:00'
     location: home
     opponent: 39c41e15-7758-4b70-9205-24dcd78693a2
