@@ -4,6 +4,7 @@
     const pill = document.getElementById("pill");
     const teamSelect = document.getElementById("teamSelect");
 
+	
     const setPill = (team) => {
         let teamTextArray = team.split("-");
 
