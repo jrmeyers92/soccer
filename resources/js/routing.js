@@ -69,7 +69,7 @@
                     "scheduleWidgetValue"
                 );
 
-                schedulePath = scheduleWidgetValue == "Upcoming" ? "u" : "r";
+                schedulePath = scheduleWidgetValue == "upcoming" ? "u" : "r";
 
                 window.location.href = `https://soccerwebsitedemo.com/${localStorage.getItem(
                     "team"
