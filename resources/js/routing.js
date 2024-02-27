@@ -36,7 +36,7 @@
     // set dropdown item/option to match pathname
     if (teams.includes(window.location.pathname.split("/")[1])) {
         let selectedDiv = teamSelect.querySelector(
-            `.${window.location.pathname.split("/")[1]}`
+            `.${window.location.pathname.split("/")[1]}`,
         );
         selectedDiv.style.color = "#00A3F7";
         selectedDiv.querySelector("div").classList.remove("hidden");
@@ -44,7 +44,7 @@
         setPill(window.location.pathname.split("/")[1]);
     } else if (window.localStorage.getItem("team")) {
         let selectedDiv = teamSelect.querySelector(
-            `.${window.localStorage.getItem("team")}`
+            `.${window.localStorage.getItem("team")}`,
         );
         selectedDiv.style.color = "#00A3F7";
         selectedDiv.querySelector("div").classList.remove("hidden");
@@ -66,17 +66,17 @@
         if (window.localStorage.getItem("team")) {
             if (localStorage.getItem("scheduleWidgetValue")) {
                 let scheduleWidgetValue = window.localStorage.getItem(
-                    "scheduleWidgetValue"
+                    "scheduleWidgetValue",
                 );
 
                 schedulePath = scheduleWidgetValue == "upcoming" ? "u" : "r";
 
                 window.location.href = `http://soccer.test/${localStorage.getItem(
-                    "team"
+                    "team",
                 )}/${schedulePath}`;
             } else {
                 window.location.href = `http://soccer.test/${localStorage.getItem(
-                    "team"
+                    "team",
                 )}/u`;
             }
         } else {
@@ -98,7 +98,7 @@
             console.log(e.target.dataset.team);
             teamSelect.classList.add("hidden");
             let selectedTeamDiv = teamSelect.querySelector(
-                `.${e.target.dataset.team}`
+                `.${e.target.dataset.team}`,
             );
 
             let teamOptions = document.querySelectorAll(".teamSelectItem");
@@ -114,7 +114,7 @@
 
     // event listener when schedule widget buttons are pushed
     let scheduleSelectorBtns = document.querySelectorAll(
-        ".scheduleSelectorBtn"
+        ".scheduleSelectorBtn",
     );
     scheduleSelectorBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -124,7 +124,7 @@
             localStorage.setItem("scheduleWidgetValue", value);
             let pathArray = window.location.pathname.split("/");
             let team = pathArray[1];
-            window.location.href = `http://soccer.test/${team}/${schedulePath}#upcoming`;
+            window.location.href = `http://soccer.test/${team}/${schedulePath}`;
         });
     });
 })();

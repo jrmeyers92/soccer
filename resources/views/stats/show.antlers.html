@@ -13,7 +13,7 @@
 
 
 
-{{partial:team_page_section}}
+
     {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" paginate="1"}} 
         {{team}} 
             {{if team == "jv"}}
@@ -132,4 +132,4 @@
         {{ /paginate }}
         {{/team}} 
     {{/collection:teams}}
-{{/partial:team_page_section}}
+

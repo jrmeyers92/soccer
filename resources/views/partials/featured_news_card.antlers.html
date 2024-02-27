@@ -1,20 +1,23 @@
 <article
-    class="mainNewsArticle relative w-full h-[300px] sm:h-[350px] md:h-[500px] lg:h-[600px] bg-no-repeat bg-cover text-white"
+    class="mainNewsArticle relative h-[300px] w-full bg-cover bg-no-repeat text-white sm:h-[350px] md:h-[500px] lg:h-[600px]"
 >
     <div
-        class="absolute bottom-4 flex flex-col items-center justify-center sm:flex-row sm:justify-between sm:items-end w-full px-2"
+        class="absolute bottom-4 flex w-full flex-col items-center justify-center px-2 sm:flex-row sm:items-end sm:justify-between"
     >
-        <div class="flex flex-col gap-2 mb-4 sm:mb-0">
-            <span class="font-light text-sm sm:text-xl">{{publish_date}}</span>
+        <div class="mb-4 flex flex-col gap-2 sm:mb-0">
+            <span class="text-sm font-light sm:text-xl">
+                {{ publish_date }}
+            </span>
             <h2 class="text-xl sm:text-3xl md:text-4xl">
-                <a href="{{url}}" class="hover:underline">{{title}}</a>
+                <a href="{{ url }}" class="hover:underline">{{ title }}</a>
             </h2>
         </div>
         <a
-            href="/news/{{slug}}"
-            class="bg-primary-500 px-4 py-2 md:text-xl rounded-md hover:bg-primary-600 duration-150 whitespace-nowrap"
-            >Read Article</a
+            href="/news/{{ slug }}"
+            class="whitespace-nowrap rounded-md bg-primary-500 px-4 py-2 shadow-md duration-150 hover:bg-primary-600 md:text-xl"
         >
+            Read Article
+        </a>
     </div>
 </article>
 
@@ -25,6 +28,6 @@
                 rgba(245, 70, 66, 0.75),
                 rgba(8, 83, 156, 0.75)
             ),
-            url("{{cover_photo}}");
+            url("{{ cover_photo }}");
     }
 </style>

@@ -1,35 +1,38 @@
 <footer
-    class="bg-primary min-h-[200px] text-white flex flex-col items-center px-2 sm:px-4 justify-between w-full mt-auto"
+    class="mt-auto flex min-h-[200px] w-full flex-col items-center justify-between bg-primary px-2 text-white sm:px-4"
 >
     <div
-        class="flex flex-col md:flex-row justify-between w-full items-center h-full"
+        class="flex h-full w-full flex-col items-center justify-between md:flex-row"
     >
-        <div class="sm:whitespace-nowrap md:pr-8 lg:pr-12 mt-4 md:mt-0">
+        <div class="mt-4 sm:whitespace-nowrap md:mt-0 md:pr-8 lg:pr-12">
             <p class="">
-                &#169; {{now | format="Y"}} {{site_data:school_name}} High
-                School Athletics
+                &#169; {{ now |  format="Y" }} {{ site_data:school_name }}
+                High School Athletics
             </p>
             <p>
-                {{site_data:street_address}}, {{site_data:school_city}},
-                {{site_data:school_state}} {{site_data:zip_code}}
+                {{ site_data:street_address }}
+                , {{ site_data:school_city }},
+                {{ site_data:school_state }}
+                {{ site_data:zip_code }}
             </p>
         </div>
-        <div class="flex flex-wrap items-center justify-center flex-wrap my-12">
-            {{site_data:footer_logos}}
-            <a href="{{company_url}}" target="_blank"
-                ><img
-                    src="{{company_logo}}"
-                    class="h-[50px] mx-2"
-                    alt="{{alt || title}}"
-            /></a>
-            {{/site_data:footer_logos}}
+        <div class="my-12 flex flex-wrap items-center justify-center">
+            {{ site_data:footer_logos }}
+                <a href="{{ company_url }}" target="_blank">
+                    <img
+                        src="{{ company_logo }}"
+                        class="mx-2 h-[50px]"
+                        alt="{{ alt || title }}"
+                    />
+                </a>
+            {{ /site_data:footer_logos }}
         </div>
     </div>
 
-    <p class="mx-auto text-center pb-4 block w-full">
+    <p class="mx-auto block w-full pb-4 text-center">
         Site created and managed by
-        <a href="#" class="border-b hover:text-gray-200 duration-150"
-            >Jake Meyers Development</a
-        >
+        <a href="#" class="border-b duration-150 hover:text-gray-200">
+            Jake Meyers Development
+        </a>
     </p>
 </footer>

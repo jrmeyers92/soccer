@@ -10,44 +10,46 @@ export default {
 
     theme: {
         fontFamily: {
-            sans: [
-                "Lato", "sans-serif"
-            ],
-            sanserif: [
-                "Roboto Slab", "serif"
-            ]
-          },
+            sans: ["Lato", "sans-serif"],
+            sanserif: ["Roboto Slab", "serif"],
+        },
+        container: {
+            center: true,
+            padding: "2rem",
+            screens: {
+                "2xl": "1400px",
+            },
+        },
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: "#0088CE",
-                    50: "#87D6FF",
-                    100: "#72CFFF",
-                    200: "#49C1FF",
-                    300: "#21B3FF",
-                    400: "#00A3F7",
-                    500: "#0088CE",
-                    600: "#006396",
-                    700: "#003E5E",
-                    800: "#001926",
+                    DEFAULT: "#58A4B0",
+                    50: "#D5E8EB",
+                    100: "#C7E0E4",
+                    200: "#ABD1D7",
+                    300: "#8FC2CA",
+                    400: "#74B3BD",
+                    500: "#58A4B0",
+                    600: "#43838D",
+                    700: "#316067",
+                    800: "#1F3C41",
+                    900: "#0D191B",
+                    950: "#040708",
+                },
+                secondary: {
+                    DEFAULT: "#373F51",
+                    50: "#8E99B2",
+                    100: "#818EAA",
+                    200: "#697899",
+                    300: "#586582",
+                    400: "#485269",
+                    500: "#373F51",
+                    600: "#202530",
+                    700: "#0A0B0E",
+                    800: "#000000",
                     900: "#000000",
                     950: "#000000",
                 },
-                secondary: {
-                    DEFAULT: "#FE2301",
-                    50: "#FFC1B8",
-                    100: "#FFB0A4",
-                    200: "#FE8D7B",
-                    300: "#FE6952",
-                    400: "#FE462A",
-                    500: "#FE2301",
-                    600: "#C61B01",
-                    700: "#8E1401",
-                    800: "#560C00",
-                    900: "#1E0400",
-                    950: "#030000",
-                },
-                "bg-primary": "#02A0EE",
             },
         },
         screens: {
