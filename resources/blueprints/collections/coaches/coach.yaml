@@ -21,14 +21,12 @@ tabs:
               hide_display: false
               width: 50
           -
-            handle: position
+            handle: head_coach
             field:
-              input_type: text
-              antlers: false
-              type: text
-              display: Position
-              icon: text
-              instructions: 'Ex. Head Coach, Assistant Coach, Head JV Boys Coach, etc.'
+              default: false
+              type: toggle
+              display: 'Head Coach'
+              icon: toggle
               width: 50
               listable: hidden
               instructions_position: above
@@ -102,19 +100,6 @@ tabs:
               hide_display: false
               max_files: 1
           -
-            handle: head_coach
-            field:
-              default: false
-              type: toggle
-              display: 'Head Coach'
-              icon: toggle
-              width: 50
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-          -
             handle: active
             field:
               default: false
@@ -151,6 +136,23 @@ tabs:
               display: Email
               icon: text
               width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: team
+            field:
+              options:
+                'boys jv': 'Boys JV'
+                'boys varsity': 'Boys Varsity'
+                'girls jv': 'Girls JV'
+                'girls varsity': 'Girls Varsity'
+              inline: false
+              type: checkboxes
+              display: Team
+              icon: checkboxes
               listable: hidden
               instructions_position: above
               visibility: visible

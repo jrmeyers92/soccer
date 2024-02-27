@@ -9,6 +9,14 @@ export default {
     ],
 
     theme: {
+        fontFamily: {
+            sans: [
+                "Lato", "sans-serif"
+            ],
+            sanserif: [
+                "Roboto Slab", "serif"
+            ]
+          },
         extend: {
             colors: {
                 primary: {

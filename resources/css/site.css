@@ -2,6 +2,15 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+
+h1 {
+   font-family: "Roboto Slab", serif;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
 /* This is all you. */
 .scheduleWidgetGame:nth-child(7),
 .scheduleWidgetGame:nth-child(8),

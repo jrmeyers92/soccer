@@ -2,3 +2,6 @@ name: 'Jake Meyers'
 super: true
 id: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42
 password_hash: $2y$10$9heinYAyM2YcIqU1Ehxkm.f.r3fO3jeZOwJeGT77u.G2su5vKljcm
+preferences:
+  start_page: collections/teams
+  nav: {  }

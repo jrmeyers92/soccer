@@ -6,7 +6,7 @@ about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, quis ni
 image: coachprofile.jpg
 active: true
 updated_by: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42
-updated_at: 1705538647
+updated_at: 1709002500
 position: 'Assistant Coach'
 head_coach: false
 phone_number: 314-223-8843

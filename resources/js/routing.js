@@ -4,7 +4,6 @@
     const pill = document.getElementById("pill");
     const teamSelect = document.getElementById("teamSelect");
 
-	
     const setPill = (team) => {
         let teamTextArray = team.split("-");
 
@@ -62,7 +61,7 @@
     });
 
     // reroute page if land on homepage with no team path
-    if (window.location.href == "https://soccerwebsitedemo.com/") {
+    if (window.location.href == "http://soccer.test/") {
         let schedulePath;
         if (window.localStorage.getItem("team")) {
             if (localStorage.getItem("scheduleWidgetValue")) {
@@ -72,16 +71,16 @@
 
                 schedulePath = scheduleWidgetValue == "upcoming" ? "u" : "r";
 
-                window.location.href = `https://soccerwebsitedemo.com/${localStorage.getItem(
+                window.location.href = `http://soccer.test/${localStorage.getItem(
                     "team"
                 )}/${schedulePath}`;
             } else {
-                window.location.href = `https://soccerwebsitedemo.com/${localStorage.getItem(
+                window.location.href = `http://soccer.test/${localStorage.getItem(
                     "team"
                 )}/u`;
             }
         } else {
-            window.location.href = "https://soccerwebsitedemo.com/boys-jv/u";
+            window.location.href = "http://soccer.test/boys-jv/u";
         }
     }
 
@@ -93,7 +92,7 @@
         if (!pagesNotTeamDependent.includes(pathArray[1])) {
             pathArray[1] = e.target.dataset.team;
             let finishedPath = pathArray.join("/");
-            window.location.href = `https://soccerwebsitedemo.com${finishedPath}`;
+            window.location.href = `http://soccer.test${finishedPath}`;
         } else {
             setPill(e.target.dataset.team);
             console.log(e.target.dataset.team);
@@ -125,7 +124,7 @@
             localStorage.setItem("scheduleWidgetValue", value);
             let pathArray = window.location.pathname.split("/");
             let team = pathArray[1];
-            window.location.href = `https://soccerwebsitedemo.com/${team}/${schedulePath}`;
+            window.location.href = `http://soccer.test/${team}/${schedulePath}#upcoming`;
         });
     });
 })();

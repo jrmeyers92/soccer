@@ -15,14 +15,14 @@
 {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
     {{if team}}
         {{team}}
-            <section class="mx-auto flex flex-col w-full  bg-white self-baseline">
-
-                {{if team == "jv"}}
-                    {{partial:section_heading title="{year} {gender | ucfirst} {team | upper} Schedule"}}
-                {{else}}
-                    {{partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Schedule"}}
-                {{/if}}
-
+            <section class="mx-auto flex flex-col w-full  bg-white self-baseline" >
+ 
+                    {{if team == "jv"}}
+                        {{partial:section_heading title="{year} {gender | ucfirst} {team | upper} Schedule"}}
+                    {{else}}
+                        {{partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Schedule"}}
+                    {{/if}}
+    
                 <div class="flex border-b border-slate-300">
                     <button class="w-full py-2 px-4 scheduleSelectorBtn border-r border-slate-300 {{if scheduleType == "u"}} border-b-2 border-b-primary-500 font-bold {{/if}} " id="upcoming">Upcoming</button>
                     <button class="w-full py-2 px-4 scheduleSelectorBtn {{if scheduleType == "r"}} border-b-2 border-b-primary-500 font-bold {{/if}} " id="results" >Results</button>
