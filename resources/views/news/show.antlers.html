@@ -1,19 +1,58 @@
-<article class="flex flex-col items-center py-8 articleShow font-robotoMono bg-white px-2">
-    <div class="">
-        <div class="max-w-lg">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl mb-2">{{title}}</h1>
-            <h2 class="mb-4 text-xl md:text-2xl lg:text-3xl">{{subtitle}}</h2>
-            <a class="inline-flex w-auto text-md md:text-xl items-center justify-center border border-primary-500 text-primary-800 px-2 mb-4 hover:bg-primary-600 hover:text-white duration-150" href="mailto:?subject={{title}}&body=Check out the latest news article about {{data:school_name}}, http://soccer2.test{{url}}"><span class="mr-1">share </span><ion-icon name="share-alt"></ion-icon></a>
+<article
+    class="articleShow font-robotoMono flex flex-col items-center bg-white py-8"
+>
+    <div class="relative mb-4 w-full">
+        <img
+            src="{{ glide src="{{cover_photo}}" width="3000" height="1000" }}"
+            alt="{{ alt }}"
+            class="brightness-50"
+        />
+        <div
+            class="justify-center{{if cover_photo}} text-white absolute top-1/2 -translate-y-1/2 {{/if}} mx-auto flex w-full flex-col items-center"
+        >
+            <h1 class="mb-2 max-w-3xl text-2xl sm:text-3xl md:text-4xl">
+                {{ title }}
+            </h1>
+            <h2 class="max-w-3xl text-xl md:text-2xl lg:text-3xl">
+                {{ subtitle }}
+            </h2>
         </div>
-      <img src="{{ glide src="{{cover_photo}}" width="800" height="300" }}" alt="{{alt}}"> 
-
-        <div class="max-w-2xl mt-4 md:text-xl"> {{content}}</div>
-
-
     </div>
+    <div class="">
+        <div class="mb-4 mt-4 max-w-3xl md:text-xl">{{ content }}</div>
+        <div class="max-w-3xl">
+            <!-- <a
+                class="text-md mb-4 inline-flex w-auto items-center justify-center rounded-md border border-primary-500 px-2 text-primary-500 text-primary-800 duration-150 hover:bg-primary-600 hover:text-white md:text-xl"
+                href="mailto:?subject={{ title }}&body=Check out the latest news article about {{ data:school_name }}, http://soccer2.test{{ url }}"
+            >
+                <span class="mr-1">share</span>
+                <ion-icon name="share-alt"></ion-icon>
+            </a> -->
 
-    
-    
-   
+            <div class="flex gap-2 uppercase">
+                <!-- <a href="" class="bg-[#316FF6] px-4 py-2 text-white">
+                    Facebook
+                    <i class="fa-brands fa-facebook-f ml-2"></i>
+                </a>
+                <a href="" class="bg-primary-500 px-4 py-2 text-white">
+                    <i class="fa-regular fa-envelope ml-2"></i>
+                    Email
+                </a> -->
+
+                <!-- <iframe
+                    src="https://www.facebook.com/plugins/share_button.php?href={{ current_url }}&layout&size&width=77&height=20&appId"
+                    width="100"
+                    height="40"
+                    style="
+                        color:white
+                        overflow: hidden;
+                    "
+                    scrolling="no"
+                    frameborder="0"
+                    allowfullscreen="true"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                ></iframe> -->
+            </div>
+        </div>
+    </div>
 </article>
-

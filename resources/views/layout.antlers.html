@@ -5,6 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <meta property="og:url" content="{{ current_url }}" />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:title"
+            content=" {{ site_data:school_city }}, {{ site_data:school_state }}'s
+        {{ site_data:school_name }} {{ site_data:mascot }} -
+        {{ site_data:school_name }} Soccer"
+        />
+        <meta
+            property="og:description"
+            content="{{ site_data:school_city }}, {{ site_data:school_state }}'s {{ site_data:school_name }} {{ site_data:mascot }} - {{ site_data:school_name }} Soccer"
+        />
+        <meta property="og:image" content="{{ site_data:logo }}" />
+
         <title>
             {{ site_data:school_city }}, {{ site_data:school_state }}'s
             {{ site_data:school_name }} {{ site_data:mascot }} -

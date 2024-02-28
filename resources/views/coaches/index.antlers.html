@@ -8,7 +8,7 @@
             {{ collection:coaches active:is="true" head_coach:is="true" }}
                 <a
                     href="/coaches/{{ slug }}"
-                    class="flex flex-col overflow-clip border border-slate-300 duration-150"
+                    class="flex flex-col overflow-clip border border-slate-300 shadow-md duration-200 hover:scale-[99%] hover:shadow-sm"
                 >
                     {{ if image }}
                         <img
@@ -38,7 +38,7 @@
             {{ collection:coaches active:is="true" head_coach:isnt="true" }}
                 <a
                     href="/coaches/{{ slug }}"
-                    class="flex flex-col overflow-clip border border-slate-300 duration-150"
+                    class="flex flex-col overflow-clip border border-slate-300 shadow-md duration-150 duration-200 hover:scale-[99%] hover:shadow-sm"
                 >
                     {{ if image }}
                         <img

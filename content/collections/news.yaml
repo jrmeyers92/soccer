@@ -1,6 +1,6 @@
 title: News
 template: news/show
-layout: layout
+layout: fullWidthLayout
 revisions: false
 route: '/news/{slug}'
 sort_dir: asc
