@@ -2,16 +2,13 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
 h1 {
-   font-family: "Roboto Slab", serif;
+    font-family: "Roboto Slab", serif;
 }
 
 body {
     scroll-behavior: smooth;
 }
-
-
 
 /* This is all you. */
 .scheduleWidgetGame:nth-child(7),
@@ -56,4 +53,12 @@ body {
 .scheduleWidgetGame:nth-child(46),
 .scheduleWidgetGame:nth-child(47) {
     @apply hidden;
+}
+
+#lightboxElement {
+    @apply fixed top-0 z-10 hidden h-full w-full items-center justify-center bg-black/80;
+
+    img {
+        @apply max-h-[80%] max-w-[90%] border-2 border-white bg-black p-2;
+    }
 }

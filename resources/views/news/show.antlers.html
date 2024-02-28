@@ -18,41 +18,16 @@
             </h2>
         </div>
     </div>
-    <div class="">
-        <div class="mb-4 mt-4 max-w-3xl md:text-xl">{{ content }}</div>
-        <div class="max-w-3xl">
-            <!-- <a
-                class="text-md mb-4 inline-flex w-auto items-center justify-center rounded-md border border-primary-500 px-2 text-primary-500 text-primary-800 duration-150 hover:bg-primary-600 hover:text-white md:text-xl"
-                href="mailto:?subject={{ title }}&body=Check out the latest news article about {{ data:school_name }}, http://soccer2.test{{ url }}"
-            >
-                <span class="mr-1">share</span>
-                <ion-icon name="share-alt"></ion-icon>
-            </a> -->
-
-            <div class="flex gap-2 uppercase">
-                <!-- <a href="" class="bg-[#316FF6] px-4 py-2 text-white">
-                    Facebook
-                    <i class="fa-brands fa-facebook-f ml-2"></i>
-                </a>
-                <a href="" class="bg-primary-500 px-4 py-2 text-white">
-                    <i class="fa-regular fa-envelope ml-2"></i>
-                    Email
-                </a> -->
-
-                <!-- <iframe
-                    src="https://www.facebook.com/plugins/share_button.php?href={{ current_url }}&layout&size&width=77&height=20&appId"
-                    width="100"
-                    height="40"
-                    style="
-                        color:white
-                        overflow: hidden;
-                    "
-                    scrolling="no"
-                    frameborder="0"
-                    allowfullscreen="true"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                ></iframe> -->
-            </div>
+    <div class="max-w-3xl">
+        <div class="mb-4 mt-4 md:text-xl">{{ content }}</div>
+        <div class="grid grid-cols-4 flex-wrap gap-4" id="lightbox">
+            {{ additional_photos }}
+                <img
+                    src="{{ glide src="{{url}}" width="1000" height="1000" }}"
+                    alt="{{ alt }}"
+                    class="cursor-pointer brightness-50"
+                />
+            {{ /additional_photos }}
         </div>
     </div>
 </article>

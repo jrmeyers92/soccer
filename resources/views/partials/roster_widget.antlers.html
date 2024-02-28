@@ -1,58 +1,75 @@
-{{slugArray = url | explode('/')}}
-{{theTeam = slugArray[1] | explode("-")}}
-{{gender = theTeam[0]}}
-{{jvOrVarsity = theTeam[1]}}
-{{finalTeam = gender + "_" + jvOrVarsity | camelize}}
-{{scheduleType = slugArray[2]}}
-
-{{scheduleTeamTitle = ""}}
-{{if jvOrVarsity == "jv"}}
-    {{scheduleTeamTitle = "JV"}}
-{{else if jvOrVarsity == "varsity"}}
-    {{scheduleTeamTitle = "Varsity"}}
-{{/if}}
-
-<section class="mx-auto flex flex-col w-full  bg-white self-baseline mt-4">
-{{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
-{{team}}
-    {{if team == "jv"}}
-        {{partial:section_heading title="{year} {gender | ucfirst} {team | upper} Roster"}}
-    {{else}}
-        {{partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Roster"}}
-    {{/if}}
-    {{ if players | is_empty }}
-        <p>Sorry no roster available at this time.</p>
-    {{else}}
-        {{players}}
-
-            <div class="flex items-center justify-between md:justify-normal odd:bg-gray-100  p-4 border-t border-gray-300">
-                <div class="flex items-center">
-                    {{ if image}}
-                        <img src="{{ glide src="{image}" w="100" h="120" }}" alt="{alt}" class="hidden sm:block lg:hidden">
-                    {{/if}}
-                    <div class="flex flex-col ml-4">
-                        <div class="text-sm font-bold py-1 mb-2 md:mb-4">
-                            {{position}}
-                                {{if position | length != 1}}
-                                    {{if !last}}
-                                        {{value | ucfirst}} /
-                                    {{else}}
-                                        {{value | ucfirst}}
-                                    {{/if}}
-                                {{else}}
-                                    {{value | ucfirst}}
-                                {{/if}}
-                            {{/position}}
+{{ slugArray = url | explode('/') }}
+{{ theTeam = slugArray[1] | explode("-") }}
+{{ gender = theTeam[0] }}
+{{ jvOrVarsity = theTeam[1] }}
+{{ finalTeam = gender + "_" + jvOrVarsity | camelize }}
+{{ scheduleType = slugArray[2] }}
+{{ scheduleTeamTitle = "" }}
+{{ if jvOrVarsity == "jv" }}
+    {{ scheduleTeamTitle = "JV" }}
+{{ else if jvOrVarsity == "varsity" }}
+    {{ scheduleTeamTitle = "Varsity" }}
+{{ /if }}
+<section
+    class="mx-auto mt-4 flex w-full flex-col self-baseline border-b border-l border-r bg-white"
+>
+    {{ collection:teams |  sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1" }}
+        {{ team }}
+            {{ if team == "jv" }}
+                {{ partial:section_heading title="{year} {gender | ucfirst} {team | upper} Roster" }}
+            {{ else }}
+                {{ partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Roster" }}
+            {{ /if }}
+            {{ if players | is_empty }}
+                <p>Sorry no roster available at this time.</p>
+            {{ else }}
+                {{ players }}
+                    <div
+                        class="flex items-center justify-between border-t border-gray-300 p-4 odd:bg-gray-100 md:justify-normal"
+                    >
+                        <div class="flex items-center">
+                            {{ if image }}
+                                <img
+                                    src="{{ glide src="{image}" w="100" h="120" }}"
+                                    alt="{alt}"
+                                    class="hidden sm:block lg:hidden"
+                                />
+                            {{ /if }}
+                            <div class="ml-4 flex flex-col">
+                                <div
+                                    class="mb-2 py-1 text-sm font-bold md:mb-4"
+                                >
+                                    {{ position }}
+                                        {{ if position | length != 1 }}
+                                            {{ if !last }}
+                                                {{ value | ucfirst }}
+                                                /
+                                            {{ else }}
+                                                {{ value | ucfirst }}
+                                            {{ /if }}
+                                        {{ else }}
+                                            {{ value | ucfirst }}
+                                        {{ /if }}
+                                    {{ /position }}
+                                </div>
+                                <div class="flex items-center justify-center">
+                                    <span
+                                        class="md:text-md bg-primary-600 px-2 py-1 text-sm text-white"
+                                    >
+                                        {{ number }}
+                                    </span>
+                                    <span class="ml-2 text-gray-500 md:text-lg">
+                                        {{ first_name }}
+                                        {{ last_name }}
+                                        {{ if captain }}(c){{ /if }}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-center justify-center">
-                            <span class="bg-primary-600 py-1 px-2 text-white text-sm md:text-md">{{number}}</span> <span class="ml-2 md:text-lg text-gray-500">{{first_name}} {{last_name}} {{if captain}} (c) {{/if}} </span>
-                        </div>
+                        <p class="ml-auto italic">{{ grade | ucfirst }}</p>
                     </div>
-                </div>
-                <p class="ml-auto italic">{{grade | ucfirst}}</p>
-            </div>
-        {{/players}}
-    {{/if}}
-{{/team}}
-{{/collection:teams}}
+                {{ /players }}
+            {{ /if }}
+        {{ /team }}
+    {{ /collection:teams }}
 </section>

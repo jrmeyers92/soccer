@@ -10,7 +10,9 @@
 {{ else if jvOrVarsity == "varsity" }}
     {{ scheduleTeamTitle = "Varsity" }}
 {{ /if }}
-<section class="mx-auto mt-4 flex w-full flex-col self-baseline bg-white">
+<section
+    class="mx-auto mt-4 flex w-full flex-col self-baseline border-b border-l border-r bg-white"
+>
     {{ collection:teams |  sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1" }}
         {{ team }}
             {{ if team == "jv" }}
