@@ -1,0 +1,13 @@
+<a
+    href="{{ href }}"
+    class="flex flex-col overflow-clip border border-gray-300 bg-white shadow-md duration-200 hover:scale-[99%] hover:shadow-sm"
+>
+    {{ if image }}
+        <img
+            class="aspect-video w-full overflow-hidden object-cover duration-200 hover:scale-105"
+            src="{{ glide src="{{image}}" width="900" height="600" }}"
+            alt="{{ alt }}"
+        />
+    {{ /if }}
+    {{ slot }}
+</a>

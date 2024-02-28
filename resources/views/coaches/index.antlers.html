@@ -6,17 +6,7 @@
             class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         >
             {{ collection:coaches active:is="true" head_coach:is="true" }}
-                <a
-                    href="/coaches/{{ slug }}"
-                    class="flex flex-col overflow-clip border border-slate-300 shadow-md duration-200 hover:scale-[99%] hover:shadow-sm"
-                >
-                    {{ if image }}
-                        <img
-                            class="aspect-video w-full overflow-hidden object-cover duration-200 hover:scale-105"
-                            src="{{ glide src="{{image}}" width="900" height="600" }}"
-                            alt="{{ alt }}"
-                        />
-                    {{ /if }}
+                {{ partial:card_linkable href="/coaches/{slug}" image="{image}" }}
                     <div class="flex flex-col p-4">
                         <span class="border-gray-300 px-3 text-xl">
                             {{ title }}
@@ -33,20 +23,10 @@
                             {{ phone_number }}
                         </span>
                     </div>
-                </a>
+                {{ /partial:card_linkable }}
             {{ /collection:coaches }}
             {{ collection:coaches active:is="true" head_coach:isnt="true" }}
-                <a
-                    href="/coaches/{{ slug }}"
-                    class="flex flex-col overflow-clip border border-slate-300 shadow-md duration-150 duration-200 hover:scale-[99%] hover:shadow-sm"
-                >
-                    {{ if image }}
-                        <img
-                            class="aspect-video w-full overflow-hidden object-cover duration-200 hover:scale-105"
-                            src="{{ glide src="{{image}}" width="900" height="600" }}"
-                            alt="{{ alt }}"
-                        />
-                    {{ /if }}
+                {{ partial:card_linkable href="/coaches/{slug}" image="{image}" }}
                     <div class="flex flex-col p-4">
                         <span class="border-gray-300 px-3 text-xl">
                             {{ title }}
@@ -63,7 +43,7 @@
                             {{ phone_number }}
                         </span>
                     </div>
-                </a>
+                {{ /partial:card_linkable }}
             {{ /collection:coaches }}
         </div>
     </div>
