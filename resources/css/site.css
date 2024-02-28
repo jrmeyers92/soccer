@@ -62,3 +62,24 @@ body {
         @apply max-h-[80%] max-w-[90%] border-2 border-white bg-black p-2;
     }
 }
+
+div:has(#pillCheckbox:checked) ~ div {
+    display: block;
+}
+
+#pillCheckbox:checked ~ button .fa-chevron-down {
+    display: none;
+}
+
+#pillCheckbox:not(:checked) ~ button .fa-chevron-up {
+    display: none;
+}
+
+#pillCheckbox {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    opacity: 0;
+}

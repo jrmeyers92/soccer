@@ -36,32 +36,70 @@
                     </li>
                 {{ /nav:top_level }}
             </ul>
-
-            <!-- <ul
-                class="ml-auto flex items-center justify-center self-stretch text-sm font-bold xs:text-base sm:text-xl md:text-2xl"
-            >
-                <li
-                    class="flex h-full items-center px-2 py-4 duration-150 hover:bg-white hover:text-primary-500 md:px-4"
-                >
-                    <a class="" href="{{ config:app:url }}/news">News</a>
-                </li>
-                <li
-                    class="flex h-full items-center px-2 py-4 duration-150 hover:bg-white hover:text-primary-500 md:px-4"
-                >
-                    <a class="" href="{{ config:app:url }}/coaches">Coaches</a>
-                </li>
-                <li
-                    class="flex h-full items-center px-2 py-4 duration-150 hover:bg-white hover:text-primary-500 md:px-4"
-                >
-                    <a class="" href="{{ config:app:url }}/sponsers">
-                        Sponsers
-                    </a>
-                </li>
-            </ul> -->
         </div>
     </div>
-
     <div
+        class="flex w-full flex-col-reverse items-center bg-white p-4 xs:flex-row"
+    >
+        <div class="relative">
+            {{ nav:team_nav }}
+                {{ if is_current || is_parent }}
+                    <div class="flex items-center">
+                        <div class="relative mr-4">
+                            <input type="checkbox" id="pillCheckbox" />
+                            <button
+                                class="flex items-center space-x-2 whitespace-nowrap rounded-full bg-slate-500/20 px-3 py-1 text-sm font-semibold leading-5 hover:bg-slate-400/20"
+                                type="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                id="pill"
+                            >
+                                {{ title }}
+                                <i
+                                    class="fa-solid fa-chevron-down ml-2 hidden"
+                                ></i>
+                                <i
+                                    class="fa-solid fa-chevron-up ml-2 hidden"
+                                ></i>
+                            </button>
+                        </div>
+                        <div>
+                            {{ if children }}
+                                {{ children }}
+                                    <a
+                                        href="{{ url }}"
+                                        class="p-2 pb-2 hover:underline"
+                                    >
+                                        {{ title }}
+                                    </a>
+                                {{ /children }}
+                            {{ /if }}
+                        </div>
+                    </div>
+                {{ /if }}
+            {{ /nav:team_nav }}
+            <div
+                class="absolute top-full mt-1 hidden w-40 rounded-lg bg-white py-2 text-sm font-semibold leading-6 text-slate-700 shadow ring-1 ring-slate-900/5"
+                id="teamSelect"
+            >
+                {{ nav:team_nav }}
+                    {{ if !is_current }}
+                        <a
+                            href="{{ url }}"
+                            class="teamSelectItem boys-jv flex cursor-pointer items-center justify-between px-4 py-1"
+                            data-team="{{ title }}"
+                        >
+                            {{ title }}
+                            <div class="hidden">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </a>
+                    {{ /if }}
+                {{ /nav:team_nav }}
+            </div>
+        </div>
+    </div>
+    <!-- <div
         class="flex w-full flex-col-reverse items-center bg-white p-4 xs:flex-row"
     >
         <div class="relative">
@@ -137,5 +175,5 @@
                 </a>
             </li>
         </ul>
-    </div>
+    </div> -->
 </nav>
