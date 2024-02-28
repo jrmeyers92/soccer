@@ -24,7 +24,20 @@
                 {{ site_data:school_name }}
                 High School Soccer
             </p>
+
             <ul
+                class="ml-auto flex items-center justify-center self-stretch text-sm font-bold xs:text-base sm:text-xl md:text-2xl"
+            >
+                {{ nav:top_level }}
+                    <li
+                        class="flex h-full items-center px-2 py-4 duration-150 hover:bg-white hover:text-primary-500 md:px-4"
+                    >
+                        <a href="{{ url }}">{{ title }}</a>
+                    </li>
+                {{ /nav:top_level }}
+            </ul>
+
+            <!-- <ul
                 class="ml-auto flex items-center justify-center self-stretch text-sm font-bold xs:text-base sm:text-xl md:text-2xl"
             >
                 <li
@@ -44,7 +57,7 @@
                         Sponsers
                     </a>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 

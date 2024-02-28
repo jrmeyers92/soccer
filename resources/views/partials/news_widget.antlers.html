@@ -1,18 +1,25 @@
-<section class="mx-auto flex w-full flex-col lg:w-8/12 bg-gray-200">
-    {{partial:section_heading title="Latest Headlines"}} 
-    
+<section
+    class="mx-auto flex w-full flex-col border-l border-r bg-gray-200 shadow-md lg:w-8/12"
+>
+    {{ partial:section_heading title="Latest Headlines" }}
     <div>
-        {{collection:news sort="publish_date:desc" as="articles" limit='7'}}
-            {{articles}}
-                <div class="p-4 bg-white border-b border-slate-200 last:pb-6">
-                    {{ if index == 0 }} {{ partial:featured_news_card}} {{partial:news_widget_sponser}} {{ else }}
-                    {{partial:news_card}} {{ /if }}
+        {{ collection:news sort="publish_date:desc" as="articles" limit='7' }}
+            {{ articles }}
+                <div class="border-b border-slate-200 bg-white p-4 last:pb-6">
+                    {{ if index == 0 }}
+                        {{ partial:featured_news_card }}
+                        {{ partial:news_widget_sponser }}
+                    {{ else }}
+                        {{ partial:news_card }}
+                    {{ /if }}
                 </div>
-            {{/articles}}
-        {{/collection:news}}
+            {{ /articles }}
+        {{ /collection:news }}
     </div>
-    <a href="/news" class="p-2 bg-primary-500 text-white font-bold hover:bg-primary-600 duration-150">View More Headlines</a>
+    <a
+        href="/news"
+        class="bg-primary-500 p-2 font-bold text-white duration-150 hover:bg-primary-600"
+    >
+        View More Headlines
+    </a>
 </section>
-
-
-
