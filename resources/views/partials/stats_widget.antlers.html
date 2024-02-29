@@ -10,6 +10,7 @@
 {{ else if jvOrVarsity == "varsity" }}
     {{ scheduleTeamTitle = "Varsity" }}
 {{ /if }}
+
 <section
     class="mx-auto mt-4 flex w-full flex-col self-baseline border-b border-l border-r bg-white shadow-md"
 >
@@ -23,18 +24,16 @@
             {{ if players | is_empty }}
                 <p>Sorry no stats available at this time.</p>
             {{ else }}
-                <div class="p-2 text-sm">
-                    <div class="grid grid-cols-5 py-2 font-semibold">
+                <div class=" text-sm">
+                    <div class="grid grid-cols-4 py-2 mb-2 font-semibold border-b">
                         <span>Name</span>
                         <span>Goals</span>
                         <span>Assists</span>
                         <span>Shutouts</span>
-                        <span>Points</span>
                     </div>
                     {{ players }}
-                        {{ if goals != 0 || assists != 0
-                 || shutouts != 0 }}
-                            <div class="grid grid-cols-5">
+                        {{ if goals != 0 || assists != 0 || shutouts != 0 }}
+                            <div class="grid grid-cols-4 odd:bg-gray-200 px-2  py-1">
                                 <span class="mr-2">
                                     {{ first_name }}
                                     {{ last_name }}
@@ -42,7 +41,7 @@
                                 <span>{{ goals }}</span>
                                 <span>{{ assists }}</span>
                                 <span>{{ shutouts }}</span>
-                                <span>{{ goals * 2 + assists }}</span>
+
                             </div>
                         {{ /if }}
                     {{ /players }}

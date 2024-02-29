@@ -1,13 +1,13 @@
 title: 'Site Data'
 data:
-  school_name: Glendale
-  mascot: Falcons
-  logo: logo.png
+  school_name: Kicakpoo
+  mascot: Chiefs
+  logo: kickapoologo.png
   email: glendalesoccer@gmail.com
-  street_address: '1300 N. Randough St'
+  street_address: '3710 S. Jefferson Ave.'
   school_city: Springfield
   school_state: Missouri
-  zip_code: 63117
+  zip_code: 65807
   home_page_news_widget_sponser: 90ddffd9-8d1e-4310-b533-c7bb2b25e651
   footer_logos:
     - 90ddffd9-8d1e-4310-b533-c7bb2b25e651
