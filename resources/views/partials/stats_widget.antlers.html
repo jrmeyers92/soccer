@@ -10,43 +10,48 @@
 {{ else if jvOrVarsity == "varsity" }}
     {{ scheduleTeamTitle = "Varsity" }}
 {{ /if }}
-
-<section
-    class="mx-auto mt-4 flex w-full flex-col self-baseline border-b border-l border-r bg-white shadow-md"
->
-    {{ collection:teams |  sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1" }}
+{{ collection:teams |  sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1" }}
+    {{ if team }}
         {{ team }}
-            {{ if team == "jv" }}
-                {{ partial:section_heading title="{year} {gender | ucfirst} {team | upper} Stats" }}
-            {{ else }}
-                {{ partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Roster" }}
-            {{ /if }}
-            {{ if players | is_empty }}
-                <p>Sorry no stats available at this time.</p>
-            {{ else }}
-                <div class=" text-sm">
-                    <div class="grid grid-cols-4 py-2 mb-2 font-semibold border-b">
-                        <span>Name</span>
-                        <span>Goals</span>
-                        <span>Assists</span>
-                        <span>Shutouts</span>
+            <section
+                class="mx-auto mt-4 flex w-full flex-col self-baseline border-b border-l border-r bg-white shadow-md"
+            >
+                {{ if team == "jv" }}
+                    {{ partial:section_heading title="{year} {gender | ucfirst} {team | upper} Stats" }}
+                {{ else }}
+                    {{ partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Roster" }}
+                {{ /if }}
+                {{ if players | is_empty }}
+                    <p>Sorry no stats available at this time.</p>
+                {{ else }}
+                    <div class="text-sm">
+                        <div
+                            class="mb-2 grid grid-cols-4 border-b py-2 font-semibold"
+                        >
+                            <span>Name</span>
+                            <span>Goals</span>
+                            <span>Assists</span>
+                            <span>Shutouts</span>
+                        </div>
+                        {{ players }}
+                            {{ if goals != 0 || assists != 0
+                     || shutouts != 0 }}
+                                <div
+                                    class="grid grid-cols-4 px-2 py-1 odd:bg-gray-200"
+                                >
+                                    <span class="mr-2">
+                                        {{ first_name }}
+                                        {{ last_name }}
+                                    </span>
+                                    <span>{{ goals }}</span>
+                                    <span>{{ assists }}</span>
+                                    <span>{{ shutouts }}</span>
+                                </div>
+                            {{ /if }}
+                        {{ /players }}
                     </div>
-                    {{ players }}
-                        {{ if goals != 0 || assists != 0 || shutouts != 0 }}
-                            <div class="grid grid-cols-4 odd:bg-gray-200 px-2  py-1">
-                                <span class="mr-2">
-                                    {{ first_name }}
-                                    {{ last_name }}
-                                </span>
-                                <span>{{ goals }}</span>
-                                <span>{{ assists }}</span>
-                                <span>{{ shutouts }}</span>
-
-                            </div>
-                        {{ /if }}
-                    {{ /players }}
-                </div>
-            {{ /if }}
+                {{ /if }}
+            </section>
         {{ /team }}
-    {{ /collection:teams }}
-</section>
+    {{ /if }}
+{{ /collection:teams }}
