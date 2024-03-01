@@ -1,10 +1,10 @@
 ---
-id: ccb87b21-d9db-4463-b0a5-41efa2710f86
+id: 58b01aca-71c1-424a-b00c-449be3ea9nf9
 blueprint: news
 title: "Coach's Corner: Insights from High School Boys Soccer Practice Sessions"
-publish_date: '2024-02-22'
+publish_date: '2019-10-18'
 updated_by: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42
-updated_at: 1709331812
+updated_at: 1709331824
 cover_photo: pexels-alexander-nadrilyanski-3684122.jpg
 additional_photos:
   - pexels-ashley-williams-685382.jpg
