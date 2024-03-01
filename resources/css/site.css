@@ -62,3 +62,34 @@ body {
         @apply max-h-[80%] max-w-[90%] border-2 border-white bg-black p-2;
     }
 }
+
+
+.shine {
+    position: absolute;
+    top: 0;
+    height: 50px;
+    width: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: all .3s linear;
+    transform: skewX(20deg) translateX(0);
+    animation-name: shine;
+    animation-duration: 3s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes shine {
+    0% {
+        transform: skewX(20deg) translateX(0);
+    }
+    20% {
+        transform: skewX(20deg) translateX(200px);
+    }
+
+    100% {
+        transform: skewX(20deg) translateX(200px);
+
+    }
+    
+}
