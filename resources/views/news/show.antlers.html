@@ -5,15 +5,17 @@
         <img
             src="{{ glide src="{{cover_photo}}" width="3000" height="1000" }}"
             alt="{{ alt }}"
-            class="brightness-50 h-[50vh] lg:h-auto object-cover"
+            class="h-[50vh] object-cover brightness-50 lg:h-auto"
         />
         <div
-            class="justify-center{{if cover_photo}} text-white absolute top-1/2 -translate-y-1/2 {{/if}} mx-auto flex w-full flex-col items-center px-2"
+            class="justify-center{{if cover_photo}} text-black absolute top-1/2 -translate-y-1/2 {{/if}} mx-auto flex w-full flex-col items-center px-2"
         >
-            <h1 class="mb-2 max-w-3xl text-2xl sm:text-3xl md:text-4xl text-balance	">
+            <h1
+                class="text-balance mb-2 max-w-3xl text-2xl sm:text-3xl md:text-4xl"
+            >
                 {{ title }}
             </h1>
-            <h2 class="max-w-3xl text-xl md:text-2xl lg:text-3xl text-balance">
+            <h2 class="text-balance max-w-3xl text-xl md:text-2xl lg:text-3xl">
                 {{ subtitle }}
             </h2>
         </div>

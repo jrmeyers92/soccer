@@ -29,7 +29,7 @@
 
                 <div class="flex md:items-center w-full md:justify-center my-4 overflow-x-auto">
                     <table class="border border-gray-300 w-full max-w-5xl">
-                        <tr class="border-b border-gray-300 bg-primary-500 text-white font-bold text-xl text-left">
+                        <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
                             <th class="px-2 py-1 border-r border-white">Number</th>
                             <th class="px-2 py-1 border-r border-white">Name</th>
                             <th class="px-2 py-1 border-r border-white">Position</th>
@@ -89,7 +89,7 @@
 
                     {{ first }}
                         {{ if page == current_page }}
-                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-primary-900 rounded-full border">{{ page }}</li>
+                            <li class="active bg-primary-500 text-black py-2 px-4 text-sm border-primary-900 rounded-full border">{{ page }}</li>
                         {{ else }}
                             <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
                         {{ /if }}
@@ -101,7 +101,7 @@
 
                     {{ slider }}
                         {{ if page == current_page }}
-                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border">{{ page }}</li>
+                            <li class="active bg-primary-500 text-black py-2 px-4 text-sm border-gray-400 rounded-full border">{{ page }}</li>
                         {{ else }}
                             <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
                         {{ /if }}
@@ -113,7 +113,7 @@
         
                     {{ last }}
                         {{ if page == current_page }}
-                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border">{{ page }}</li>
+                            <li class="active bg-primary-500 text-black py-2 px-4 text-sm border-gray-400 rounded-full border">{{ page }}</li>
                         {{ else }}
                             <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
                         {{ /if }}

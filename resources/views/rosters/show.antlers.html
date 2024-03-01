@@ -43,7 +43,7 @@
 
                     {{ first }}
                         {{ if page == current_page }}
-                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-primary-900 rounded-full border"><span>{{ page }}</span></li>
+                            <li class="active bg-primary-500 text-black py-2 px-4 text-sm border-primary-900 rounded-full border"><span>{{ page }}</span></li>
                         {{ else }}
                             <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
                         {{ /if }}
@@ -55,7 +55,7 @@
 
                     {{ slider }}
                         {{ if page == current_page }}
-                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
+                            <li class="active bg-primary-500 text-black py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
                         {{ else }}
                             <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
                         {{ /if }}
@@ -67,7 +67,7 @@
         
                     {{ last }}
                         {{ if page == current_page }}
-                            <li class="active bg-primary-500 text-white py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
+                            <li class="active bg-primary-500 text-black py-2 px-4 text-sm border-gray-400 rounded-full border"><span>{{ page }}</span></li>
                         {{ else }}
                             <li class="py-2 px-4 text-sm border border-gray-400 rounded-full"><a href="{{ url }}">{{ page }}</a></li>
                         {{ /if }}
