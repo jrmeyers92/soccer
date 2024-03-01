@@ -3,9 +3,9 @@
 >
     {{ if cover_photo }}
         <img
-            src="{{ cover_photo }}"
-            alt="cover photo"
             class="{{if index % 2 == 0}}md:mr-3 {{else}}md:ml-3 {{/if}} hidden h-[180px] rounded-md object-cover md:block"
+            src="{{ glide src="{{cover_photo}}" width="auto" height="200" }}"
+            alt="{{ alt }}"
         />
     {{ /if }}
     <div class="flex flex-col">

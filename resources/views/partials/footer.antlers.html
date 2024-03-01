@@ -20,9 +20,9 @@
             {{ site_data:footer_logos }}
                 <a href="{{ company_url }}" target="_blank">
                     <img
-                        src="{{ company_logo }}"
                         class="mx-2 h-[50px]"
-                        alt="{{ alt || title }}"
+                        src="{{ glide src="{{company_logo}}" width="50" height="50" }}"
+                        alt="{{ alt }}"
                     />
                 </a>
             {{ /site_data:footer_logos }}

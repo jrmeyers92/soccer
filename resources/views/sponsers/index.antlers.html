@@ -1,7 +1,11 @@
 <div class="flex flex-wrap gap-6 p-6">
     {{ collection:sponsers }}
         <a href="{{ company_url }}" target="_blank">
-            <img src="{{ company_logo }}" alt="{{ title }}" class="h-20" />
+            <img
+                class="h-20"
+                src="{{ glide src="{{company_logo}}" width="200px" height="auto" }}"
+                alt="{{ alt }}"
+            />
         </a>
     {{ /collection:sponsers }}
 </div>

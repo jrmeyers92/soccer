@@ -13,7 +13,7 @@
     >
         <a href="/" class="min-w-[50px] py-2">
             <img
-                src="{{ glide:site_data:logo width="75" height="75" }}"
+                src="{{ glide src="{{site_data:logo}}" width="80" height="80" }}"
                 alt="{{ alt }}"
             />
         </a>
@@ -118,5 +118,14 @@
                 </a>
             </li>
         </ul>
+        {{ if site_data:stripe_link }}
+            <a
+                href="https://buy.stripe.com/test_3cs7uS0Qw86xb5u6oo"
+                target="_blank"
+                class="ml-auto rounded border-2 border-secondary bg-primary px-4 py-2 text-lg font-bold hover:bg-primary-600"
+            >
+                DONATE
+            </a>
+        {{ /if }}
     </div>
 </nav>

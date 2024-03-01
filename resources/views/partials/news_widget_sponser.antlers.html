@@ -1,4 +1,13 @@
-<div class="flex flex-col md:flex row items-center justify-center gap-6 my-4">
-    <a href="{site_data:home_page_news_widget_sponser:company_url}" target="_blank"><img src="{{site_data:home_page_news_widget_sponser:company_logo}}" alt="{{site_data:home_page_news_widget_sponser:title}}" class="h-[100px]"></a>
-    <p class="max-w-md">{{site_data:home_page_news_widget_sponser:blurb}}</p>
+<div class="row my-4 flex flex-col items-center justify-center gap-6 md:flex">
+    <a
+        href="{site_data:home_page_news_widget_sponser:company_url}"
+        target="_blank"
+    >
+        <img
+            class="h-[100px]"
+            src="{{ glide src="{{site_data:home_page_news_widget_sponser:company_logo}}" width="auto" height="100" }}"
+            alt="{{ alt }}"
+        />
+    </a>
+    <p class="max-w-md">{{ site_data:home_page_news_widget_sponser:blurb }}</p>
 </div>

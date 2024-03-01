@@ -145,6 +145,19 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
+          -
+            handle: stripe_link
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Stripe Link'
+              icon: text
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
   footer:
     display: Footer
     sections:
