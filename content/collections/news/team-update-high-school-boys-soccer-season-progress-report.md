@@ -5,5 +5,11 @@ title: 'Team Update: High School Boys Soccer Season Progress Report'
 publish_date: '2024-02-07'
 updated_by: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42
 updated_at: 1708998087
+cover_photo: pexels-alexander-nadrilyanski-3684122.jpg
+additional_photos:
+  - pexels-ashley-williams-685382.jpg
+  - pexels-pixabay-159516.jpg
+  - pexels-tembela-bohle-1884574.jpg
+  - pexels-pixabay-47730.jpg
 ---
 As the high school boys' soccer season heats up, it's time for a progress report on our team's journey so far. With several games under our belt, our players have been showcasing their talent and tenacity on the field, earning hard-fought victories and valuable experience along the way. From thrilling wins to challenging matchups, every game has been a testament to the dedication and determination of our team. Stay tuned as we continue to push forward, united in our pursuit of excellence and glory.

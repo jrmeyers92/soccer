@@ -5,20 +5,20 @@
         <img
             src="{{ glide src="{{cover_photo}}" width="3000" height="1000" }}"
             alt="{{ alt }}"
-            class="brightness-50"
+            class="brightness-50 h-[50vh] lg:h-auto object-cover"
         />
         <div
-            class="justify-center{{if cover_photo}} text-white absolute top-1/2 -translate-y-1/2 {{/if}} mx-auto flex w-full flex-col items-center"
+            class="justify-center{{if cover_photo}} text-white absolute top-1/2 -translate-y-1/2 {{/if}} mx-auto flex w-full flex-col items-center px-2"
         >
-            <h1 class="mb-2 max-w-3xl text-2xl sm:text-3xl md:text-4xl">
+            <h1 class="mb-2 max-w-3xl text-2xl sm:text-3xl md:text-4xl text-balance	">
                 {{ title }}
             </h1>
-            <h2 class="max-w-3xl text-xl md:text-2xl lg:text-3xl">
+            <h2 class="max-w-3xl text-xl md:text-2xl lg:text-3xl text-balance">
                 {{ subtitle }}
             </h2>
         </div>
     </div>
-    <div class="max-w-3xl">
+    <div class="max-w-3xl px-2">
         <p class="mt-4 italic">{{ publish_date }}</p>
         <div class="mb-4 mt-2 md:text-xl">{{ content }}</div>
         <div class="grid grid-cols-4 flex-wrap gap-4" id="lightbox">

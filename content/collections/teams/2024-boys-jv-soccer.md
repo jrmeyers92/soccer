@@ -16,7 +16,6 @@ games:
     time: '19:30'
     location: home
     opponent: 600030fc-7634-4122-acf1-537c77705e93
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -25,7 +24,6 @@ games:
     time: '19:30'
     location: away
     opponent: 600030fc-7634-4122-acf1-537c77705e93
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -34,7 +32,6 @@ games:
     time: '17:30'
     location: away
     opponent: 600030fc-7634-4122-acf1-537c77705e93
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -43,7 +40,6 @@ games:
     time: '19:30'
     location: home
     opponent: 600030fc-7634-4122-acf1-537c77705e93
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -54,7 +50,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 2
     opponent_score: 1
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -65,7 +60,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 1
     opponent_score: 1
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -76,7 +70,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 1
     opponent_score: 0
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -87,7 +80,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 1
     opponent_score: 4
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -98,7 +90,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 1
     opponent_score: 4
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -109,7 +100,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 5
     opponent_score: 2
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -120,7 +110,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 2
     opponent_score: 3
-    main_photo: photo1.png
     type: new_set
     enabled: true
 updated_by: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42

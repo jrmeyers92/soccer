@@ -18,7 +18,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 3
     opponent_score: 0
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -29,7 +28,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 3
     opponent_score: 2
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -40,7 +38,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 1
     opponent_score: 1
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -51,7 +48,6 @@ games:
     our_score: 4
     opponent_score: 2
     opponent: 600030fc-7634-4122-acf1-537c77705e93
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -62,7 +58,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 2
     opponent_score: 1
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -73,7 +68,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 1
     opponent_score: 1
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -84,7 +78,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 1
     opponent_score: 0
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -95,7 +88,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 1
     opponent_score: 4
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -106,7 +98,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 1
     opponent_score: 4
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -117,7 +108,6 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 5
     opponent_score: 2
-    main_photo: photo1.png
     type: new_set
     enabled: true
   -
@@ -128,11 +118,10 @@ games:
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 2
     opponent_score: 3
-    main_photo: photo1.png
     type: new_set
     enabled: true
 updated_by: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42
-updated_at: 1709255035
+updated_at: 1709255731
 players:
   -
     id: tEq59g0K
@@ -142,7 +131,7 @@ players:
     position:
       - defense
     number: 12
-    image: playerimage.jpg
+    image: girlsplayer.png
     assists: 3
     type: new_set
     enabled: true
@@ -156,7 +145,7 @@ players:
     captain:
       - captain
     number: 1
-    image: playerimage.jpg
+    image: girlsplayer.png
     goals: 4
     assists: 1
     type: new_set
@@ -169,7 +158,7 @@ players:
     position:
       - midfield
     number: 6
-    image: playerimage.jpg
+    image: girlsplayer.png
     assists: 3
     goals: 1
     type: new_set
@@ -182,7 +171,7 @@ players:
     position:
       - goalie
     number: 0
-    image: playerimage.jpg
+    image: girlsplayer.png
     shutouts: 4
     type: new_set
     enabled: true
@@ -197,7 +186,7 @@ players:
       - forward
       - midfield
     number: 19
-    image: playerimage.jpg
+    image: girlsplayer.png
     goals: 3
     assists: 12
     type: new_set
