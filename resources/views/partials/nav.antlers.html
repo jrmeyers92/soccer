@@ -64,7 +64,20 @@
     <div
         class="flex w-full flex-col-reverse items-center bg-white p-4 xs:flex-row"
     >
+        <div class="relative">
+            <div class="relative overflow-hidden">
+                <button
+                    class="text-md flex items-center space-x-2 whitespace-nowrap rounded-full bg-slate-500/20 px-4 py-2 font-semibold leading-5 tracking-wider hover:bg-slate-400/20"
+                    type="button"
+                    aria-haspopup="true"
                     aria-expanded="false"
+                    id="pill"
+                >
+                    Boy's JV
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="shine absolute"></div>
+            </div>
             <div
                 class="absolute top-full mt-1 hidden w-40 rounded-lg bg-white py-2 text-sm font-semibold leading-6 text-slate-700 shadow ring-1 ring-slate-900/5"
                 id="teamSelect"
@@ -105,7 +118,7 @@
             <li class="p-2">
                 <a
                     class="{{if slugArray[2] == "schedule"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
-                    href="{{ config:app:url }}{{if team}}{{team}}{{else}}boys-jv{{/if}}/schedule"
+                    href="{{ config:app:url }}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/schedule"
                 >
                     Schedule
                 </a>
@@ -113,7 +126,7 @@
             <li class="p-2">
                 <a
                     class="{{if slugArray[2] == "roster"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
-                    href="{{ config:app:url }}{{if team}}{{team}}{{else}}boys-jv{{/if}}/roster"
+                    href="{{ config:app:url }}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/roster"
                 >
                     Roster
                 </a>
@@ -121,7 +134,7 @@
             <li class="p-2">
                 <a
                     class="{{if slugArray[2] == "stats"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
-                    href="{{ config:app:url }}{{if team}}{{team}}{{else}}boys-jv{{/if}}/stats"
+                    href="{{ config:app:url }}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/stats"
                 >
                     Stats
                 </a>
