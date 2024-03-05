@@ -1,7 +1,7 @@
 name: Test
 super: true
 id: 7f0177d5-e376-4ec7-8d99-6b7824fa6533
-password_hash: $2y$10$3kdXbcI4oOwp.IVc4/S6Sue9n9DZUvgGjEqXo1hO/e8BZH22alau6
+password: stlSoccer2!
 preferences:
   start_page: collections/teams
   nav: {  }
