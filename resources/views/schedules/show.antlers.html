@@ -17,15 +17,15 @@
         
         {{team}}
             {{if team == "jv"}}
-                <h1 class="text-3xl pb-4 border-b border-gray-300">{{year}} {{gender | ucfirst}} JV Schedule </h1>
+                <h1 class="text-3xl pb-4 border-b border-gray-300 py-16">{{year}} {{gender | ucfirst}} JV Schedule </h1>
             {{else}}
-                <h1 class="text-3xl pb-4 border-b border-gray-300">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Schedule </h1>
+                <h1 class="text-3xl pb-4 border-b border-gray-300 py-16">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Schedule </h1>
             {{/if}}
 
             {{if games| is_empty}}
                 <p class="p-2">Sorry, there are no upcoming games at this time.</p>
             {{else}}
-                {{games | sort="game_date:desc"}}
+                {{games | sort="game_date:asc"}}
                     {{partial:schedule_page_game}}
                 {{/games}}
             {{/if}}

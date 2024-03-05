@@ -1,5 +1,5 @@
 <section class="flex flex-col items-center justify-center" id="newsPage">
-    <h1 class="my-6 text-3xl">Story Archives</h1>
+    <h1 class="mb-8 mt-16 text-3xl">Story Archives</h1>
 
     {{ collection:news |  sort="publish_date:desc" paginate="12" as="posts" }}
         <!-- <input
