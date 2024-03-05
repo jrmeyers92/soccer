@@ -1,26 +1,32 @@
 (function () {
-    let trigger = document.getElementById("donateModalTrigger");
-    let donationModal = document.getElementById("donationModal");
-    let closeButton = donationModal.querySelector(".fa-times");
-    let donateButton = donationModal.querySelector(".donateButton");
+    const trigger = document.getElementById("donateModalTrigger");
+    const donationModal = document.getElementById("donationModal");
+    const closeButton = donationModal.querySelector(
+        "#donationModalCloseButton",
+    );
+    const donateButton = donationModal.querySelector(".donateButton");
 
-    trigger.addEventListener("click", () => {
+    const showModal = () => {
+        donationModal.classList.remove("opacity-0");
+        donationModal.classList.remove("pointer-events-none");
+    };
+
+    const hideModal = () => {
+        donationModal.classList.add("opacity-0");
+        donationModal.classList.add("pointer-events-none");
+    };
+
+    trigger.addEventListener("click", (e) => {
         if (donationModal.classList.contains("opacity-0")) {
-            donationModal.classList.remove("opacity-0");
-            donationModal.classList.remove("pointer-events-none");
-            // donationModal.classList.add("flex");
+            showModal();
         }
     });
 
     closeButton.addEventListener("click", () => {
-        // donationModal.classList.remove("flex");
-        donationModal.classList.add("opacity-0");
-        donationModal.classList.add("pointer-events-none");
+        hideModal();
     });
 
     donateButton.addEventListener("click", () => {
-        // donationModal.classList.remove("flex");
-        donationModal.classList.add("opacity-0");
-        donationModal.classList.add("pointer-events-none");
+        hideModal();
     });
 })();

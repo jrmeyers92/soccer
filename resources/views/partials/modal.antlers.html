@@ -2,10 +2,15 @@
     class="modal pointer-events-none fixed bottom-0 left-0 right-0 top-0 flex h-screen w-screen items-center justify-center bg-black/50 opacity-0 duration-200"
     id="{{ id }}"
 >
-    <div class="relative max-w-md rounded bg-white p-6 shadow-md">
-        <i
-            class="fa fa-times absolute right-2 top-2 cursor-pointer text-lg"
-        ></i>
+    <div
+        class="relative max-w-md rounded bg-white p-6 shadow-md"
+        id="modalBody{{ id }}"
+    >
+        <button aria-label="Close" id="donationModalCloseButton">
+            <i
+                class="fa fa-times absolute right-2 top-2 cursor-pointer text-lg"
+            ></i>
+        </button>
 
         {{ slot }}
     </div>
