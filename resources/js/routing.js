@@ -21,18 +21,6 @@
         pill.innerHTML = `<span class="mr-2">${pillText} <i class="fa-solid fa-chevron-down"></i>`;
     };
 
-    const setPillSelectItem = (team) => {
-        let teamOptions = document.querySelectorAll(".teamSelectItem");
-        teamOptions.forEach((option) => {
-            option.style.color = "black";
-            option.querySelector("div").classList.add("hidden");
-        });
-
-        let selectedItem = teamSelect.querySelector(`.${team}`);
-        selectedItem.style.color = "#373F51";
-        selectedDiv.querySelector("div").classList.remove("hidden");
-    };
-
     // set dropdown item/option to match pathname
     if (teams.includes(window.location.pathname.split("/")[1])) {
         let selectedDiv = teamSelect.querySelector(
@@ -61,7 +49,7 @@
     });
 
     // reroute page if land on homepage with no team path
-    if (window.location.href == "https://soccerwebsitedemo.com/") {
+    if (window.location.href == "http://soccer.test/") {
         let schedulePath;
         if (window.localStorage.getItem("team")) {
             if (localStorage.getItem("scheduleWidgetValue")) {
