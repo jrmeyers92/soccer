@@ -6,7 +6,7 @@ gender: girls
 year: 2023
 sport: soccer
 team: jv
-head_coach: d20444f4-7587-422b-aa2f-614ecea90aa7
+head_coach: 85266fbc-c106-47ad-93fd-fe1fc1fe9d43
 assistant_coaches:
   - 1e700256-52b5-4236-a83e-f0ef5a7c19e6
 games:
@@ -120,8 +120,8 @@ games:
     opponent_score: 3
     type: new_set
     enabled: true
-updated_by: ba6a5ef6-1e32-4a10-b23b-f8a27f0e6b42
-updated_at: 1709255731
+updated_by: 7f0177d5-e376-4ec7-8d99-6b7824fa6533
+updated_at: 1709652060
 players:
   -
     id: tEq59g0K
