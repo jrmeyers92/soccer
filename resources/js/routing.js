@@ -49,7 +49,7 @@
     });
 
     // reroute page if land on homepage with no team path
-    if (window.location.href == "http://soccer.test/") {
+    if (window.location.href == "https://soccerwebsitedemo.com/") {
         let schedulePath;
         if (window.localStorage.getItem("team")) {
             if (localStorage.getItem("scheduleWidgetValue")) {
