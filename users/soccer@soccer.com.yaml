@@ -1,7 +1,7 @@
 name: Test
 super: true
 id: 7f0177d5-e376-4ec7-8d99-6b7824fa6533
-password_hash: $2y$10$xF.3dbFSwJf8Lftf4o4MlORmxacPgx7eJCu4lZxZ2ci6q9Ecd44l6
+password_hash: $2y$10$yh5PRjAKp8RYi86NZR/WjO5V4.nIt/B6Ue0HFOz5xgUNhEqFs1ZIa
 preferences:
   start_page: collections/teams
   nav: {  }
