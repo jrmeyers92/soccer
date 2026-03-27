@@ -1,6 +1,9 @@
 (function () {
     const trigger = document.getElementById("donateModalTrigger");
     const donationModal = document.getElementById("donationModal");
+
+    if (!trigger || !donationModal) return;
+
     const closeButton = donationModal.querySelector(
         "#donationModalCloseButton",
     );
