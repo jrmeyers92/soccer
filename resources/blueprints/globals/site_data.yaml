@@ -158,6 +158,42 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
+          -
+            handle: google_analytics_id
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Google Analytics ID'
+              instructions: 'e.g. G-XXXXXXXXXX — leave blank to disable tracking'
+              icon: text
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: nav_teams
+            field:
+              type: grid
+              display: 'Navigation Teams'
+              instructions: 'Teams shown in the site navigation dropdown. Each slug must match the page URL (e.g. boys-jv).'
+              fields:
+                -
+                  handle: slug
+                  field:
+                    type: text
+                    display: 'URL Slug'
+                    instructions: 'e.g. boys-jv'
+                    width: 50
+                -
+                  handle: display_name
+                  field:
+                    type: text
+                    display: 'Display Name'
+                    instructions: 'e.g. Boys JV'
+                    width: 50
   footer:
     display: Footer
     sections:
@@ -174,6 +210,48 @@ tabs:
               type: entries
               display: 'Footer Logos'
               icon: entries
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: facebook_url
+            field:
+              input_type: url
+              antlers: false
+              type: text
+              display: 'Facebook URL'
+              icon: text
+              width: 33
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: twitter_url
+            field:
+              input_type: url
+              antlers: false
+              type: text
+              display: 'Twitter / X URL'
+              icon: text
+              width: 34
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: instagram_url
+            field:
+              input_type: url
+              antlers: false
+              type: text
+              display: 'Instagram URL'
+              icon: text
+              width: 33
               listable: hidden
               instructions_position: above
               visibility: visible

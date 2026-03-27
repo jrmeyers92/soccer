@@ -37,9 +37,10 @@
             referrerpolicy="no-referrer"
         />
         {{ site_data:logo | favicon }}
+        {{ if site_data:google_analytics_id }}
         <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-BR670BJDZ4"
+            src="https://www.googletagmanager.com/gtag/js?id={{ site_data:google_analytics_id }}"
         ></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -47,9 +48,9 @@
                 dataLayer.push(arguments);
             }
             gtag("js", new Date());
-
-            gtag("config", "G-BR670BJDZ4");
+            gtag("config", "{{ site_data:google_analytics_id }}");
         </script>
+        {{ /if }}
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

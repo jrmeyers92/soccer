@@ -1,12 +1,10 @@
 {{ slugArray = url | explode('/') }}
-{{ teamArray = ["boys-jv", "boys-varsity", "girls-jv", "girls-varsity"] }}
-{{ scheduleTypeArray = ["u", "r"] }}
 {{ team = "" }}
-{{ slugArray }}
-    {{ if teamArray | contains({value}) }}
-        {{ team = value }}
+{{ site_data:nav_teams }}
+    {{ if slug == {slugArray[1]} }}
+        {{ team = slug }}
     {{ /if }}
-{{ /slugArray }}
+{{ /site_data:nav_teams }}
 <nav class="sticky top-0 z-10 flex flex-col leading-4 duration-500" id="navbar">
     <div
         id="upperNav"
@@ -62,35 +60,15 @@
                 class="absolute top-full mt-1 hidden w-40 rounded-lg bg-white py-2 text-sm font-semibold leading-6 text-slate-700 shadow ring-1 ring-slate-900/5"
                 id="teamSelect"
             >
+                {{ site_data:nav_teams }}
                 <div
-                    class="teamSelectItem boys-jv flex cursor-pointer items-center justify-between px-4 py-1"
-                    data-team="boys-jv"
+                    class="teamSelectItem {{ slug }} flex cursor-pointer items-center justify-between px-4 py-1"
+                    data-team="{{ slug }}"
                 >
-                    Boys JV
+                    {{ display_name }}
                     <div class="hidden"><i class="fa-solid fa-check"></i></div>
                 </div>
-                <div
-                    class="teamSelectItem boys-varsity flex cursor-pointer items-center justify-between px-4 py-1"
-                    data-team="boys-varsity"
-                >
-                    Boys Varsity
-
-                    <div class="hidden"><i class="fa-solid fa-check"></i></div>
-                </div>
-                <div
-                    class="teamSelectItem girls-jv flex cursor-pointer items-center justify-between px-4 py-1"
-                    data-team="girls-jv"
-                >
-                    Girls JV
-                    <div class="hidden"><i class="fa-solid fa-check"></i></div>
-                </div>
-                <div
-                    class="teamSelectItem girls-varsity flex cursor-pointer items-center justify-between px-4 py-1"
-                    data-team="girls-varsity"
-                >
-                    Girls Varsity
-                    <div class="hidden"><i class="fa-solid fa-check"></i></div>
-                </div>
+                {{ /site_data:nav_teams }}
             </div>
         </div>
 
@@ -130,6 +108,10 @@
         {{ /if }}
     </div>
 
+    <script>
+        window.siteTeams = [{{ site_data:nav_teams }}{{ if !first }},{{ /if }}"{{ slug }}"{{ /site_data:nav_teams }}];
+    </script>
+
     {{ partial:modal id="donationModal" }}
         <div class="flex flex-col items-center justify-center gap-2">
             <p>
@@ -165,7 +147,7 @@
             </p>
             <a
                 class="donateButton cursor-pointer rounded border-2 border-secondary bg-primary px-4 py-2 text-lg font-bold uppercase hover:bg-primary-600"
-                href="https://buy.stripe.com/test_3cs7uS0Qw86xb5u6oo"
+                href="{{ site_data:stripe_link }}"
                 target="_blank"
             >
                 Continue to Donation

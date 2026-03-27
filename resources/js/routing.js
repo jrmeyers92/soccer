@@ -1,5 +1,5 @@
 (function () {
-    const teams = ["girls-jv", "girls-varsity", "boys-jv", "boys-varsity"];
+    const teams = window.siteTeams || ["girls-jv", "girls-varsity", "boys-jv", "boys-varsity"];
     const pagesNotTeamDependent = ["news", "coaches", "shop", "sponsers"];
     const pill = document.getElementById("pill");
     const teamSelect = document.getElementById("teamSelect");
@@ -34,9 +34,11 @@
         let selectedDiv = teamSelect.querySelector(
             `.${window.localStorage.getItem("team")}`,
         );
-        selectedDiv.style.color = "#373F51";
-        selectedDiv.querySelector("div").classList.remove("hidden");
-        setPill(window.localStorage.getItem("team"));
+        if (selectedDiv) {
+            selectedDiv.style.color = "#373F51";
+            selectedDiv.querySelector("div").classList.remove("hidden");
+            setPill(window.localStorage.getItem("team"));
+        }
     }
 
     // show and hide selectors when pill pressed
@@ -49,7 +51,7 @@
     });
 
     // reroute page if land on homepage with no team path
-    if (window.location.href == "https://soccerwebsitedemo.com/") {
+    if (window.location.pathname === "/") {
         let schedulePath;
         if (window.localStorage.getItem("team")) {
             if (localStorage.getItem("scheduleWidgetValue")) {
@@ -59,35 +61,35 @@
 
                 schedulePath = scheduleWidgetValue == "upcoming" ? "u" : "r";
 
-                window.location.href = `https://soccerwebsitedemo.com/${localStorage.getItem(
+                window.location.href = `${window.location.origin}/${localStorage.getItem(
                     "team",
                 )}/${schedulePath}`;
             } else {
-                window.location.href = `https://soccerwebsitedemo.com/${localStorage.getItem(
+                window.location.href = `${window.location.origin}/${localStorage.getItem(
                     "team",
                 )}/u`;
             }
         } else {
-            window.location.href = "https://soccerwebsitedemo.com/boys-jv/u";
+            window.location.href = `${window.location.origin}/${teams[0]}/u`;
         }
     }
 
     // routing for pill selector change
     teamSelect.addEventListener("click", (e) => {
-        window.localStorage.setItem("team", e.target.dataset.team);
+        const team = e.target.closest("[data-team]")?.dataset.team;
+        if (!team) return;
+
+        window.localStorage.setItem("team", team);
         let pathArray = window.location.pathname.split("/");
 
         if (!pagesNotTeamDependent.includes(pathArray[1])) {
-            pathArray[1] = e.target.dataset.team;
+            pathArray[1] = team;
             let finishedPath = pathArray.join("/");
-            window.location.href = `https://soccerwebsitedemo.com${finishedPath}`;
+            window.location.href = `${window.location.origin}${finishedPath}`;
         } else {
-            setPill(e.target.dataset.team);
-            console.log(e.target.dataset.team);
+            setPill(team);
             teamSelect.classList.add("hidden");
-            let selectedTeamDiv = teamSelect.querySelector(
-                `.${e.target.dataset.team}`,
-            );
+            let selectedTeamDiv = teamSelect.querySelector(`.${team}`);
 
             let teamOptions = document.querySelectorAll(".teamSelectItem");
             teamOptions.forEach((item) => {
@@ -108,11 +110,10 @@
         btn.addEventListener("click", () => {
             let value = btn.id;
             let schedulePath = value == "upcoming" ? "u" : "r";
-            console.log(schedulePath);
             localStorage.setItem("scheduleWidgetValue", value);
             let pathArray = window.location.pathname.split("/");
             let team = pathArray[1];
-            window.location.href = `https://soccerwebsitedemo.com/${team}/${schedulePath}`;
+            window.location.href = `${window.location.origin}/${team}/${schedulePath}`;
         });
     });
 })();

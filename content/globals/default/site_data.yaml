@@ -1,7 +1,31 @@
 school_name: Kickapoo
 mascot: Chiefs
 logo: kickapoologo.png
-street_address: '3710 S Jefferson Ave'
+email: glendalesoccer@gmail.com
+street_address: '3710 S. Jefferson Ave.'
 school_city: Springfield
 school_state: Missouri
 zip_code: 65807
+home_page_news_widget_sponser: 90ddffd9-8d1e-4310-b533-c7bb2b25e651
+stripe_link: 'https://buy.stripe.com/test_3cs7uS0Qw86xb5u6oo'
+google_analytics_id: G-BR670BJDZ4
+nav_teams:
+  -
+    slug: boys-jv
+    display_name: Boys JV
+  -
+    slug: boys-varsity
+    display_name: Boys Varsity
+  -
+    slug: girls-jv
+    display_name: Girls JV
+  -
+    slug: girls-varsity
+    display_name: Girls Varsity
+footer_logos:
+  - 90ddffd9-8d1e-4310-b533-c7bb2b25e651
+  - 0da46dc2-3c0d-49ce-812c-5efaa28b8a9b
+  - 5502abe6-d7f9-4383-81e3-3911d63fdf49
+facebook_url: ''
+twitter_url: ''
+instagram_url: ''

@@ -15,6 +15,25 @@
                 {{ site_data:school_state }}
                 {{ site_data:zip_code }}
             </p>
+            {{ if site_data:facebook_url or site_data:twitter_url or site_data:instagram_url }}
+            <div class="mt-2 flex gap-3 text-lg">
+                {{ if site_data:facebook_url }}
+                <a href="{{ site_data:facebook_url }}" target="_blank" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                {{ /if }}
+                {{ if site_data:twitter_url }}
+                <a href="{{ site_data:twitter_url }}" target="_blank" aria-label="X / Twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                {{ /if }}
+                {{ if site_data:instagram_url }}
+                <a href="{{ site_data:instagram_url }}" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                {{ /if }}
+            </div>
+            {{ /if }}
         </div>
         <div class="my-12 flex flex-wrap items-center justify-center">
             {{ site_data:footer_logos }}
