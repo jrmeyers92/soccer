@@ -5,3 +5,6 @@ password_hash: $2y$10$yh5PRjAKp8RYi86NZR/WjO5V4.nIt/B6Ue0HFOz5xgUNhEqFs1ZIa
 preferences:
   start_page: collections/teams
   nav: {  }
+  collections:
+    teams:
+      view: list
