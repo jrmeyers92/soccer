@@ -50,16 +50,17 @@ class GameChangedListener
 
         $scheduleUrl = url('/' . $sport . '/' . $teamSlug . '/schedule');
 
-        // Index old games by a stable key for comparison
+        // Index old games by a stable key (opponent + index, no date) for cross-date matching
         $oldGamesIndexed = [];
-        foreach ($oldGames as $game) {
-            $key = $this->gameKey($entryId, $game);
-            $oldGamesIndexed[$key] = $game;
+        foreach ($oldGames as $index => $game) {
+            $stableKey = $this->stableKey($entryId, $game, $index);
+            $oldGamesIndexed[$stableKey] = $game;
         }
 
-        foreach ($newGames as $game) {
-            $gameKey = $this->gameKey($entryId, $game);
-            $oldGame = $oldGamesIndexed[$gameKey] ?? null;
+        foreach ($newGames as $index => $game) {
+            $stableKey = $this->stableKey($entryId, $game, $index);
+            $gameKey   = $this->gameKey($entryId, $game);        // includes date, for dedup log
+            $oldGame   = $oldGamesIndexed[$stableKey] ?? null;
             $opponentName = $this->resolveOpponentName($game['opponent'] ?? null);
 
             $gameDate = isset($game['game_date'])
@@ -84,6 +85,17 @@ class GameChangedListener
             }
 
             if (empty($game['cancelled']) && $oldGame !== null) {
+                // Date change
+                if (
+                    isset($game['game_date'], $oldGame['game_date']) &&
+                    $game['game_date'] !== $oldGame['game_date'] &&
+                    GameNotification::alreadySent($stableKey . '_' . $game['game_date'], 'date_changed') === false
+                ) {
+                    $baseData['old_game_date'] = Carbon::parse($oldGame['game_date'])->format('M j, Y');
+                    $this->notifySubscribers($sport, $teamSlug, 'date_changed', $baseData);
+                    GameNotification::markSent($entryId, $stableKey . '_' . $game['game_date'], 'date_changed');
+                }
+
                 // Time change
                 if (
                     isset($game['time'], $oldGame['time']) &&
@@ -137,6 +149,16 @@ class GameChangedListener
             : ($game['opponent'] ?? '');
 
         return md5($entryId . '_' . ($game['game_date'] ?? '') . '_' . $opponentId);
+    }
+
+    // Stable key for matching old vs new games across date changes (uses index + opponent, no date)
+    private function stableKey(string $entryId, array $game, int $index): string
+    {
+        $opponentId = is_array($game['opponent'] ?? null)
+            ? ($game['opponent'][0] ?? '')
+            : ($game['opponent'] ?? '');
+
+        return md5($entryId . '_idx' . $index . '_' . $opponentId);
     }
 
     private function resolveOpponentName(mixed $opponent): string

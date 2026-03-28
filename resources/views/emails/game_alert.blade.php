@@ -4,6 +4,13 @@
 
 The **{{ $gameData['team_name'] }}** game scheduled for **{{ $gameData['game_date'] }}** vs **{{ $gameData['opponent_name'] }}** has been **cancelled**.
 
+@elseif($type === 'date_changed')
+# Game Rescheduled
+
+The **{{ $gameData['team_name'] }}** game vs **{{ $gameData['opponent_name'] }}** has been rescheduled:
+
+~~{{ $gameData['old_game_date'] }}~~ → **{{ $gameData['game_date'] }}** at {{ $gameData['time'] }}
+
 @elseif($type === 'time_changed')
 # Game Time Updated
 

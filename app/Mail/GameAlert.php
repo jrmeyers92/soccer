@@ -22,6 +22,7 @@ class GameAlert extends Mailable
     {
         $subject = match ($this->type) {
             'cancelled'        => 'Game Cancelled: ' . $this->gameData['opponent_name'],
+            'date_changed'     => 'Game Rescheduled: vs ' . $this->gameData['opponent_name'],
             'time_changed'     => 'Game Time Updated: vs ' . $this->gameData['opponent_name'],
             'location_changed' => 'Game Location Updated: vs ' . $this->gameData['opponent_name'],
             'score_posted'     => 'Final Score: ' . $this->gameData['team_name'] . ' vs ' . $this->gameData['opponent_name'],
