@@ -1,34 +1,74 @@
-{{slugArray = url | explode('/')}} 
-{{theTeam = slugArray[1] | explode("-")}}
-{{gender = theTeam[0]}} 
-{{jvOrVarsity = theTeam[1]}} 
-{{finalTeam = gender + "_" + jvOrVarsity | camelize}} 
-{{scheduleType = slugArray[2]}} {{scheduleTeamTitle = ""}} 
+{{slugArray = current_uri | explode('/')}}
+{{sport = slugArray[1]}}
+{{theTeam = slugArray[2] | explode("-")}}
+{{gender = theTeam[0]}}
+{{jvOrVarsity = theTeam[1]}}
+{{finalTeam = gender + "_" + jvOrVarsity | camelize}}
+{{scheduleTeamTitle = ""}}
 
-{{if jvOrVarsity == "jv"}} 
-    {{scheduleTeamTitle = "JV"}} 
-{{else if jvOrVarsity == "varsity"}} 
-    {{scheduleTeamTitle = "Varsity"}} 
+{{if jvOrVarsity == "jv"}}
+    {{scheduleTeamTitle = "JV"}}
+{{else if jvOrVarsity == "varsity"}}
+    {{scheduleTeamTitle = "Varsity"}}
 {{/if}}
 
 
 
 
-    {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" paginate="1"}} 
-        {{team}} 
+    {{collection:teams | sort="year:desc" sport:is="{sport}" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" paginate="1"}}
+        {{team}}
             {{if team == "jv"}}
                 <h1 class="text-3xl pb-4 border-b border-gray-300 my-16">{{year}} {{gender | ucfirst}} JV Stats </h1>
             {{else}}
                 <h1 class="text-3xl pb-4 border-b border-gray-300 my-16">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Stats </h1>
             {{/if}}
-            
+
             {{ if players | is_empty }}
                 <p class="p-2">Sorry no stats available at this time.</p>
             {{else}}
-            
 
                 <div class="flex md:items-center w-full md:justify-center my-4 overflow-x-auto">
                     <table class="border border-gray-300 w-full max-w-5xl">
+                        {{# Column headers — sport-specific #}}
+                        {{ if sport == "basketball" }}
+                        <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
+                            <th class="px-2 py-1 border-r border-white">Number</th>
+                            <th class="px-2 py-1 border-r border-white">Name</th>
+                            <th class="px-2 py-1 border-r border-white">Position</th>
+                            <th class="px-2 py-1 border-r border-white">Points</th>
+                            <th class="px-2 py-1 border-r border-white">Rebounds</th>
+                            <th class="px-2 py-1 border-r border-white">Assists</th>
+                            <th class="px-2 py-1 border-r border-white">Blocks</th>
+                        </tr>
+                        {{ elseif sport == "football" }}
+                        <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
+                            <th class="px-2 py-1 border-r border-white">Number</th>
+                            <th class="px-2 py-1 border-r border-white">Name</th>
+                            <th class="px-2 py-1 border-r border-white">Position</th>
+                            <th class="px-2 py-1 border-r border-white">TDs</th>
+                            <th class="px-2 py-1 border-r border-white">Pass Yds</th>
+                            <th class="px-2 py-1 border-r border-white">Rush Yds</th>
+                            <th class="px-2 py-1 border-r border-white">Tackles</th>
+                        </tr>
+                        {{ elseif sport == "baseball" || sport == "softball" }}
+                        <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
+                            <th class="px-2 py-1 border-r border-white">Number</th>
+                            <th class="px-2 py-1 border-r border-white">Name</th>
+                            <th class="px-2 py-1 border-r border-white">Position</th>
+                            <th class="px-2 py-1 border-r border-white">Avg</th>
+                            <th class="px-2 py-1 border-r border-white">RBI</th>
+                            <th class="px-2 py-1 border-r border-white">HR</th>
+                            <th class="px-2 py-1 border-r border-white">ERA</th>
+                        </tr>
+                        {{ elseif sport == "swimming" }}
+                        <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
+                            <th class="px-2 py-1 border-r border-white">Number</th>
+                            <th class="px-2 py-1 border-r border-white">Name</th>
+                            <th class="px-2 py-1 border-r border-white">Event</th>
+                            <th class="px-2 py-1 border-r border-white">Best Time</th>
+                        </tr>
+                        {{ else }}
+                        {{# Default: Soccer #}}
                         <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
                             <th class="px-2 py-1 border-r border-white">Number</th>
                             <th class="px-2 py-1 border-r border-white">Name</th>
@@ -37,10 +77,81 @@
                             <th class="px-2 py-1 border-r border-white">Assists</th>
                             <th class="px-2 py-1 border-r border-white">Shutouts</th>
                         </tr>
+                        {{ /if }}
+
                         {{playerCount = 0}}
                         {{players}}
-                            {{if goals != 0 || assists != 0 || shutouts != 0}}
-                            {{playerCount = playerCount + 1}}
+                            {{ if sport == "basketball" }}
+                                {{ if points != 0 || rebounds != 0 || assists != 0 || blocks != 0 }}
+                                {{playerCount = playerCount + 1}}
+                                <tr class="border-b">
+                                    <td class="border-r px-2">{{number}}</td>
+                                    <td class="border-r px-2">{{first_name}} {{last_name}}</td>
+                                    <td class="border-r px-2">
+                                        {{position}}
+                                            {{if position | length != 1}}
+                                                {{if !last}}{{value | ucfirst}} /{{else}}{{value | ucfirst}}{{/if}}
+                                            {{else}}{{value | ucfirst}}{{/if}}
+                                        {{/position}}
+                                    </td>
+                                    <td class="border-r px-2">{{points}}</td>
+                                    <td class="border-r px-2">{{rebounds}}</td>
+                                    <td class="border-r px-2">{{assists}}</td>
+                                    <td class="border-r px-2">{{blocks}}</td>
+                                </tr>
+                                {{ /if }}
+                            {{ elseif sport == "football" }}
+                                {{ if touchdowns != 0 || passing_yards != 0 || rushing_yards != 0 || tackles != 0 }}
+                                {{playerCount = playerCount + 1}}
+                                <tr class="border-b">
+                                    <td class="border-r px-2">{{number}}</td>
+                                    <td class="border-r px-2">{{first_name}} {{last_name}}</td>
+                                    <td class="border-r px-2">
+                                        {{position}}
+                                            {{if position | length != 1}}
+                                                {{if !last}}{{value | ucfirst}} /{{else}}{{value | ucfirst}}{{/if}}
+                                            {{else}}{{value | ucfirst}}{{/if}}
+                                        {{/position}}
+                                    </td>
+                                    <td class="border-r px-2">{{touchdowns}}</td>
+                                    <td class="border-r px-2">{{passing_yards}}</td>
+                                    <td class="border-r px-2">{{rushing_yards}}</td>
+                                    <td class="border-r px-2">{{tackles}}</td>
+                                </tr>
+                                {{ /if }}
+                            {{ elseif sport == "baseball" || sport == "softball" }}
+                                {{ if batting_avg || rbi != 0 || home_runs != 0 || era }}
+                                {{playerCount = playerCount + 1}}
+                                <tr class="border-b">
+                                    <td class="border-r px-2">{{number}}</td>
+                                    <td class="border-r px-2">{{first_name}} {{last_name}}</td>
+                                    <td class="border-r px-2">
+                                        {{position}}
+                                            {{if position | length != 1}}
+                                                {{if !last}}{{value | ucfirst}} /{{else}}{{value | ucfirst}}{{/if}}
+                                            {{else}}{{value | ucfirst}}{{/if}}
+                                        {{/position}}
+                                    </td>
+                                    <td class="border-r px-2">{{batting_avg}}</td>
+                                    <td class="border-r px-2">{{rbi}}</td>
+                                    <td class="border-r px-2">{{home_runs}}</td>
+                                    <td class="border-r px-2">{{era}}</td>
+                                </tr>
+                                {{ /if }}
+                            {{ elseif sport == "swimming" }}
+                                {{ if event || best_time }}
+                                {{playerCount = playerCount + 1}}
+                                <tr class="border-b">
+                                    <td class="border-r px-2">{{number}}</td>
+                                    <td class="border-r px-2">{{first_name}} {{last_name}}</td>
+                                    <td class="border-r px-2">{{event}}</td>
+                                    <td class="border-r px-2">{{best_time}}</td>
+                                </tr>
+                                {{ /if }}
+                            {{ else }}
+                            {{# Default: Soccer #}}
+                                {{if goals != 0 || assists != 0 || shutouts != 0}}
+                                {{playerCount = playerCount + 1}}
                                 <tr class="border-b">
                                     <td class="border-r px-2">{{number}} </td>
                                     <td class="border-r px-2">{{first_name}} {{last_name}}</td>
@@ -61,7 +172,8 @@
                                     <td class="border-r px-2">{{assists}}</td>
                                     <td class="border-r px-2">{{shutouts}}</td>
                                 </tr>
-                            {{/if}}
+                                {{/if}}
+                            {{ /if }}
 
                             {{if playerCount == 0}}
                                 {{if count == 1}}
@@ -72,7 +184,7 @@
                         {{/players}}
                     </table>
                 </div>
-            {{/if}} 
+            {{/if}}
 
             {{ paginate }}
             <ul class="pagination flex items-center gap-4 my-2 justify-center">
@@ -82,10 +194,10 @@
                     <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full invisible"><span>&laquo;</span></li>
                 {{ /if }}
 
-         
+
                 {{ links:segments }}
 
-          
+
 
                     {{ first }}
                         {{ if page == current_page }}
@@ -110,7 +222,7 @@
                     {{ if slider || (!slider && last) }}
                         <li class="disabled py-2 px-4 text-sm border border-gray-400 rounded-full">...</li>
                     {{ /if }}
-        
+
                     {{ last }}
                         {{ if page == current_page }}
                             <li class="active bg-primary-500 text-black py-2 px-4 text-sm border-gray-400 rounded-full border">{{ page }}</li>
@@ -128,6 +240,6 @@
                 {{ /if }}
             </ul>
         {{ /paginate }}
-        {{/team}} 
+        {{/team}}
     {{/collection:teams}}
 

@@ -1,16 +1,17 @@
-{{ slugArray = url | explode('/') }}
-{{ theTeam = slugArray[1] | explode("-") }}
+{{ slugArray = current_uri | explode('/') }}
+{{ if slugArray[2] }}
+{{ sport = slugArray[1] }}
+{{ theTeam = slugArray[2] | explode("-") }}
 {{ gender = theTeam[0] }}
 {{ jvOrVarsity = theTeam[1] }}
 {{ finalTeam = gender + "_" + jvOrVarsity | camelize }}
-{{ scheduleType = slugArray[2] }}
 {{ scheduleTeamTitle = "" }}
 {{ if jvOrVarsity == "jv" }}
     {{ scheduleTeamTitle = "JV" }}
 {{ else if jvOrVarsity == "varsity" }}
     {{ scheduleTeamTitle = "Varsity" }}
 {{ /if }}
-{{ collection:teams |  sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1" }}
+{{ collection:teams |  sort="year:desc" sport:is="{sport}" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1" }}
     {{ if team }}
         {{ team }}
             <section
@@ -76,7 +77,7 @@
                     {{ /players }}
                 {{ /if }}
                 <a
-                    href="/{{ gender }}-{{ jvOrVarsity }}/roster"
+                    href="/{{ sport }}/{{ gender }}-{{ jvOrVarsity }}/roster"
                     class="bg-primary-500 p-2 font-bold text-black duration-150 hover:bg-primary-600"
                 >
                     View Full Roster
@@ -85,3 +86,4 @@
         {{ /team }}
     {{ /if }}
 {{ /collection:teams }}
+{{ /if }}

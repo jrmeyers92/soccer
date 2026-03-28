@@ -65,6 +65,104 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
+      if:
+        $root.sport: soccer
+  -
+    handle: position_basketball
+    field:
+      options:
+        point_guard: 'Point Guard'
+        shooting_guard: 'Shooting Guard'
+        small_forward: 'Small Forward'
+        power_forward: 'Power Forward'
+        center: Center
+      inline: false
+      type: checkboxes
+      display: Position
+      icon: checkboxes
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: basketball
+  -
+    handle: position_football
+    field:
+      options:
+        quarterback: Quarterback
+        running_back: 'Running Back'
+        wide_receiver: 'Wide Receiver'
+        tight_end: 'Tight End'
+        offensive_line: 'Offensive Line'
+        defensive_line: 'Defensive Line'
+        linebacker: Linebacker
+        cornerback: Cornerback
+        safety: Safety
+        kicker: Kicker
+        punter: Punter
+      inline: false
+      type: checkboxes
+      display: Position
+      icon: checkboxes
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: football
+  -
+    handle: position_baseball
+    field:
+      options:
+        pitcher: Pitcher
+        catcher: Catcher
+        first_base: 'First Base'
+        second_base: 'Second Base'
+        third_base: 'Third Base'
+        shortstop: Shortstop
+        left_field: 'Left Field'
+        center_field: 'Center Field'
+        right_field: 'Right Field'
+        designated_hitter: 'Designated Hitter'
+      inline: false
+      type: checkboxes
+      display: Position
+      icon: checkboxes
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: baseball
+  -
+    handle: position_track
+    field:
+      options:
+        sprinter: Sprinter
+        distance: Distance
+        jumper: Jumper
+        thrower: Thrower
+        hurdler: Hurdler
+        relay: Relay
+      inline: false
+      type: checkboxes
+      display: Event / Position
+      icon: checkboxes
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: track
   -
     handle: captain
     field:
@@ -135,6 +233,8 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
+      if:
+        $root.sport: soccer
   -
     handle: assists
     field:
@@ -147,6 +247,8 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
+      if:
+        $root.sport: soccer
   -
     handle: shutouts
     field:
@@ -159,3 +261,241 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
+      if:
+        $root.sport: soccer
+  -
+    handle: points
+    field:
+      type: integer
+      display: Points
+      icon: integer
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: basketball
+  -
+    handle: rebounds
+    field:
+      type: integer
+      display: Rebounds
+      icon: integer
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: basketball
+  -
+    handle: blocks
+    field:
+      type: integer
+      display: Blocks
+      icon: integer
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: basketball
+  -
+    handle: steals
+    field:
+      type: integer
+      display: Steals
+      icon: integer
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: basketball
+  -
+    handle: touchdowns
+    field:
+      type: integer
+      display: Touchdowns
+      icon: integer
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: football
+  -
+    handle: passing_yards
+    field:
+      type: integer
+      display: 'Passing Yards'
+      icon: integer
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: football
+  -
+    handle: rushing_yards
+    field:
+      type: integer
+      display: 'Rushing Yards'
+      icon: integer
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: football
+  -
+    handle: tackles
+    field:
+      type: integer
+      display: Tackles
+      icon: integer
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: football
+  -
+    handle: sacks
+    field:
+      type: integer
+      display: Sacks
+      icon: integer
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: football
+  -
+    handle: batting_avg
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: 'Batting Avg'
+      instructions: 'e.g. .312'
+      icon: text
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: baseball
+  -
+    handle: rbi
+    field:
+      type: integer
+      display: RBI
+      icon: integer
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: baseball
+  -
+    handle: home_runs
+    field:
+      type: integer
+      display: 'Home Runs'
+      icon: integer
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: baseball
+  -
+    handle: era
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: ERA
+      instructions: 'e.g. 2.45'
+      icon: text
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: baseball
+  -
+    handle: strikeouts
+    field:
+      type: integer
+      display: Strikeouts
+      icon: integer
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: baseball
+  -
+    handle: event
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Event
+      instructions: 'e.g. 100m Freestyle'
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: track
+  -
+    handle: best_time
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: 'Best Time'
+      instructions: 'e.g. 0:54.32'
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        $root.sport: track

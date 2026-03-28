@@ -12,23 +12,112 @@ stripe_link: 'https://buy.stripe.com/test_3cs7uS0Qw86xb5u6oo'
 primary_color: '#DCC137'
 secondary_color: '#373F51'
 google_analytics_id: G-BR670BJDZ4
+nav_sports:
+  -
+    id: sp1
+    slug: soccer
+    display_name: Soccer
+  -
+    id: sp2
+    slug: basketball
+    display_name: Basketball
+  -
+    id: sp3
+    slug: football
+    display_name: Football
+  -
+    id: sp4
+    slug: baseball
+    display_name: Baseball
+  -
+    id: sp5
+    slug: softball
+    display_name: Softball
+  -
+    id: sp6
+    slug: swimming
+    display_name: Swimming
 nav_teams:
   -
     id: Tlk5jmi0
     slug: boys-jv
     display_name: 'Boys JV'
+    sport: soccer
   -
     id: trbEn4J6
     slug: boys-varsity
     display_name: 'Boys Varsity'
+    sport: soccer
   -
     id: CdgkDIpr
     slug: girls-jv
     display_name: 'Girls JV'
+    sport: soccer
   -
     id: IqVKONWF
     slug: girls-varsity
     display_name: 'Girls Varsity'
+    sport: soccer
+  -
+    id: bk1
+    slug: boys-jv
+    display_name: 'Boys JV'
+    sport: basketball
+  -
+    id: bk2
+    slug: boys-varsity
+    display_name: 'Boys Varsity'
+    sport: basketball
+  -
+    id: bk3
+    slug: girls-jv
+    display_name: 'Girls JV'
+    sport: basketball
+  -
+    id: bk4
+    slug: girls-varsity
+    display_name: 'Girls Varsity'
+    sport: basketball
+  -
+    id: fb1
+    slug: boys-jv
+    display_name: JV
+    sport: football
+  -
+    id: fb2
+    slug: boys-varsity
+    display_name: Varsity
+    sport: football
+  -
+    id: bb1
+    slug: boys-jv
+    display_name: JV
+    sport: baseball
+  -
+    id: bb2
+    slug: boys-varsity
+    display_name: Varsity
+    sport: baseball
+  -
+    id: sb1
+    slug: girls-jv
+    display_name: JV
+    sport: softball
+  -
+    id: sb2
+    slug: girls-varsity
+    display_name: Varsity
+    sport: softball
+  -
+    id: sw1
+    slug: boys-varsity
+    display_name: Boys
+    sport: swimming
+  -
+    id: sw2
+    slug: girls-varsity
+    display_name: Girls
+    sport: swimming
 footer_logos:
   - 90ddffd9-8d1e-4310-b533-c7bb2b25e651
   - 0da46dc2-3c0d-49ce-812c-5efaa28b8a9b

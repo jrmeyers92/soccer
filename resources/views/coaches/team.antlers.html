@@ -1,0 +1,51 @@
+{{slugArray = current_uri | explode('/')}}
+{{sport = slugArray[1]}}
+{{theTeam = slugArray[2] | explode("-")}}
+{{gender = theTeam[0]}}
+{{jvOrVarsity = theTeam[1]}}
+
+{{collection:teams | sort="year:desc" sport:is="{sport}" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1"}}
+    {{team}}
+        {{if team == "jv"}}
+            <h1 class="text-3xl pb-4 border-b border-gray-300 my-16">{{year}} {{gender | ucfirst}} JV Coaches</h1>
+        {{else}}
+            <h1 class="text-3xl pb-4 border-b border-gray-300 my-16">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Coaches</h1>
+        {{/if}}
+
+        {{if head_coach}}
+            <h2 class="text-xl font-semibold mt-8 mb-4">Head Coach</h2>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
+                {{head_coach}}
+                    {{partial:card_linkable href="/coaches/{slug}" image="{image}"}}
+                        <div class="flex flex-col p-4">
+                            <span class="border-gray-300 px-3 text-xl">{{title}}</span>
+                            <span class="border-gray-300 px-3 py-1 font-extralight capitalize text-primary-900">{{position}}</span>
+                            <span class="border-gray-300 px-3 py-1 font-extralight capitalize">{{email}}</span>
+                            <span class="border-gray-300 px-3 py-1 font-extralight capitalize text-primary-900">{{phone_number}}</span>
+                        </div>
+                    {{/partial:card_linkable}}
+                {{/head_coach}}
+            </div>
+        {{/if}}
+
+        {{if assistant_coaches}}
+            <h2 class="text-xl font-semibold mt-4 mb-4">Assistant Coaches</h2>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
+                {{assistant_coaches}}
+                    {{partial:card_linkable href="/coaches/{slug}" image="{image}"}}
+                        <div class="flex flex-col p-4">
+                            <span class="border-gray-300 px-3 text-xl">{{title}}</span>
+                            <span class="border-gray-300 px-3 py-1 font-extralight capitalize text-primary-900">{{position}}</span>
+                            <span class="border-gray-300 px-3 py-1 font-extralight capitalize">{{email}}</span>
+                            <span class="border-gray-300 px-3 py-1 font-extralight capitalize text-primary-900">{{phone_number}}</span>
+                        </div>
+                    {{/partial:card_linkable}}
+                {{/assistant_coaches}}
+            </div>
+        {{/if}}
+
+        {{if !head_coach && !assistant_coaches}}
+            <p class="p-2">No coaches listed for this team at this time.</p>
+        {{/if}}
+    {{/team}}
+{{/collection:teams}}

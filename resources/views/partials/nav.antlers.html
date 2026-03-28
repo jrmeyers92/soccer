@@ -1,12 +1,6 @@
 {{ slugArray = current_uri | explode('/') }}
-{{ team = "" }}
-{{ if site_data:nav_teams }}
-    {{ site_data:nav_teams }}
-        {{ if slug == {slugArray[1]} }}
-            {{ team = slug }}
-        {{ /if }}
-    {{ /site_data:nav_teams }}
-{{ /if }}
+{{ currentSport = slugArray[1] }}
+{{ currentTeamSlug = slugArray[2] }}
 <nav class="sticky top-0 z-10 flex flex-col leading-4 duration-500" id="navbar">
     <div
         id="upperNav"
@@ -23,7 +17,7 @@
                 class="block w-full self-end border-b border-white/30 py-4 text-right text-sm font-semibold tracking-wide xs:text-base"
             >
                 {{ site_data:school_name }}
-                High School Soccer
+                High School Athletics
             </p>
 
             <ul
@@ -41,9 +35,40 @@
     </div>
 
     <div
-        class="flex w-full flex-col-reverse items-center border-b bg-white p-4 shadow-md duration-500 xs:flex-row"
+        class="flex w-full flex-col-reverse items-center border-b bg-white p-4 shadow-md duration-500 xs:flex-row gap-2"
         id="lowerNav"
     >
+        {{# Sport selector pill #}}
+        <div class="relative">
+            <div class="relative overflow-hidden">
+                <button
+                    class="text-md flex items-center space-x-2 whitespace-nowrap rounded-full bg-slate-500/20 px-4 py-2 font-semibold leading-5 tracking-wider hover:bg-slate-400/20"
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    id="sportPill"
+                >
+                    Sport
+                    <i class="fa-solid fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+            <div
+                class="absolute top-full mt-1 hidden w-44 rounded-lg bg-white py-2 text-sm font-semibold leading-6 text-slate-700 shadow ring-1 ring-slate-900/5"
+                id="sportSelect"
+            >
+                {{ site_data:nav_sports }}
+                <div
+                    class="sportSelectItem sport-{{ slug }} flex cursor-pointer items-center justify-between px-4 py-1"
+                    data-sport="{{ slug }}"
+                >
+                    {{ display_name }}
+                    <div class="hidden"><i class="fa-solid fa-check"></i></div>
+                </div>
+                {{ /site_data:nav_sports }}
+            </div>
+        </div>
+
+        {{# Team selector pill #}}
         <div class="relative">
             <div class="relative overflow-hidden">
                 <button
@@ -53,8 +78,8 @@
                     aria-expanded="false"
                     id="pill"
                 >
-                    Boy's JV
-                    <i class="fa-solid fa-chevron-down"></i>
+                    Team
+                    <i class="fa-solid fa-chevron-down ml-2"></i>
                 </button>
                 <div class="shine absolute"></div>
             </div>
@@ -64,8 +89,9 @@
             >
                 {{ site_data:nav_teams }}
                 <div
-                    class="teamSelectItem {{ slug }} flex cursor-pointer items-center justify-between px-4 py-1"
+                    class="teamSelectItem {{ slug }}-{{ sport }} flex cursor-pointer items-center justify-between px-4 py-1"
                     data-team="{{ slug }}"
+                    data-sport="{{ sport }}"
                 >
                     {{ display_name }}
                     <div class="hidden"><i class="fa-solid fa-check"></i></div>
@@ -77,32 +103,45 @@
         <ul class="ml-4 flex text-sm md:text-base">
             <li class="p-2">
                 <a
-                    class="{{if slugArray[2] == "schedule"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
-                    href="{{ config:app:url }}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/schedule"
+                    class="teamSectionLink {{if slugArray[3] == "schedule"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
+                    data-section="schedule"
+                    href="#"
                 >
                     Schedule
                 </a>
             </li>
             <li class="p-2">
                 <a
-                    class="{{if slugArray[2] == "roster"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
-                    href="{{ config:app:url }}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/roster"
+                    class="teamSectionLink {{if slugArray[3] == "roster"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
+                    data-section="roster"
+                    href="#"
                 >
                     Roster
                 </a>
             </li>
             <li class="p-2">
                 <a
-                    class="{{if slugArray[2] == "stats"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
-                    href="{{ config:app:url }}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/stats"
+                    class="teamSectionLink {{if slugArray[3] == "stats"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
+                    data-section="stats"
+                    href="#"
                 >
                     Stats
                 </a>
             </li>
             <li class="p-2">
                 <a
-                    class="{{if slugArray[1] == "seasons"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
-                    href="/seasons"
+                    class="teamSectionLink {{if slugArray[3] == "coaches"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
+                    data-section="coaches"
+                    href="#"
+                >
+                    Coaches
+                </a>
+            </li>
+            <li class="p-2">
+                <a
+                    class="teamSectionLink {{if slugArray[3] == "seasons"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
+                    data-section="seasons"
+                    href="#"
                 >
                     Seasons
                 </a>
@@ -119,7 +158,10 @@
     </div>
 
     <script>
-        window.siteTeams = [{{ site_data:nav_teams }}{{ if !first }},{{ /if }}"{{ slug }}"{{ /site_data:nav_teams }}];
+        window.siteAthletics = {
+            sports: [{{ site_data:nav_sports }}{{ if !first }},{{ /if }}{"slug":"{{ slug }}","display":"{{ display_name }}"}{{ /site_data:nav_sports }}],
+            teams: [{{ site_data:nav_teams }}{{ if !first }},{{ /if }}{"slug":"{{ slug }}","display":"{{ display_name }}","sport":"{{ sport }}"}{{ /site_data:nav_teams }}]
+        };
     </script>
 
     {{ partial:modal id="donationModal" }}
@@ -128,7 +170,7 @@
                 Thank you for considering donating to the
                 {{ site_data:school_name }}
                 {{ site_data:mascot }}
-                soccer team! Your generosity is greatly appreciated and helps us
+                athletics program! Your generosity is greatly appreciated and helps us
                 continue our mission of fostering teamwork, skill development,
                 and sportsmanship.
             </p>
@@ -142,7 +184,7 @@
             <p>
                 If possible, we kindly request that you consider making your
                 donation in person. By doing so, we can ensure that 100% of your
-                contribution directly benefits our team without any deduction
+                contribution directly benefits our teams without any deduction
                 for processing fees.
             </p>
             <p>
@@ -151,9 +193,9 @@
                 the world to us, and we are grateful for your consideration.
             </p>
             <p>
-                Thank you for supporting the {{ site_data:school_name }}
+                Thank you for supporting {{ site_data:school_name }}
                 {{ site_data:mascot }}
-                Soccer Team!
+                Athletics!
             </p>
             <a
                 class="donateButton cursor-pointer rounded border-2 border-secondary bg-primary px-4 py-2 text-lg font-bold uppercase hover:bg-primary-600"

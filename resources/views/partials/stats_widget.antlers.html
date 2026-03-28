@@ -1,16 +1,17 @@
-{{ slugArray = url | explode('/') }}
-{{ theTeam = slugArray[1] | explode("-") }}
+{{ slugArray = current_uri | explode('/') }}
+{{ if slugArray[2] }}
+{{ sport = slugArray[1] }}
+{{ theTeam = slugArray[2] | explode("-") }}
 {{ gender = theTeam[0] }}
 {{ jvOrVarsity = theTeam[1] }}
 {{ finalTeam = gender + "_" + jvOrVarsity | camelize }}
-{{ scheduleType = slugArray[2] }}
 {{ scheduleTeamTitle = "" }}
 {{ if jvOrVarsity == "jv" }}
     {{ scheduleTeamTitle = "JV" }}
 {{ else if jvOrVarsity == "varsity" }}
     {{ scheduleTeamTitle = "Varsity" }}
 {{ /if }}
-{{ collection:teams |  sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1" }}
+{{ collection:teams |  sort="year:desc" sport:is="{sport}" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1" }}
     {{ if team }}
         {{ team }}
             <section
@@ -19,40 +20,92 @@
                 {{ if team == "jv" }}
                     {{ partial:section_heading title="{year} {gender | ucfirst} {team | upper} Stats" }}
                 {{ else }}
-                    {{ partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Roster" }}
+                    {{ partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Stats" }}
                 {{ /if }}
                 {{ if players | is_empty }}
                     <p>Sorry no stats available at this time.</p>
                 {{ else }}
                     <div class="text-sm">
-                        <div
-                            class="mb-2 grid grid-cols-4 border-b py-2 font-semibold"
-                        >
-                            <span>Name</span>
-                            <span>Goals</span>
-                            <span>Assists</span>
-                            <span>Shutouts</span>
+                        {{# Column headers — sport-specific #}}
+                        {{ if sport == "basketball" }}
+                        <div class="mb-2 grid grid-cols-5 border-b py-2 font-semibold">
+                            <span>Name</span><span>Pts</span><span>Reb</span><span>Ast</span><span>Blk</span>
                         </div>
+                        {{ elseif sport == "football" }}
+                        <div class="mb-2 grid grid-cols-5 border-b py-2 font-semibold">
+                            <span>Name</span><span>TD</span><span>Pass Yds</span><span>Rush Yds</span><span>Tkl</span>
+                        </div>
+                        {{ elseif sport == "baseball" || sport == "softball" }}
+                        <div class="mb-2 grid grid-cols-5 border-b py-2 font-semibold">
+                            <span>Name</span><span>Avg</span><span>RBI</span><span>HR</span><span>ERA</span>
+                        </div>
+                        {{ elseif sport == "swimming" }}
+                        <div class="mb-2 grid grid-cols-3 border-b py-2 font-semibold">
+                            <span>Name</span><span>Event</span><span>Best Time</span>
+                        </div>
+                        {{ else }}
+                        {{# Default: Soccer #}}
+                        <div class="mb-2 grid grid-cols-4 border-b py-2 font-semibold">
+                            <span>Name</span><span>Goals</span><span>Assists</span><span>Shutouts</span>
+                        </div>
+                        {{ /if }}
+
+                        {{# Player rows — sport-specific #}}
                         {{ players }}
-                            {{ if goals != 0 || assists != 0
-                     || shutouts != 0 }}
-                                <div
-                                    class="grid grid-cols-4 px-2 py-1 odd:bg-gray-200"
-                                >
-                                    <span class="mr-2">
-                                        {{ first_name }}
-                                        {{ last_name }}
-                                    </span>
+                            {{ if sport == "basketball" }}
+                                {{ if points != 0 || rebounds != 0 || assists != 0 || blocks != 0 }}
+                                <div class="grid grid-cols-5 px-2 py-1 odd:bg-gray-200">
+                                    <span class="mr-2">{{ first_name }} {{ last_name }}</span>
+                                    <span>{{ points }}</span>
+                                    <span>{{ rebounds }}</span>
+                                    <span>{{ assists }}</span>
+                                    <span>{{ blocks }}</span>
+                                </div>
+                                {{ /if }}
+                            {{ elseif sport == "football" }}
+                                {{ if touchdowns != 0 || passing_yards != 0 || rushing_yards != 0 || tackles != 0 }}
+                                <div class="grid grid-cols-5 px-2 py-1 odd:bg-gray-200">
+                                    <span class="mr-2">{{ first_name }} {{ last_name }}</span>
+                                    <span>{{ touchdowns }}</span>
+                                    <span>{{ passing_yards }}</span>
+                                    <span>{{ rushing_yards }}</span>
+                                    <span>{{ tackles }}</span>
+                                </div>
+                                {{ /if }}
+                            {{ elseif sport == "baseball" || sport == "softball" }}
+                                {{ if batting_avg || rbi != 0 || home_runs != 0 || era }}
+                                <div class="grid grid-cols-5 px-2 py-1 odd:bg-gray-200">
+                                    <span class="mr-2">{{ first_name }} {{ last_name }}</span>
+                                    <span>{{ batting_avg }}</span>
+                                    <span>{{ rbi }}</span>
+                                    <span>{{ home_runs }}</span>
+                                    <span>{{ era }}</span>
+                                </div>
+                                {{ /if }}
+                            {{ elseif sport == "swimming" }}
+                                {{ if event || best_time }}
+                                <div class="grid grid-cols-3 px-2 py-1 odd:bg-gray-200">
+                                    <span class="mr-2">{{ first_name }} {{ last_name }}</span>
+                                    <span>{{ event }}</span>
+                                    <span>{{ best_time }}</span>
+                                </div>
+                                {{ /if }}
+                            {{ else }}
+                            {{# Default: Soccer #}}
+                                {{ if goals != 0 || assists != 0 || shutouts != 0 }}
+                                <div class="grid grid-cols-4 px-2 py-1 odd:bg-gray-200">
+                                    <span class="mr-2">{{ first_name }} {{ last_name }}</span>
                                     <span>{{ goals }}</span>
                                     <span>{{ assists }}</span>
                                     <span>{{ shutouts }}</span>
                                 </div>
+                                {{ /if }}
                             {{ /if }}
                         {{ /players }}
                     </div>
                 {{ /if }}
                 <a
-                    href="/{{ gender }}-{{ jvOrVarsity }}/stats"
+                    href="/{{ sport }}/{{ gender }}-{{ jvOrVarsity }}/stats"
                     class="bg-primary-500 p-2 font-bold text-black duration-150 hover:bg-primary-600"
                 >
                     View All Stats
@@ -61,3 +114,4 @@
         {{ /team }}
     {{ /if }}
 {{ /collection:teams }}
+{{ /if }}

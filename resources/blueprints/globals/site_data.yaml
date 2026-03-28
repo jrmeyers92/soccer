@@ -200,11 +200,32 @@ tabs:
               replicator_preview: true
               hide_display: false
           -
+            handle: nav_sports
+            field:
+              type: grid
+              display: 'Navigation Sports'
+              instructions: 'Sports shown in the sport selector dropdown. Each slug is used in the URL (e.g. soccer → /soccer/boys-jv/schedule).'
+              fields:
+                -
+                  handle: slug
+                  field:
+                    type: text
+                    display: 'URL Slug'
+                    instructions: 'e.g. soccer, basketball'
+                    width: 50
+                -
+                  handle: display_name
+                  field:
+                    type: text
+                    display: 'Display Name'
+                    instructions: 'e.g. Soccer, Basketball'
+                    width: 50
+          -
             handle: nav_teams
             field:
               type: grid
               display: 'Navigation Teams'
-              instructions: 'Teams shown in the site navigation dropdown. Each slug must match the page URL (e.g. boys-jv).'
+              instructions: 'Teams shown in the team selector dropdown, grouped by sport.'
               fields:
                 -
                   handle: slug
@@ -212,14 +233,21 @@ tabs:
                     type: text
                     display: 'URL Slug'
                     instructions: 'e.g. boys-jv'
-                    width: 50
+                    width: 33
                 -
                   handle: display_name
                   field:
                     type: text
                     display: 'Display Name'
                     instructions: 'e.g. Boys JV'
-                    width: 50
+                    width: 34
+                -
+                  handle: sport
+                  field:
+                    type: text
+                    display: Sport
+                    instructions: 'Must match a sport slug above (e.g. soccer)'
+                    width: 33
   footer:
     display: Footer
     sections:

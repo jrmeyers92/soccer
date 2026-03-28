@@ -8,3 +8,5 @@ preferences:
   collections:
     teams:
       view: list
+    coaches:
+      view: list
