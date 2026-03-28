@@ -36,6 +36,8 @@
                 {{ /if }}
             </div>
 
+                {{partial:subscribe_widget sport="{sport}" team="{gender}-{jvOrVarsity}"}}
+
             {{if games| is_empty}}
                 <p class="p-2">Sorry, there are no upcoming games at this time.</p>
             {{else}}

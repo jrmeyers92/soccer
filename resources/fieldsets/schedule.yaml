@@ -102,6 +102,18 @@ fields:
                     replicator_preview: true
                     hide_display: false
                 -
+                  handle: cancelled
+                  field:
+                    type: toggle
+                    display: Cancelled
+                    icon: toggle
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                    default: false
+                -
                   handle: game_recap
                   field:
                     antlers: false

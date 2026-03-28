@@ -1,5 +1,10 @@
-<div class="border-b border-gray-300 last:border-b-0">
-    <div class="scheduleWidgetGame flex flex-col px-2 py-4 odd:bg-gray-100 sm:grid sm:grid-cols-3 md:items-center">
+<div class="border-b border-gray-300 last:border-b-0 {{ if cancelled }}opacity-60{{ /if }}">
+    {{ if cancelled }}
+        <div class="bg-red-50 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-red-600">
+            <i class="fa-solid fa-ban mr-1"></i> Cancelled
+        </div>
+    {{ /if }}
+    <div class="scheduleWidgetGame flex flex-col px-2 py-4 odd:bg-gray-100 sm:grid sm:grid-cols-3 md:items-center {{ if cancelled }}line-through decoration-red-400{{ /if }}">
         {{ opponent }}
             <div class="flex items-center justify-center justify-self-start">
                 <img

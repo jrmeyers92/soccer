@@ -14,3 +14,4 @@ preferences:
       view: list
     pages:
       view: tree
+    listing_mode: list

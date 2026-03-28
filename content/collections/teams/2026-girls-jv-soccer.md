@@ -1,7 +1,7 @@
 ---
 id: a8b9c0d1-e2f3-4456-b8c9-d0e1f2a34567
 blueprint: team
-title: '2026 Girls JV Soccer'
+title: '2026 girls jv soccer'
 gender: girls
 year: 2026
 sport: soccer
@@ -12,7 +12,7 @@ assistant_coaches:
 games:
   -
     id: Qa1xBmC2
-    game_date: '2026-02-17'
+    game_date: '2026-02-17 00:00'
     time: '17:00'
     location: home
     opponent: f1e2d3c4-b5a6-4789-a1b2-c3d4e5f67890
@@ -21,9 +21,10 @@ games:
     game_recap: 'A solid season opener at home. Emma Carter and Luna Wilson each found the net as the JV girls controlled possession from the first whistle.'
     type: new_set
     enabled: true
+    cancelled: false
   -
     id: Rb2yCnD3
-    game_date: '2026-02-24'
+    game_date: '2026-02-24 00:00'
     time: '17:30'
     location: away
     opponent: a2b3c4d5-e6f7-4890-b2c3-d4e5f6a78901
@@ -31,20 +32,22 @@ games:
     opponent_score: 1
     type: new_set
     enabled: true
+    cancelled: false
   -
     id: Sc3zDoE4
-    game_date: '2026-03-03'
+    game_date: '2026-03-03 00:00'
     time: '17:00'
     location: home
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     our_score: 3
     opponent_score: 2
-    game_recap: 'An entertaining home match against Ozark. The Chiefs trailed at halftime but came roaring back with three second-half goals, including Emma Carter''s brace.'
+    game_recap: "An entertaining home match against Ozark. The Chiefs trailed at halftime but came roaring back with three second-half goals, including Emma Carter's brace."
     type: new_set
     enabled: true
+    cancelled: false
   -
     id: Td4aEpF5
-    game_date: '2026-03-10'
+    game_date: '2026-03-10 00:00'
     time: '17:30'
     location: away
     opponent: b3c4d5e6-f7a8-4901-c3d4-e5f6a7b89012
@@ -52,9 +55,10 @@ games:
     opponent_score: 2
     type: new_set
     enabled: true
+    cancelled: false
   -
     id: Ue5bFqG6
-    game_date: '2026-03-18'
+    game_date: '2026-03-18 00:00'
     time: '17:00'
     location: home
     opponent: 39c41e15-7758-4b70-9205-24dcd78693a2
@@ -63,9 +67,10 @@ games:
     game_recap: 'A dominant showing against Kickapoo. All four goals came from different scorers as the team showed impressive depth. Ava Rodriguez earned her second shutout... until Kickapoo scored a consolation late.'
     type: new_set
     enabled: true
+    cancelled: true
   -
     id: Vf6cGrH7
-    game_date: '2026-03-25'
+    game_date: '2026-03-25 00:00'
     time: '17:30'
     location: away
     opponent: c4d5e6f7-a8b9-4012-d4e5-f6a7b8c90123
@@ -73,54 +78,61 @@ games:
     opponent_score: 0
     type: new_set
     enabled: true
+    cancelled: true
   -
     id: Wg7dHsI8
-    game_date: '2026-04-01'
+    game_date: '2026-04-01 00:00'
     time: '17:00'
     location: home
     opponent: d5e6f7a8-b9c0-4123-e5f6-a7b8c9d01234
     type: new_set
     enabled: true
+    cancelled: false
   -
     id: Xh8eItJ9
-    game_date: '2026-04-07'
+    game_date: '2026-04-07 00:00'
     time: '17:30'
     location: away
     opponent: f1e2d3c4-b5a6-4789-a1b2-c3d4e5f67890
     type: new_set
     enabled: true
+    cancelled: false
   -
     id: Yi9fJuK1
-    game_date: '2026-04-14'
+    game_date: '2026-04-14 00:00'
     time: '17:00'
     location: home
     opponent: a2b3c4d5-e6f7-4890-b2c3-d4e5f6a78901
     type: new_set
     enabled: true
+    cancelled: false
   -
     id: Zj1gKvL2
-    game_date: '2026-04-21'
+    game_date: '2026-04-21 00:00'
     time: '17:30'
     location: away
     opponent: 600030fc-7634-4122-acf1-537c77705e93
     type: new_set
     enabled: true
+    cancelled: false
   -
     id: Ak2hLwM3
-    game_date: '2026-04-28'
+    game_date: '2026-04-28 00:00'
     time: '17:00'
     location: home
     opponent: b3c4d5e6-f7a8-4901-c3d4-e5f6a7b89012
     type: new_set
     enabled: true
+    cancelled: false
   -
     id: Bl3iMxN4
-    game_date: '2026-05-05'
+    game_date: '2026-05-05 00:00'
     time: '17:30'
     location: away
     opponent: 39c41e15-7758-4b70-9205-24dcd78693a2
     type: new_set
     enabled: true
+    cancelled: false
 players:
   -
     id: pQa1xBmC
@@ -246,5 +258,6 @@ players:
     image: girlsplayer.png
     type: new_set
     enabled: true
-updated_at: 1743120000
+updated_at: 1774718247
+updated_by: 7f0177d5-e376-4ec7-8d99-6b7824fa6533
 ---
