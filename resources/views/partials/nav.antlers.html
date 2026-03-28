@@ -1,10 +1,12 @@
-{{ slugArray = url | explode('/') }}
+{{ slugArray = current_uri | explode('/') }}
 {{ team = "" }}
-{{ site_data:nav_teams }}
-    {{ if slug == {slugArray[1]} }}
-        {{ team = slug }}
-    {{ /if }}
-{{ /site_data:nav_teams }}
+{{ if site_data:nav_teams }}
+    {{ site_data:nav_teams }}
+        {{ if slug == {slugArray[1]} }}
+            {{ team = slug }}
+        {{ /if }}
+    {{ /site_data:nav_teams }}
+{{ /if }}
 <nav class="sticky top-0 z-10 flex flex-col leading-4 duration-500" id="navbar">
     <div
         id="upperNav"
@@ -18,7 +20,7 @@
         </a>
         <div class="ml-2 flex w-full flex-col sm:ml-4 md:ml-6">
             <p
-                class="block w-full self-end border-b border-white/30 py-4 text-right text-sm font-light xs:text-base"
+                class="block w-full self-end border-b border-white/30 py-4 text-right text-sm font-semibold tracking-wide xs:text-base"
             >
                 {{ site_data:school_name }}
                 High School Soccer
@@ -95,6 +97,14 @@
                     href="{{ config:app:url }}/{{if team}}{{team}}{{else}}boys-jv{{/if}}/stats"
                 >
                     Stats
+                </a>
+            </li>
+            <li class="p-2">
+                <a
+                    class="{{if slugArray[1] == "seasons"}} underline font-semibold cursor-default {{/if}} pb-2 hover:underline"
+                    href="/seasons"
+                >
+                    Seasons
                 </a>
             </li>
         </ul>

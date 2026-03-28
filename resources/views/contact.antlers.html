@@ -1,50 +1,98 @@
-<section
-    class="justify-centerpy-4 container my-10 flex max-w-lg flex-col items-center rounded-md bg-primary-100 px-2 py-8 shadow-md"
->
-    <h1 class="my-2 text-center text-2xl">Get in touch!</h1>
-    {{ form:contact }}
-        {{ if success }}
-            <div class="bg-green-300 p-2 text-white">
-                {{ success }}
-            </div>
-        {{ else }}
-            {{ if errors }}
-                <div class="bg-red-300 p-2 text-white">
-                    {{ errors }}
-                        {{ value }}
-                        <br />
-                    {{ /errors }}
+<div class="min-h-[60vh] bg-gray-50 px-4 py-16">
+    <div class="mx-auto max-w-lg">
+
+        <div class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-gray-900">Get in Touch</h1>
+            <p class="mt-2 text-gray-500">Questions, feedback, or just want to say hi — we'd love to hear from you.</p>
+        </div>
+
+        {{ form:contact }}
+
+            {{ if success }}
+                <div class="flex items-start gap-3 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800">
+                    <svg class="mt-0.5 h-5 w-5 shrink-0 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p class="text-sm font-medium">{{ success }}</p>
                 </div>
+            {{ else }}
+
+                {{ if errors }}
+                    <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                        {{ errors }}
+                            <p>{{ value }}</p>
+                        {{ /errors }}
+                    </div>
+                {{ /if }}
+
+                <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+                    <div class="space-y-5">
+
+                        <div>
+                            <label for="name" class="mb-1.5 block text-sm font-medium text-gray-700">
+                                Name <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value="{{ old:name }}"
+                                placeholder="Your name"
+                                class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 {{ if error:name }}border-red-400 bg-red-50{{ /if }}"
+                            />
+                            {{ if error:name }}
+                                <p class="mt-1 text-xs text-red-600">{{ error:name }}</p>
+                            {{ /if }}
+                        </div>
+
+                        <div>
+                            <label for="email" class="mb-1.5 block text-sm font-medium text-gray-700">
+                                Email <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value="{{ old:email }}"
+                                placeholder="you@example.com"
+                                class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 {{ if error:email }}border-red-400 bg-red-50{{ /if }}"
+                            />
+                            {{ if error:email }}
+                                <p class="mt-1 text-xs text-red-600">{{ error:email }}</p>
+                            {{ /if }}
+                        </div>
+
+                        <div>
+                            <label for="message" class="mb-1.5 block text-sm font-medium text-gray-700">
+                                Message <span class="text-red-500">*</span>
+                            </label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                placeholder="How can we help?"
+                                class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 {{ if error:message }}border-red-400 bg-red-50{{ /if }}"
+                            >{{ old:message }}</textarea>
+                            {{ if error:message }}
+                                <p class="mt-1 text-xs text-red-600">{{ error:message }}</p>
+                            {{ /if }}
+                        </div>
+
+                    </div>
+
+                    <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}" />
+
+                    <button
+                        type="submit"
+                        class="mt-6 w-full rounded-lg bg-primary px-6 py-3 text-sm font-bold text-black shadow-sm transition duration-150 hover:bg-primary-600 hover:shadow focus:outline-none focus:ring-2 focus:ring-primary-500/40"
+                    >
+                        Send Message
+                    </button>
+                </div>
+
             {{ /if }}
-            {{ fields }}
-                <div class="flex justify-between gap-4 p-2">
-                    <label>{{ display }}:</label>
-                    <div class="p-1">{{ field }}</div>
-                    {{ if error }}
-                        <p class="text-gray-500">{{ error }}</p>
-                    {{ /if }}
-                </div>
-            {{ /fields }}
-            <input
-                type="text"
-                class="hidden"
-                name="{{ honeypot ?? 'honeypot' }}"
-            />
 
-            <button
-                type="submit"
-                class="mx-auto block bg-primary px-4 py-2 duration-150 hover:bg-primary-600"
-            >
-                Submit
-            </button>
-        {{ /if }}
-    {{ /form:contact }}
-</section>
+        {{ /form:contact }}
 
-<style>
-    input,
-    textarea {
-        border: 1px solid gray;
-        padding: 0.25rem 0.5rem;
-    }
-</style>
+    </div>
+</div>

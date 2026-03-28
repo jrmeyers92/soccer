@@ -5,29 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta property="og:url" content="{{ current_url }}" />
-        <meta property="og:type" content="website" />
-        <meta
-            property="og:title"
-            content=" {{ site_data:school_city }}, {{ site_data:school_state }}'s
-        {{ site_data:school_name }} {{ site_data:mascot }} -
-        {{ site_data:school_name }} Soccer"
-        />
-        <meta
-            property="og:description"
-            content="{{ site_data:school_city }}, {{ site_data:school_state }}'s {{ site_data:school_name }} {{ site_data:mascot }} - {{ site_data:school_name }} Soccer"
-        />
-        <meta property="og:image" content="{{ site_data:logo }}" />
+        {{ yield:page_meta }}
+            <meta property="og:url" content="{{ current_url }}" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="{{ site_data:school_name }} {{ site_data:mascot }} Soccer — {{ site_data:school_city }}, {{ site_data:school_state }}" />
+            <meta property="og:description" content="{{ site_data:school_city }}, {{ site_data:school_state }}'s {{ site_data:school_name }} {{ site_data:mascot }} Soccer" />
+            <meta property="og:image" content="{{ glide src="{site_data:logo}" width="1200" height="630" fit="crop" absolute="true" }}" />
+            <link rel="canonical" href="{{ current_url }}" />
+            <title>{{ site_data:school_name }} {{ site_data:mascot }} Soccer — {{ site_data:school_city }}, {{ site_data:school_state }}</title>
+            <meta name="description" content="{{ site_data:school_city }}, {{ site_data:school_state }}'s {{ site_data:school_name }} {{ site_data:mascot }} Soccer" />
+        {{ /yield:page_meta }}
 
-        <title>
-            {{ site_data:school_city }}, {{ site_data:school_state }}'s
-            {{ site_data:school_name }} {{ site_data:mascot }} -
-            {{ site_data:school_name }} Soccer
-        </title>
-        <meta
-            name="description"
-            content="{{ site_data:school_city }}, {{ site_data:school_state }}'s {{ site_data:school_name }} {{ site_data:mascot }} - {{ site_data:school_name }} Soccer"
-        />
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
         <link
             rel="stylesheet"
@@ -55,13 +43,29 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
             rel="stylesheet"
         />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-            rel="stylesheet"
-        />
+
+        {{ if site_data:primary_color or site_data:secondary_color }}
+        <style>
+            :root {
+                {{ if site_data:primary_color }}--color-primary: {{ site_data:primary_color }};{{ /if }}
+                {{ if site_data:secondary_color }}--color-secondary: {{ site_data:secondary_color }};{{ /if }}
+            }
+            {{ if site_data:primary_color }}
+            .bg-primary, .bg-primary-500 { background-color: var(--color-primary) !important; }
+            .text-primary { color: var(--color-primary) !important; }
+            .border-primary { border-color: var(--color-primary) !important; }
+            .hover\:bg-primary-600:hover { background-color: color-mix(in srgb, var(--color-primary) 85%, black) !important; }
+            {{ /if }}
+            {{ if site_data:secondary_color }}
+            .bg-secondary { background-color: var(--color-secondary) !important; }
+            .text-secondary { color: var(--color-secondary) !important; }
+            .border-secondary { border-color: var(--color-secondary) !important; }
+            {{ /if }}
+        </style>
+        {{ /if }}
     </head>
     <body class="flex min-h-screen flex-col">
         {{ partial:nav }}

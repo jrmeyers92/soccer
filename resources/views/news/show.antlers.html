@@ -1,9 +1,24 @@
+{{ section:page_meta }}
+    <meta property="og:url" content="{{ current_url }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ title }}{{ if subtitle }} — {{ subtitle }}{{ /if }}" />
+    <meta property="og:description" content="{{ subtitle ?? (site_data:school_name + ' ' + site_data:mascot + ' Soccer — ' + site_data:school_city + ', ' + site_data:school_state) }}" />
+    {{ if cover_photo }}
+    <meta property="og:image" content="{{ glide src="{cover_photo}" width="1200" height="630" fit="crop" absolute="true" }}" />
+    {{ else }}
+    <meta property="og:image" content="{{ glide src="{site_data:logo}" width="1200" height="630" fit="crop" absolute="true" }}" />
+    {{ /if }}
+    <link rel="canonical" href="{{ current_url }}" />
+    <title>{{ title }} — {{ site_data:school_name }} Soccer</title>
+    <meta name="description" content="{{ subtitle ?? (site_data:school_name + ' ' + site_data:mascot + ' Soccer — ' + site_data:school_city + ', ' + site_data:school_state) }}" />
+{{ /section:page_meta }}
+
 <article
     class="articleShow font-robotoMono flex flex-col items-center bg-white py-8"
 >
     <div class="relative mb-4 w-full">
         <img
-            src="{{ glide src="{{cover_photo}}" width="3000" height="1000" }}"
+            src="{{ glide src="{{cover_photo}}" width="1400" height="600" fit="crop" }}"
             alt="{{ alt }}"
             class="h-[50vh] object-cover brightness-50 lg:h-auto"
         />
@@ -23,14 +38,32 @@
     <div class="max-w-3xl px-2">
         <p class="mt-4 italic">{{ publish_date }}</p>
         <div class="mb-4 mt-2 md:text-xl">{{ content }}</div>
+
+        {{ if additional_photos }}
         <div class="grid grid-cols-4 flex-wrap gap-4" id="lightbox">
             {{ additional_photos }}
                 <img
-                    src="{{ glide src="{{url}}" width="1000" height="1000" }}"
+                    src="{{ glide src="{{url}}" width="600" height="600" fit="crop" }}"
                     alt="{{ alt }}"
-                    class="cursor-pointer brightness-50"
+                    class="cursor-pointer"
+                    loading="lazy"
                 />
             {{ /additional_photos }}
+        </div>
+        {{ /if }}
+
+        <div class="mt-8 flex items-center gap-3 border-t pt-4 text-sm text-gray-500">
+            <span>Share:</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ current_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+                <i class="fa-brands fa-facebook text-lg"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url={{ current_url | url_encode }}&text={{ title | url_encode }}" target="_blank" rel="noopener" aria-label="Share on X / Twitter">
+                <i class="fa-brands fa-x-twitter text-lg"></i>
+            </a>
+            <button
+                onclick="navigator.clipboard.writeText('{{ current_url }}').then(() => this.textContent = 'Copied!')"
+                class="hover:underline"
+            >Copy link</button>
         </div>
     </div>
 </article>

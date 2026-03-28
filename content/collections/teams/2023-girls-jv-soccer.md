@@ -12,7 +12,7 @@ assistant_coaches:
 games:
   -
     id: upSLzqKX
-    game_date: '2023-07-26'
+    game_date: '2023-07-26 00:00'
     time: '19:30'
     location: home
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -20,9 +20,14 @@ games:
     opponent_score: 0
     type: new_set
     enabled: true
+    game_recap: 'This is a game recap....'
+    main_photo: pexels-alexander-nadrilyanski-3684122.jpg
+    additional_photos:
+      - pexels-pixabay-159516.jpg
+      - pexels-pixabay-47730.jpg
   -
     id: hRZKjmXY
-    game_date: '2023-08-01'
+    game_date: '2023-08-01 00:00'
     time: '19:30'
     location: away
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -32,7 +37,7 @@ games:
     enabled: true
   -
     id: vYUvKTXv
-    game_date: '2023-08-10'
+    game_date: '2023-08-10 00:00'
     time: '17:30'
     location: away
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -42,7 +47,7 @@ games:
     enabled: true
   -
     id: Plpd7OD3
-    game_date: '2023-08-14'
+    game_date: '2023-08-14 00:00'
     time: '19:30'
     location: home
     our_score: 4
@@ -52,7 +57,7 @@ games:
     enabled: true
   -
     id: D9kCWV9U
-    game_date: '2023-08-20'
+    game_date: '2023-08-20 00:00'
     time: '14:00'
     location: home
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -62,7 +67,7 @@ games:
     enabled: true
   -
     id: 07CVnf06
-    game_date: '2023-08-23'
+    game_date: '2023-08-23 00:00'
     time: '16:30'
     location: away
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -72,7 +77,7 @@ games:
     enabled: true
   -
     id: eNgUmrIg
-    game_date: '2023-09-04'
+    game_date: '2023-09-04 00:00'
     time: '12:00'
     location: home
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -82,7 +87,7 @@ games:
     enabled: true
   -
     id: 8fGFFdEQ
-    game_date: '2023-09-13'
+    game_date: '2023-09-13 00:00'
     time: '18:00'
     location: away
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -92,7 +97,7 @@ games:
     enabled: true
   -
     id: w2tDrpNj
-    game_date: '2023-03-01'
+    game_date: '2023-03-01 00:00'
     time: '19:00'
     location: home
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -102,7 +107,7 @@ games:
     enabled: true
   -
     id: Dz80EE3Z
-    game_date: '2023-03-01'
+    game_date: '2023-03-01 00:00'
     time: '10:00'
     location: home
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -112,7 +117,7 @@ games:
     enabled: true
   -
     id: IykYyNs3
-    game_date: '2023-03-01'
+    game_date: '2023-03-01 00:00'
     time: '09:00'
     location: away
     opponent: 600030fc-7634-4122-acf1-537c77705e93
@@ -121,7 +126,7 @@ games:
     type: new_set
     enabled: true
 updated_by: 7f0177d5-e376-4ec7-8d99-6b7824fa6533
-updated_at: 1709652060
+updated_at: 1774656264
 players:
   -
     id: tEq59g0K

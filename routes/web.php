@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::statamic('example', 'example-view', [
-//    'title' => 'Example'
-// ]);
+Route::statamic('seasons', 'seasons/index', [
+    'title' => 'Season Archive',
+]);
+
+Route::statamic('sitemap.xml', 'sitemap', [
+    'layout' => false,
+    'content_type' => 'text/xml',
+]);

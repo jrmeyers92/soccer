@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    {{# Static pages #}}
+    <url>
+        <loc>{{ config:app:url }}/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>{{ config:app:url }}/news</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>{{ config:app:url }}/seasons</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ config:app:url }}/contact</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    {{# News articles #}}
+    {{ collection:news sort="publish_date:desc" }}
+    <url>
+        <loc>{{ config:app:url }}/news/{{ slug }}</loc>
+        <lastmod>{{ publish_date format="Y-m-d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    {{ /collection:news }}
+
+    {{# Team schedule and roster pages #}}
+    {{ collection:teams sort="year:desc" }}
+    <url>
+        <loc>{{ config:app:url }}/{{ gender }}-{{ team }}/schedule</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ config:app:url }}/{{ gender }}-{{ team }}/roster</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ config:app:url }}/{{ gender }}-{{ team }}/stats</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    {{ /collection:teams }}
+
+</urlset>

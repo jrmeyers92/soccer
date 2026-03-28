@@ -42,10 +42,18 @@
     }
 
     // show and hide selectors when pill pressed
-    pill.addEventListener("click", () => {
+    pill.addEventListener("click", (e) => {
+        e.stopPropagation();
         if (teamSelect.classList.contains("hidden")) {
             teamSelect.classList.remove("hidden");
         } else {
+            teamSelect.classList.add("hidden");
+        }
+    });
+
+    // close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!teamSelect.contains(e.target)) {
             teamSelect.classList.add("hidden");
         }
     });

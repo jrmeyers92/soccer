@@ -1,30 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('newsPage')) {
-        let newsRows = document.querySelectorAll('.news-row');
+    const searchInput = document.getElementById('newsPage__search');
+    const noResults = document.getElementById('newsPage__noResults');
 
-        let searchInput = document.getElementById('newsPage__search');
+    if (!searchInput) return;
 
-        searchInput.addEventListener('input', (e) => {
-            let newsRow = document.querySelectorAll('.newsPage__row');
-            
-            newsRow.forEach(row => {
-                let searchterm = e.target.value.toLocaleLowerCase();
-                row.classList.remove('hidden');
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase().trim();
+        const items = document.querySelectorAll('.news-item');
+        let visible = 0;
 
-                let date = row.querySelector('.newsPage__row-date').textContent.toLocaleLowerCase();
-                let category = row.querySelector('.newsPage__row-category').textContent.toLocaleLowerCase()
-                let title = row.querySelector('.newsPage__row-title').textContent.toLocaleLowerCase()
+        items.forEach(item => {
+            const title = (item.dataset.title || '').toLowerCase();
+            const date = (item.dataset.date || '').toLowerCase();
+            const matches = !term || title.includes(term) || date.includes(term);
+            item.classList.toggle('hidden', !matches);
+            if (matches) visible++;
+        });
 
-                if (date.includes(searchterm) || title.includes(searchterm) || category.includes(searchterm)) {
-
-                } else {
-                    row.classList.add('hidden');
-                }
-                
-                
-            })
-
-        })
-
-    }
-})
+        if (noResults) {
+            noResults.classList.toggle('hidden', visible > 0 || !term);
+        }
+    });
+});

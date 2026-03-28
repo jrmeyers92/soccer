@@ -16,11 +16,25 @@
     {{collection:teams | sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" paginate="1"}}
         
         {{team}}
-            {{if team == "jv"}}
-                <h1 class="text-3xl pb-4 border-b border-gray-300 py-16">{{year}} {{gender | ucfirst}} JV Schedule </h1>
-            {{else}}
-                <h1 class="text-3xl pb-4 border-b border-gray-300 py-16">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Schedule </h1>
-            {{/if}}
+            {{ wins = 0 }}{{ losses = 0 }}{{ ties = 0 }}
+            {{ games }}
+                {{ if our_score | is_numeric && opponent_score | is_numeric }}
+                    {{ if our_score > opponent_score }}{{ wins += 1 }}
+                    {{ elseif opponent_score > our_score }}{{ losses += 1 }}
+                    {{ else }}{{ ties += 1 }}
+                    {{ /if }}
+                {{ /if }}
+            {{ /games }}
+            <div class="flex flex-wrap items-baseline gap-4 border-b border-gray-300 pb-4 py-16">
+                {{if team == "jv"}}
+                    <h1 class="text-3xl">{{year}} {{gender | ucfirst}} JV Schedule</h1>
+                {{else}}
+                    <h1 class="text-3xl">{{year}} {{gender | ucfirst}} {{team | ucfirst}} Schedule</h1>
+                {{/if}}
+                {{ if wins > 0 || losses > 0 || ties > 0 }}
+                    <span class="text-lg font-semibold text-gray-500">Record: {{ wins }}-{{ losses }}-{{ ties }}</span>
+                {{ /if }}
+            </div>
 
             {{if games| is_empty}}
                 <p class="p-2">Sorry, there are no upcoming games at this time.</p>

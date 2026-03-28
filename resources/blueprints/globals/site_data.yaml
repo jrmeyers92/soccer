@@ -159,6 +159,32 @@ tabs:
               replicator_preview: true
               hide_display: false
           -
+            handle: primary_color
+            field:
+              type: color
+              display: 'Primary Color'
+              instructions: 'Main school color (used for nav, buttons, footer background)'
+              width: 50
+              default: '#DCC137'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: secondary_color
+            field:
+              type: color
+              display: 'Secondary Color'
+              instructions: 'Accent color (used for borders and text accents)'
+              width: 50
+              default: '#373F51'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
             handle: google_analytics_id
             field:
               input_type: text

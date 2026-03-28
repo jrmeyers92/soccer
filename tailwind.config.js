@@ -11,8 +11,8 @@ export default {
 
     theme: {
         fontFamily: {
-            sans: ["Lato", "sans-serif"],
-            sanserif: ["Roboto Slab", "serif"],
+            sans: ["Inter", "sans-serif"],
+            sanserif: ["Oswald", "sans-serif"],
         },
         container: {
             center: true,

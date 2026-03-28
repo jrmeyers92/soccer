@@ -13,6 +13,15 @@
 {{ collection:teams |  sort="year:desc" team:is="{jvOrVarsity}" gender:is="{gender}" as="team" limit="1" }}
     {{ if team }}
         {{ team }}
+            {{ swins = 0 }}{{ slosses = 0 }}{{ sties = 0 }}
+            {{ games }}
+                {{ if our_score | is_numeric && opponent_score | is_numeric }}
+                    {{ if our_score > opponent_score }}{{ swins += 1 }}
+                    {{ elseif opponent_score > our_score }}{{ slosses += 1 }}
+                    {{ else }}{{ sties += 1 }}
+                    {{ /if }}
+                {{ /if }}
+            {{ /games }}
             <section
                 class="mx-auto flex w-full flex-col self-baseline border-l border-r bg-white shadow-md"
             >
@@ -20,6 +29,11 @@
                     {{ partial:section_heading title="{year} {gender | ucfirst} {team | upper} Schedule" }}
                 {{ else }}
                     {{ partial:section_heading title="{year} {gender | ucfirst} {team | ucfirst} Schedule" }}
+                {{ /if }}
+                {{ if swins > 0 || slosses > 0 || sties > 0 }}
+                    <p class="border-b border-gray-200 px-3 py-1 text-sm font-semibold text-gray-500">
+                        Record: {{ swins }}-{{ slosses }}-{{ sties }}
+                    </p>
                 {{ /if }}
                 <div class="flex border-b border-gray-300">
                     <button
