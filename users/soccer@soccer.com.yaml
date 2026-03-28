@@ -10,3 +10,7 @@ preferences:
       view: list
     coaches:
       view: list
+    sponsers:
+      view: list
+    pages:
+      view: tree
