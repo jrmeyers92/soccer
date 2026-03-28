@@ -50,23 +50,17 @@
                     </button>
                 </div>
                 {{ if scheduleType == "u" }}
-                    {{ if games | is_empty }}
+                    {{ upcoming_count = 0 }}
+                    {{ games | sort="game_date:asc" }}
+                        {{ if game_date | is_future || game_date | is_today }}
+                            {{ upcoming_count += 1 }}
+                            {{ partial:scheduleWidgetGame }}
+                        {{ /if }}
+                    {{ /games }}
+                    {{ if upcoming_count == 0 }}
                         <p class="p-2">
                             There are no upcoming games at this time.
                         </p>
-                    {{ else }}
-                        {{ games |  sort="game_date:desc" }}
-                            {{ if game_date | is_future || game_date | is_today }}
-                                {{ partial:scheduleWidgetGame }}
-                            {{ else }}
-                                {{ if count == 1 }}
-                                    <p class="p-2">
-                                        There are no upcoming games at this
-                                        time.
-                                    </p>
-                                {{ /if }}
-                            {{ /if }}
-                        {{ /games }}
                     {{ /if }}
                 {{ else if scheduleType == "r" }}
                     {{ if games | is_empty }}
