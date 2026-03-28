@@ -62,6 +62,45 @@
                             {{ /if }}
                         </div>
 
+                        <div class="grid gap-5 sm:grid-cols-2">
+                            <div>
+                                <label for="sport" class="mb-1.5 block text-sm font-medium text-gray-700">Sport</label>
+                                <select
+                                    id="sport"
+                                    name="sport"
+                                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-900 transition focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                                >
+                                    <option value="">N/A</option>
+                                    {{ seen_sports = "" }}
+                                    {{ collection:teams sort="sport:asc" }}
+                                        {{ if seen_sports | contains:sport == false }}
+                                            {{ seen_sports = seen_sports + "|" + sport }}
+                                            <option value="{{ sport }}"{{ if old:sport == sport }} selected{{ /if }}>{{ sport | ucfirst }}</option>
+                                        {{ /if }}
+                                    {{ /collection:teams }}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="team" class="mb-1.5 block text-sm font-medium text-gray-700">Team</label>
+                                <select
+                                    id="team"
+                                    name="team"
+                                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-900 transition focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                                >
+                                    <option value="">N/A</option>
+                                    {{ seen_teams = "" }}
+                                    {{ collection:teams sort="gender:asc|team:asc" }}
+                                        {{ combo = gender + "-" + team }}
+                                        {{ if seen_teams | contains:combo == false }}
+                                            {{ seen_teams = seen_teams + "|" + combo }}
+                                            <option value="{{ combo }}"{{ if old:team == combo }} selected{{ /if }}>{{ gender | ucfirst }}{{ if team == "jv" }} JV{{ else }} {{ team | ucfirst }}{{ /if }}</option>
+                                        {{ /if }}
+                                    {{ /collection:teams }}
+                                </select>
+                            </div>
+                        </div>
+
                         <div>
                             <label for="message" class="mb-1.5 block text-sm font-medium text-gray-700">
                                 Message <span class="text-red-500">*</span>

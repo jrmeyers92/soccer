@@ -36,6 +36,32 @@ tabs:
                 - required
                 - email
           -
+            handle: sport
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Sport
+              icon: text
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: team
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Team
+              icon: text
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
             handle: message
             field:
               antlers: false

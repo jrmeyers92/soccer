@@ -1,1 +1,82 @@
 title: 'Site Data'
+nav_sports:
+  -
+    slug: soccer
+    display_name: Soccer
+  -
+    slug: basketball
+    display_name: Basketball
+  -
+    slug: football
+    display_name: Football
+  -
+    slug: baseball
+    display_name: Baseball
+  -
+    slug: track
+    display_name: Track
+nav_teams:
+  -
+    slug: boys-jv
+    display_name: 'Boys JV'
+    sport: soccer
+  -
+    slug: boys-varsity
+    display_name: 'Boys Varsity'
+    sport: soccer
+  -
+    slug: girls-jv
+    display_name: 'Girls JV'
+    sport: soccer
+  -
+    slug: girls-varsity
+    display_name: 'Girls Varsity'
+    sport: soccer
+  -
+    slug: boys-jv
+    display_name: 'Boys JV'
+    sport: basketball
+  -
+    slug: boys-varsity
+    display_name: 'Boys Varsity'
+    sport: basketball
+  -
+    slug: girls-jv
+    display_name: 'Girls JV'
+    sport: basketball
+  -
+    slug: girls-varsity
+    display_name: 'Girls Varsity'
+    sport: basketball
+  -
+    slug: boys-jv
+    display_name: 'Boys JV'
+    sport: football
+  -
+    slug: boys-varsity
+    display_name: 'Boys Varsity'
+    sport: football
+  -
+    slug: boys-jv
+    display_name: 'Boys JV'
+    sport: baseball
+  -
+    slug: boys-varsity
+    display_name: 'Boys Varsity'
+    sport: baseball
+  -
+    slug: girls-jv
+    display_name: 'Girls JV (Softball)'
+    sport: baseball
+  -
+    slug: girls-varsity
+    display_name: 'Girls Varsity (Softball)'
+    sport: baseball
+  -
+    slug: boys-varsity
+    display_name: 'Boys Varsity'
+    sport: track
+  -
+    slug: girls-varsity
+    display_name: 'Girls Varsity'
+    sport: track
