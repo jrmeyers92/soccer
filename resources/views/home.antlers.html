@@ -1,25 +1,68 @@
-<div class="relative overflow-hidden bg-secondary py-14 text-center text-white">
-    <div class="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden opacity-[0.06]">
-        <img src="{{ glide src="{site_data:logo}" width="600" }}" alt="" class="h-full object-contain" />
-    </div>
-    <div class="relative px-4">
-        <img
-            src="{{ glide src="{site_data:logo}" width="160" height="160" fit="contain" }}"
-            alt="{{ site_data:school_name }}"
-            class="mx-auto mb-4 h-20 w-20 object-contain sm:h-24 sm:w-24"
-        />
-        <h1 class="font-sanserif text-4xl font-bold sm:text-5xl">{{ site_data:school_name }}</h1>
-        <p class="mt-1 text-xl font-light opacity-90 sm:text-2xl">{{ site_data:mascot }} Athletics</p>
-        <p class="mt-2 text-sm font-light opacity-60">{{ site_data:school_city }}, {{ site_data:school_state }}</p>
-    </div>
-</div>
+{{ if current_uri == "/" }}
 
-<div class="flex flex-col gap-4 px-4 mb-4 mt-4 lg:flex-row">
-    {{ partial:news_widget }}
+    {{# ── School Landing Page ── #}}
+    <div class="relative overflow-hidden bg-secondary py-14 text-center text-white">
+        <div class="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden opacity-[0.06]">
+            <img src="{{ glide src="{site_data:logo}" width="600" }}" alt="" class="h-full object-contain" />
+        </div>
+        <div class="relative px-4">
+            <img
+                src="{{ glide src="{site_data:logo}" width="160" height="160" fit="contain" }}"
+                alt="{{ site_data:school_name }}"
+                class="mx-auto mb-4 h-20 w-20 object-contain sm:h-24 sm:w-24"
+            />
+            <h1 class="font-sanserif text-4xl font-bold sm:text-5xl">{{ site_data:school_name }}</h1>
+            <p class="mt-1 text-xl font-light opacity-90 sm:text-2xl">{{ site_data:mascot }} Athletics</p>
+            <p class="mt-2 text-sm font-light opacity-60">{{ site_data:school_city }}, {{ site_data:school_state }}</p>
+        </div>
+    </div>
 
-    <aside class="flex flex-col lg:w-4/12">
-        {{ partial:schedule_widget }}
-        {{ partial:roster_widget }}
-        {{ partial:stats_widget }}
-    </aside>
-</div>
+    <div class="mx-auto max-w-6xl px-4 py-12">
+        <h2 class="mb-6 text-2xl font-bold">Our Sports</h2>
+        <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {{ site_data:nav_sports }}
+                <a
+                    href="/{{ slug }}"
+                    class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 shadow-sm duration-150 hover:shadow-md hover:border-primary-500"
+                >
+                    <span class="text-xl font-bold">{{ display_name }}</span>
+                    <span class="mt-3 text-sm text-primary-600">View teams &rarr;</span>
+                </a>
+            {{ /site_data:nav_sports }}
+        </div>
+    </div>
+
+    <div class="mx-auto max-w-6xl px-4 pb-12">
+        {{ partial:news_widget }}
+    </div>
+
+{{ else }}
+
+    {{# ── Sport / Team Home Page ── #}}
+    <div class="relative overflow-hidden bg-secondary py-14 text-center text-white">
+        <div class="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden opacity-[0.06]">
+            <img src="{{ glide src="{site_data:logo}" width="600" }}" alt="" class="h-full object-contain" />
+        </div>
+        <div class="relative px-4">
+            <img
+                src="{{ glide src="{site_data:logo}" width="160" height="160" fit="contain" }}"
+                alt="{{ site_data:school_name }}"
+                class="mx-auto mb-4 h-20 w-20 object-contain sm:h-24 sm:w-24"
+            />
+            <h1 class="font-sanserif text-4xl font-bold sm:text-5xl">{{ site_data:school_name }}</h1>
+            <p class="mt-1 text-xl font-light opacity-90 sm:text-2xl">{{ site_data:mascot }} Athletics</p>
+            <p class="mt-2 text-sm font-light opacity-60">{{ site_data:school_city }}, {{ site_data:school_state }}</p>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-4 px-4 mb-4 mt-4 lg:flex-row">
+        {{ partial:news_widget }}
+
+        <aside class="flex flex-col lg:w-4/12">
+            {{ partial:schedule_widget }}
+            {{ partial:roster_widget }}
+            {{ partial:stats_widget }}
+        </aside>
+    </div>
+
+{{ /if }}

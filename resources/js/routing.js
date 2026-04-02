@@ -35,18 +35,6 @@
         || teamsForActiveSport[0]
         || "";
 
-    // Homepage redirect
-    if (window.location.pathname === "/") {
-        const savedSport = localStorage.getItem("sport") || allSportSlugs[0];
-        const savedTeams = teamsBySport[savedSport] || [];
-        const savedTeam = localStorage.getItem("team") || savedTeams[0] || "";
-        const savedSection = localStorage.getItem("scheduleWidgetValue") === "results" ? "r" : "u";
-        if (savedSport && savedTeam) {
-            window.location.href = `${window.location.origin}/${savedSport}/${savedTeam}/${savedSection}`;
-        }
-        return;
-    }
-
     // Update sport pill display text
     const setSportPill = (sportSlug) => {
         const sport = allSports.find(s => s.slug === sportSlug);

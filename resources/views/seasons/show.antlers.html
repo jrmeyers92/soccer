@@ -45,7 +45,7 @@
                 {{ if games | is_empty }}
                     <p class="text-gray-500">No schedule available for this season.</p>
                 {{ else }}
-                    {{ games | sort="game_date:asc" }}
+                    {{ games }}
                         {{ partial:schedule_page_game }}
                     {{ /games }}
                 {{ /if }}
@@ -125,7 +125,13 @@
                                         <tr class="border-b">
                                             <td class="border-r px-2">{{ number }}</td>
                                             <td class="border-r px-2">{{ first_name }} {{ last_name }}</td>
-                                            <td class="border-r px-2">{{ position }}{{ if position | length != 1 }}{{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}{{ else }}{{ value | ucfirst }}{{ /if }}{{ /position }}</td>
+                                            <td class="border-r px-2">
+                                                {{ position }}
+                                                    {{ if position | length != 1 }}
+                                                        {{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}
+                                                    {{ else }}{{ value | ucfirst }}{{ /if }}
+                                                {{ /position }}
+                                            </td>
                                             <td class="border-r px-2">{{ points }}</td>
                                             <td class="border-r px-2">{{ rebounds }}</td>
                                             <td class="border-r px-2">{{ assists }}</td>
@@ -138,7 +144,13 @@
                                         <tr class="border-b">
                                             <td class="border-r px-2">{{ number }}</td>
                                             <td class="border-r px-2">{{ first_name }} {{ last_name }}</td>
-                                            <td class="border-r px-2">{{ position }}{{ if position | length != 1 }}{{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}{{ else }}{{ value | ucfirst }}{{ /if }}{{ /position }}</td>
+                                            <td class="border-r px-2">
+                                                {{ position }}
+                                                    {{ if position | length != 1 }}
+                                                        {{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}
+                                                    {{ else }}{{ value | ucfirst }}{{ /if }}
+                                                {{ /position }}
+                                            </td>
                                             <td class="border-r px-2">{{ touchdowns }}</td>
                                             <td class="border-r px-2">{{ passing_yards }}</td>
                                             <td class="border-r px-2">{{ rushing_yards }}</td>
@@ -151,7 +163,13 @@
                                         <tr class="border-b">
                                             <td class="border-r px-2">{{ number }}</td>
                                             <td class="border-r px-2">{{ first_name }} {{ last_name }}</td>
-                                            <td class="border-r px-2">{{ position }}{{ if position | length != 1 }}{{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}{{ else }}{{ value | ucfirst }}{{ /if }}{{ /position }}</td>
+                                            <td class="border-r px-2">
+                                                {{ position }}
+                                                    {{ if position | length != 1 }}
+                                                        {{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}
+                                                    {{ else }}{{ value | ucfirst }}{{ /if }}
+                                                {{ /position }}
+                                            </td>
                                             <td class="border-r px-2">{{ batting_avg }}</td>
                                             <td class="border-r px-2">{{ rbi }}</td>
                                             <td class="border-r px-2">{{ home_runs }}</td>
@@ -174,7 +192,13 @@
                                         <tr class="border-b">
                                             <td class="border-r px-2">{{ number }}</td>
                                             <td class="border-r px-2">{{ first_name }} {{ last_name }}</td>
-                                            <td class="border-r px-2">{{ position }}{{ if position | length != 1 }}{{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}{{ else }}{{ value | ucfirst }}{{ /if }}{{ /position }}</td>
+                                            <td class="border-r px-2">
+                                                {{ position }}
+                                                    {{ if position | length != 1 }}
+                                                        {{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}
+                                                    {{ else }}{{ value | ucfirst }}{{ /if }}
+                                                {{ /position }}
+                                            </td>
                                             <td class="border-r px-2">{{ goals }}</td>
                                             <td class="border-r px-2">{{ assists }}</td>
                                             <td class="border-r px-2">{{ shutouts }}</td>
