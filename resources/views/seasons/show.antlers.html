@@ -1,0 +1,232 @@
+{{ slugArray = current_uri | explode('/') }}
+{{ sport = slugArray[1] }}
+{{ theTeam = slugArray[2] | explode("-") }}
+{{ gender = theTeam[0] }}
+{{ jvOrVarsity = theTeam[1] }}
+{{ theYear = slugArray[4] }}
+
+{{ activeTab = get:tab }}
+{{ if !activeTab }}{{ activeTab = "schedule" }}{{ /if }}
+
+{{ collection:teams sport:is="{sport}" team:is="{jvOrVarsity}" gender:is="{gender}" year:is="{theYear}" as="teamData" limit="1" }}
+    {{ teamData }}
+        <div class="mx-auto max-w-5xl px-4 py-12">
+
+            <div class="flex flex-wrap items-baseline gap-4 border-b border-gray-300 pb-4">
+                {{ if team == "jv" }}
+                    <h1 class="text-3xl font-bold">{{ theYear }} {{ gender | ucfirst }} JV {{ sport | ucfirst }}</h1>
+                {{ else }}
+                    <h1 class="text-3xl font-bold">{{ theYear }} {{ gender | ucfirst }} {{ team | ucfirst }} {{ sport | ucfirst }}</h1>
+                {{ /if }}
+                <a href="/{{ sport }}/{{ gender }}-{{ jvOrVarsity }}/seasons" class="text-sm text-gray-400 hover:text-gray-600">&larr; All Seasons</a>
+            </div>
+
+            <nav class="flex gap-0 border-b border-gray-200 mt-6 mb-8">
+                <a href="?tab=schedule" class="{{ if activeTab == 'schedule' }}border-b-2 border-primary-500 font-semibold text-black{{ else }}text-gray-500 hover:text-black{{ /if }} px-4 py-2 text-sm">Schedule</a>
+                <a href="?tab=roster" class="{{ if activeTab == 'roster' }}border-b-2 border-primary-500 font-semibold text-black{{ else }}text-gray-500 hover:text-black{{ /if }} px-4 py-2 text-sm">Roster</a>
+                <a href="?tab=stats" class="{{ if activeTab == 'stats' }}border-b-2 border-primary-500 font-semibold text-black{{ else }}text-gray-500 hover:text-black{{ /if }} px-4 py-2 text-sm">Stats</a>
+                <a href="?tab=coaches" class="{{ if activeTab == 'coaches' }}border-b-2 border-primary-500 font-semibold text-black{{ else }}text-gray-500 hover:text-black{{ /if }} px-4 py-2 text-sm">Coaches</a>
+            </nav>
+
+            {{# ── Schedule ── #}}
+            {{ if activeTab == 'schedule' }}
+                {{ wins = 0 }}{{ losses = 0 }}{{ ties = 0 }}
+                {{ games }}
+                    {{ if our_score | is_numeric && opponent_score | is_numeric }}
+                        {{ if our_score > opponent_score }}{{ wins += 1 }}
+                        {{ elseif opponent_score > our_score }}{{ losses += 1 }}
+                        {{ else }}{{ ties += 1 }}
+                        {{ /if }}
+                    {{ /if }}
+                {{ /games }}
+                {{ if wins > 0 || losses > 0 || ties > 0 }}
+                    <p class="mb-6 text-lg font-semibold text-gray-500">Record: {{ wins }}-{{ losses }}-{{ ties }}</p>
+                {{ /if }}
+                {{ if games | is_empty }}
+                    <p class="text-gray-500">No schedule available for this season.</p>
+                {{ else }}
+                    {{ games | sort="game_date:asc" }}
+                        {{ partial:schedule_page_game }}
+                    {{ /games }}
+                {{ /if }}
+            {{ /if }}
+
+            {{# ── Roster ── #}}
+            {{ if activeTab == 'roster' }}
+                {{ if players | is_empty }}
+                    <p class="text-gray-500">No roster available for this season.</p>
+                {{ else }}
+                    {{ players }}
+                        {{ partial:roster_page_player }}
+                    {{ /players }}
+                {{ /if }}
+            {{ /if }}
+
+            {{# ── Stats ── #}}
+            {{ if activeTab == 'stats' }}
+                {{ if players | is_empty }}
+                    <p class="text-gray-500">No stats available for this season.</p>
+                {{ else }}
+                    <div class="flex w-full md:items-center md:justify-center my-4 overflow-x-auto">
+                        <table class="border border-gray-300 w-full max-w-5xl">
+                            {{ if sport == "basketball" }}
+                            <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
+                                <th class="px-2 py-1 border-r border-white">Number</th>
+                                <th class="px-2 py-1 border-r border-white">Name</th>
+                                <th class="px-2 py-1 border-r border-white">Position</th>
+                                <th class="px-2 py-1 border-r border-white">Points</th>
+                                <th class="px-2 py-1 border-r border-white">Rebounds</th>
+                                <th class="px-2 py-1 border-r border-white">Assists</th>
+                                <th class="px-2 py-1 border-r border-white">Blocks</th>
+                            </tr>
+                            {{ elseif sport == "football" }}
+                            <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
+                                <th class="px-2 py-1 border-r border-white">Number</th>
+                                <th class="px-2 py-1 border-r border-white">Name</th>
+                                <th class="px-2 py-1 border-r border-white">Position</th>
+                                <th class="px-2 py-1 border-r border-white">TDs</th>
+                                <th class="px-2 py-1 border-r border-white">Pass Yds</th>
+                                <th class="px-2 py-1 border-r border-white">Rush Yds</th>
+                                <th class="px-2 py-1 border-r border-white">Tackles</th>
+                            </tr>
+                            {{ elseif sport == "baseball" || sport == "softball" }}
+                            <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
+                                <th class="px-2 py-1 border-r border-white">Number</th>
+                                <th class="px-2 py-1 border-r border-white">Name</th>
+                                <th class="px-2 py-1 border-r border-white">Position</th>
+                                <th class="px-2 py-1 border-r border-white">Avg</th>
+                                <th class="px-2 py-1 border-r border-white">RBI</th>
+                                <th class="px-2 py-1 border-r border-white">HR</th>
+                                <th class="px-2 py-1 border-r border-white">ERA</th>
+                            </tr>
+                            {{ elseif sport == "swimming" }}
+                            <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
+                                <th class="px-2 py-1 border-r border-white">Number</th>
+                                <th class="px-2 py-1 border-r border-white">Name</th>
+                                <th class="px-2 py-1 border-r border-white">Event</th>
+                                <th class="px-2 py-1 border-r border-white">Best Time</th>
+                            </tr>
+                            {{ else }}
+                            <tr class="border-b border-gray-300 bg-primary-500 text-black font-bold text-xl text-left">
+                                <th class="px-2 py-1 border-r border-white">Number</th>
+                                <th class="px-2 py-1 border-r border-white">Name</th>
+                                <th class="px-2 py-1 border-r border-white">Position</th>
+                                <th class="px-2 py-1 border-r border-white">Goals</th>
+                                <th class="px-2 py-1 border-r border-white">Assists</th>
+                                <th class="px-2 py-1 border-r border-white">Shutouts</th>
+                            </tr>
+                            {{ /if }}
+
+                            {{ playerCount = 0 }}
+                            {{ players }}
+                                {{ if sport == "basketball" }}
+                                    {{ if points != 0 || rebounds != 0 || assists != 0 || blocks != 0 }}
+                                        {{ playerCount = playerCount + 1 }}
+                                        <tr class="border-b">
+                                            <td class="border-r px-2">{{ number }}</td>
+                                            <td class="border-r px-2">{{ first_name }} {{ last_name }}</td>
+                                            <td class="border-r px-2">{{ position }}{{ if position | length != 1 }}{{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}{{ else }}{{ value | ucfirst }}{{ /if }}{{ /position }}</td>
+                                            <td class="border-r px-2">{{ points }}</td>
+                                            <td class="border-r px-2">{{ rebounds }}</td>
+                                            <td class="border-r px-2">{{ assists }}</td>
+                                            <td class="border-r px-2">{{ blocks }}</td>
+                                        </tr>
+                                    {{ /if }}
+                                {{ elseif sport == "football" }}
+                                    {{ if touchdowns != 0 || passing_yards != 0 || rushing_yards != 0 || tackles != 0 }}
+                                        {{ playerCount = playerCount + 1 }}
+                                        <tr class="border-b">
+                                            <td class="border-r px-2">{{ number }}</td>
+                                            <td class="border-r px-2">{{ first_name }} {{ last_name }}</td>
+                                            <td class="border-r px-2">{{ position }}{{ if position | length != 1 }}{{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}{{ else }}{{ value | ucfirst }}{{ /if }}{{ /position }}</td>
+                                            <td class="border-r px-2">{{ touchdowns }}</td>
+                                            <td class="border-r px-2">{{ passing_yards }}</td>
+                                            <td class="border-r px-2">{{ rushing_yards }}</td>
+                                            <td class="border-r px-2">{{ tackles }}</td>
+                                        </tr>
+                                    {{ /if }}
+                                {{ elseif sport == "baseball" || sport == "softball" }}
+                                    {{ if batting_avg || rbi != 0 || home_runs != 0 || era }}
+                                        {{ playerCount = playerCount + 1 }}
+                                        <tr class="border-b">
+                                            <td class="border-r px-2">{{ number }}</td>
+                                            <td class="border-r px-2">{{ first_name }} {{ last_name }}</td>
+                                            <td class="border-r px-2">{{ position }}{{ if position | length != 1 }}{{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}{{ else }}{{ value | ucfirst }}{{ /if }}{{ /position }}</td>
+                                            <td class="border-r px-2">{{ batting_avg }}</td>
+                                            <td class="border-r px-2">{{ rbi }}</td>
+                                            <td class="border-r px-2">{{ home_runs }}</td>
+                                            <td class="border-r px-2">{{ era }}</td>
+                                        </tr>
+                                    {{ /if }}
+                                {{ elseif sport == "swimming" }}
+                                    {{ if event || best_time }}
+                                        {{ playerCount = playerCount + 1 }}
+                                        <tr class="border-b">
+                                            <td class="border-r px-2">{{ number }}</td>
+                                            <td class="border-r px-2">{{ first_name }} {{ last_name }}</td>
+                                            <td class="border-r px-2">{{ event }}</td>
+                                            <td class="border-r px-2">{{ best_time }}</td>
+                                        </tr>
+                                    {{ /if }}
+                                {{ else }}
+                                    {{ if goals != 0 || assists != 0 || shutouts != 0 }}
+                                        {{ playerCount = playerCount + 1 }}
+                                        <tr class="border-b">
+                                            <td class="border-r px-2">{{ number }}</td>
+                                            <td class="border-r px-2">{{ first_name }} {{ last_name }}</td>
+                                            <td class="border-r px-2">{{ position }}{{ if position | length != 1 }}{{ if !last }}{{ value | ucfirst }} /{{ else }}{{ value | ucfirst }}{{ /if }}{{ else }}{{ value | ucfirst }}{{ /if }}{{ /position }}</td>
+                                            <td class="border-r px-2">{{ goals }}</td>
+                                            <td class="border-r px-2">{{ assists }}</td>
+                                            <td class="border-r px-2">{{ shutouts }}</td>
+                                        </tr>
+                                    {{ /if }}
+                                {{ /if }}
+                                {{ if playerCount == 0 }}{{ if count == 1 }}
+                                    <tr><td colspan="7" class="py-4 text-center">No stats recorded for this season.</td></tr>
+                                {{ /if }}{{ /if }}
+                            {{ /players }}
+                        </table>
+                    </div>
+                {{ /if }}
+            {{ /if }}
+
+            {{# ── Coaches ── #}}
+            {{ if activeTab == 'coaches' }}
+                {{ if head_coach }}
+                    <h2 class="text-xl font-semibold mb-4 mt-2">Head Coach</h2>
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
+                        {{ head_coach }}
+                            {{ partial:card_linkable href="/coaches/{slug}" image="{image}" }}
+                                <div class="flex flex-col p-4">
+                                    <span class="border-gray-300 px-3 text-xl">{{ title }}</span>
+                                    <span class="border-gray-300 px-3 py-1 font-extralight capitalize text-primary-900">{{ position }}</span>
+                                    <span class="border-gray-300 px-3 py-1 font-extralight capitalize">{{ email }}</span>
+                                    <span class="border-gray-300 px-3 py-1 font-extralight capitalize text-primary-900">{{ phone_number }}</span>
+                                </div>
+                            {{ /partial:card_linkable }}
+                        {{ /head_coach }}
+                    </div>
+                {{ /if }}
+                {{ if assistant_coaches }}
+                    <h2 class="text-xl font-semibold mb-4 mt-4">Assistant Coaches</h2>
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
+                        {{ assistant_coaches }}
+                            {{ partial:card_linkable href="/coaches/{slug}" image="{image}" }}
+                                <div class="flex flex-col p-4">
+                                    <span class="border-gray-300 px-3 text-xl">{{ title }}</span>
+                                    <span class="border-gray-300 px-3 py-1 font-extralight capitalize text-primary-900">{{ position }}</span>
+                                    <span class="border-gray-300 px-3 py-1 font-extralight capitalize">{{ email }}</span>
+                                    <span class="border-gray-300 px-3 py-1 font-extralight capitalize text-primary-900">{{ phone_number }}</span>
+                                </div>
+                            {{ /partial:card_linkable }}
+                        {{ /assistant_coaches }}
+                    </div>
+                {{ /if }}
+                {{ if !head_coach && !assistant_coaches }}
+                    <p class="text-gray-500">No coaches listed for this season.</p>
+                {{ /if }}
+            {{ /if }}
+
+        </div>
+    {{ /teamData }}
+{{ /collection:teams }}

@@ -25,6 +25,7 @@ foreach ($sports as $sport) {
     Route::statamic("{$sport}/{team}/stats", 'stats/show');
     Route::statamic("{$sport}/{team}/coaches", 'coaches/team');
     Route::statamic("{$sport}/{team}/seasons", 'seasons/index');
+    Route::statamic("{$sport}/{team}/seasons/{year}", 'seasons/show');
     Route::get("{$sport}/{team}/calendar.ics", [CalendarController::class, 'show']);
     Route::statamic("{$sport}/{team}/{section}", 'home');
     Route::statamic("{$sport}/{team}", 'home');
