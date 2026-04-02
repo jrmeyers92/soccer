@@ -93,4 +93,29 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
+          -
+            handle: sport
+            field:
+              type: checkboxes
+              display: Sport
+              instructions: 'Which sport(s) does this article apply to? Leave blank for general school news.'
+              options:
+                soccer: Soccer
+                basketball: Basketball
+                football: Football
+                baseball: Baseball
+                track: Track
+              inline: false
+          -
+            handle: team
+            field:
+              type: checkboxes
+              display: Team
+              instructions: 'Which team(s) should this appear on? Leave blank to show on all teams for the selected sport(s).'
+              options:
+                boys-jv: Boys JV
+                boys-varsity: Boys Varsity
+                girls-jv: Girls JV
+                girls-varsity: Girls Varsity
+              inline: false
 title: News

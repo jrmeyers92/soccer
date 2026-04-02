@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Order matters: specific section routes before the generic {section} catch-all
 $sports = ['soccer', 'basketball', 'football', 'baseball', 'softball', 'swimming'];
 foreach ($sports as $sport) {
+    Route::statamic("{$sport}/{team}/news", 'news/team');
     Route::statamic("{$sport}/{team}/schedule", 'schedules/show');
     Route::statamic("{$sport}/{team}/roster", 'rosters/show');
     Route::statamic("{$sport}/{team}/stats", 'stats/show');

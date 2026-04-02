@@ -15,3 +15,5 @@ preferences:
     pages:
       view: tree
     listing_mode: list
+    news:
+      view: list

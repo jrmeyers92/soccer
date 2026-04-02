@@ -1,0 +1,85 @@
+{{ slugArray = current_uri | explode('/') }}
+{{ sport = slugArray[1] }}
+{{ theTeam = slugArray[2] | explode("-") }}
+{{ gender = theTeam[0] }}
+{{ jvOrVarsity = theTeam[1] }}
+{{ teamSlug = slugArray[2] }}
+
+<section class="flex flex-col items-center justify-center" id="newsPage">
+
+    <div class="w-full max-w-6xl px-4">
+        <div class="flex flex-wrap items-baseline gap-4 border-b border-gray-300 pb-4 py-16">
+            {{ if jvOrVarsity == "jv" }}
+                <h1 class="text-3xl font-bold">{{ gender | ucfirst }} JV {{ sport | ucfirst }} News</h1>
+            {{ else }}
+                <h1 class="text-3xl font-bold">{{ gender | ucfirst }} {{ jvOrVarsity | ucfirst }} {{ sport | ucfirst }} News</h1>
+            {{ /if }}
+        </div>
+    </div>
+
+    {{ collection:news sort="publish_date:desc" sport:contains="{sport}" team:contains="{teamSlug}" paginate="12" as="posts" }}
+
+        {{ if no_results }}
+            <p class="mt-12 text-gray-500">No news articles have been tagged to this team yet.</p>
+        {{ else }}
+            <div class="w-full max-w-6xl px-4">
+                <div class="grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6">
+                    {{ posts }}
+                        <div class="news-item" data-title="{{ title | lower }}" data-date="{{ publish_date | format('m-d-Y') }}">
+                            {{ partial:card_linkable href="/news/{slug}" image="{cover_photo}" }}
+                                <div class="{{if !cover_photo}}h-full flex flex-col justify-center{{/if}} px-4 py-2">
+                                    <div class="text-sm font-thin">{{ publish_date | format('m-d-Y') }}</div>
+                                    <div class="{{if cover_photo}}line-clamp-2 {{else}}line-clamp-5{{/if}} overflow-hidden">
+                                        <h2 class="font-sanserif">{{ title }}</h2>
+                                    </div>
+                                </div>
+                            {{ /partial:card_linkable }}
+                        </div>
+                    {{ /posts }}
+                </div>
+            </div>
+        {{ /if }}
+
+        {{ paginate }}
+            <ul class="pagination my-2 flex items-center gap-4">
+                {{ if prev_page }}
+                    <li class="rounded-full border border-gray-400 px-4 py-2 text-sm"><a href="{{ prev_page }}">&laquo;</a></li>
+                {{ else }}
+                    <li class="disabled invisible rounded-full border border-gray-400 px-4 py-2 text-sm"><span>&laquo;</span></li>
+                {{ /if }}
+                {{ links:segments }}
+                    {{ first }}
+                        {{ if page == current_page }}
+                            <li class="active rounded-full border border-primary-900 bg-primary-500 px-4 py-2 text-sm text-black"><span>{{ page }}</span></li>
+                        {{ else }}
+                            <li class="rounded-full border border-gray-400 px-4 py-2 text-sm"><a href="{{ url }}">{{ page }}</a></li>
+                        {{ /if }}
+                    {{ /first }}
+                    {{ if slider }}<li class="disabled rounded-full border border-gray-400 px-4 py-2 text-sm"><span>...</span></li>{{ /if }}
+                    {{ slider }}
+                        {{ if page == current_page }}
+                            <li class="active rounded-full border border-gray-400 bg-primary-500 px-4 py-2 text-sm text-black"><span>{{ page }}</span></li>
+                        {{ else }}
+                            <li class="rounded-full border border-gray-400 px-4 py-2 text-sm"><a href="{{ url }}">{{ page }}</a></li>
+                        {{ /if }}
+                    {{ /slider }}
+                    {{ if slider || (!slider && last) }}<li class="disabled rounded-full border border-gray-400 px-4 py-2 text-sm"><span>...</span></li>{{ /if }}
+                    {{ last }}
+                        {{ if page == current_page }}
+                            <li class="active rounded-full border border-gray-400 bg-primary-500 px-4 py-2 text-sm text-black"><span>{{ page }}</span></li>
+                        {{ else }}
+                            <li class="rounded-full border border-gray-400 px-4 py-2 text-sm"><a href="{{ url }}">{{ page }}</a></li>
+                        {{ /if }}
+                    {{ /last }}
+                {{ /links:segments }}
+                {{ if next_page }}
+                    <li class="rounded-full border border-gray-400 px-4 py-2 text-sm"><a href="{{ next_page }}">&raquo;</a></li>
+                {{ else }}
+                    <li class="disabled invisible rounded-full border border-gray-400 px-4 py-2 text-sm"><span>&raquo;</span></li>
+                {{ /if }}
+            </ul>
+        {{ /paginate }}
+
+    {{ /collection:news }}
+
+</section>
